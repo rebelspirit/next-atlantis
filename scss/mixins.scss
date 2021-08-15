@@ -1,0 +1,90 @@
+/*  MIXINS
+========================================== */
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin transform-origin($transform) {
+  -webkit-transform-origin: $transform;
+  -moz-transform-origin: $transform;
+  -ms-transform-origin: $transform;
+  -o-transform-origin: $transform;
+  transform-origin: $transform;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: #{$transition};
+  -moz-transition: #{$transition};
+  -o-transition: #{$transition};
+  transition: #{$transition};
+}
+
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: #{$transition-delay};
+  -moz-transition-delay: #{$transition-delay};
+  -o-transition-delay: #{$transition-delay};
+  transition-delay: #{$transition-delay};
+}
+
+@mixin background-size($background-size) {
+  -webkit-background-size: $background-size;
+  background-size: $background-size;
+}
+
+/*  MEDIA QUERIES
+========================================== */
+@mixin Full-HD2KPlus-Desktop {
+  @media screen and (max-width: 2560px) {
+    @content;
+  }
+}
+@mixin Full-HD2K-Desktop {
+  @media screen and (max-width: 2048px) {
+    @content;
+  }
+}
+@mixin Full-HD-Desktop {
+  @media screen and (max-width: 1980px) {
+    @content;
+  }
+}
+@mixin Medium-HD-Desktop {
+  @media screen and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin HD-Desktop {
+  @media screen and (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin Old-Desktop {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin Tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin Large-Mobile {
+  @media screen and (max-width: 425px) {
+    @content;
+  }
+}
+@mixin Medium-Mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+@mixin Small-Mobile {
+  @media screen and (max-width: 320px) {
+    @content;
+  }
+}

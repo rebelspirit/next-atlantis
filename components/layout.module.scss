@@ -1,0 +1,7 @@
+@import "scss/variables";
+
+.container {
+  display: flex;
+  height: 100vh;
+  padding-top: $Header-height;
+}

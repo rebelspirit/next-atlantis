@@ -1,0 +1,82 @@
+@import "scss/variables";
+@import "scss/mixins";
+
+.contentFilterRow {
+  width: 100%;
+  position: sticky;
+  top: $Header-height;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  background: $color-black-grey-85;
+  border-bottom: 1px solid $color-dark-grey;
+  padding: 0 $SideBar-MinWidth;
+  z-index: 100;
+
+  .contentFilterButtonsContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: fit-content;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(.05, 0, 0, 1);
+    will-change: transform;
+    white-space: nowrap;
+
+    .contentFilterButton {
+      font-family: $SFUI-Display-Light;
+      background: $color-white-10;
+      border: 1px solid $color-white-10;
+      border-radius: 15px;
+      color: $color-white;
+      padding: 5px 10px;
+      margin: 0 7px;
+      cursor: pointer;
+      @include transition(.3s);
+
+      &:hover {
+        background: $color-white;
+        color: $color-dark-grey;
+        border: 1px solid $color-white;
+      }
+
+    }
+  }
+
+  &.isOpenSidebar {
+    padding: 0 $SideBar-MaxWidth;
+
+    @include Full-HD2KPlus-Desktop {
+      padding: 0 $SideBar-MaxWidth;
+    }
+    @include Full-HD2K-Desktop {
+      padding: 0 0 0 $SideBar-MaxWidth;
+    }
+
+    @include Full-HD-Desktop {
+      padding: 0 0 0 $SideBar-MaxWidth + 20;
+    }
+  }
+}
+
+.contentFilterSlideButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 56px;
+  background: $color-black-grey;
+  border: none;
+  font-size: 18px;
+  color: $color-white;
+  cursor: pointer;
+
+  &.contentFilterSlideButtonLeft {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

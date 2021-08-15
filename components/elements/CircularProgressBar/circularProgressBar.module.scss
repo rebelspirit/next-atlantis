@@ -1,0 +1,46 @@
+@import "scss/variables";
+@import "scss/mixins";
+
+.circleWrapper {
+  position: absolute;
+  right: 3%;
+  top: -31px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: $color-black-grey-lighter;
+  box-shadow: 0 1px 3px 1px rgb(0 0 0 / 70%);
+
+  @include Large-Mobile {
+    top: unset;
+    bottom: 10px;
+  }
+
+  @include Medium-Mobile {
+    display: none;
+  }
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translate(-50%, -50%))
+  }
+}
+.circleBackground {
+  fill: none;
+  stroke: $color-dark-grey;
+}
+
+.circleProgress {
+  fill: none;
+  stroke: $color-green-darkened;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circleText {
+  font-size: .7rem;
+  font-weight: bold;
+  fill: $color-white;
+}

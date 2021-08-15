@@ -1,0 +1,82 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: $Header-height;
+    max-height: $Header-height;
+    background-color: $color-light-black;
+    background-image: url(../../public/img/top_panel.png);
+    background-repeat: no-repeat;
+    box-shadow: 0 3px 8px 1px rgba(0, 0, 0, .7);
+    padding: 0 22px;
+    z-index: 1010;
+    @include background-size(cover);
+
+    //@include Medium-HD-Desktop {
+    //    @include background-size(cover);
+    //}
+}
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 180px;
+
+    &.compressed {
+        justify-content: space-around;
+
+        @include Large-Mobile {
+            max-width: 130px;
+        }
+        @include Small-Mobile {
+            max-width: 100px;
+        }
+    }
+    &.close {
+        display: none;
+    }
+
+    @include Large-Mobile {
+        max-width: 160px;
+    }
+    @include Small-Mobile {
+        max-width: 140px;
+    }
+}
+.searchBarContainer {
+    display: flex;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 3px;
+
+    &.openMobileSearchBar {
+        justify-content: space-around;
+        align-items: center;
+        max-width: unset;
+        margin-left: unset;
+
+        @include Small-Mobile {
+            justify-content: space-between;
+        }
+    }
+    @include Old-Desktop {
+        max-width: 400px;
+    }
+    @include Tablet {
+        max-width: 300px;
+    }
+    @include Large-Mobile {
+        justify-content: flex-end;
+        max-width: 40px;
+        margin: 0 0 0 auto;
+    }
+    @include Small-Mobile {
+        max-width: 32px;
+    }
+}

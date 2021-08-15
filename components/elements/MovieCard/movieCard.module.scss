@@ -1,0 +1,85 @@
+@import "scss/variables";
+@import "scss/mixins";
+
+.movieCardContainer {
+  display: block;
+  width: 220px;
+  margin: 15px 10px;
+  background-color: $color-black-grey-lighter;
+  box-shadow: 0 0 15px 2px rgb(0 0 0 / 70%);
+  border-radius: .25rem!important;
+  padding-bottom: 10px;
+  cursor: pointer;
+  @include transition(.15s);
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  @include Large-Mobile {
+    display: flex;
+    width: 385px;
+    max-height: 145px;
+    padding-bottom: unset;
+  }
+
+  img {
+    height: auto;
+    max-height: 330px;
+    border-top-left-radius: .25rem!important;
+    border-top-right-radius: .25rem!important;
+    box-shadow: 0 2px 5px 1px rgb(0 0 0 / 70%);
+    margin-bottom: 5px;
+    @include transition(.15s);
+
+    &:hover {
+      -webkit-filter: brightness(110%);
+      filter: brightness(110%);
+    }
+
+    @include Large-Mobile {
+      max-height: 145px;
+      margin-bottom: unset;
+      border-top-right-radius: unset!important;
+      border-bottom-left-radius: .25rem!important;
+    }
+  }
+  .movieCardDescriptionContainer {
+    position: relative;
+
+    @include Large-Mobile {
+      width: 100%;
+      padding-bottom: 10px;
+      padding-right: 50px;
+    }
+    @include Medium-Mobile {
+      padding-right: unset;
+    }
+
+    h6 {
+      color: $color-white;
+      font-family: $SFUI-Display-Semibold;
+      font-size: .9rem;
+      padding: 8px 10px 6px 10px;
+      cursor: pointer;
+    }
+    p {
+      color: $color-grey;
+      font-family: $SFUI-Display-Light;
+      font-size: .7rem;
+      padding: 3px 10px;
+    }
+    .movieCardDescription {
+      display: none;
+
+      @include Large-Mobile {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 1px 10px;
+      }
+    }
+  }
+}

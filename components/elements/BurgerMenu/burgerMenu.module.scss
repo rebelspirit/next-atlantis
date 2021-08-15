@@ -1,0 +1,58 @@
+@import "scss/variables";
+@import "scss/mixins";
+
+.burgerMenu {
+  display: flex;
+  align-items: center;
+  width: 33px;
+  height: 24px;
+  padding: 5px;
+  cursor: pointer;
+
+  span {
+    position: relative;
+    background: $color-white;
+    height: 2px;
+    width: 23px;
+    padding: 0;
+    border: none;
+    outline: none !important;
+    @include transition(.3s);
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      background: $color-white;
+      @include transform-origin(1.5px center);
+      @include transition(.3s);
+    }
+    &:before {
+      top: -6px;
+    }
+    &:after {
+      bottom: -6px;
+    }
+  }
+  &.open {
+    span {
+      background: 0 0;
+      &:before, &:after {
+        left: 0;
+        @include transform-origin(50% 50%)
+      }
+      &:before {
+        top: 0;
+        background: $color-white;
+        @include transform(rotate3d(0,0,1,-45deg));
+      }
+      &:after {
+        bottom: 0;
+        background: $color-white;
+        @include transform(rotate3d(0,0,1,45deg));
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+@import 'variables';
+@import 'scss/mixins';
+
+.pro-sidebar {
+  position: fixed;
+  left: 0;
+  width: $SideBar-MaxWidth;
+  min-width: $SideBar-MaxWidth;
+  background-image: url(../public/img/sidebar.png);
+  background-repeat: no-repeat;
+  @include background-size(cover);
+
+  .pro-sidebar-inner {
+    background: none;
+    .pro-sidebar-layout {
+      .pro-sidebar-header {
+        width: 100%;
+        max-width: $SideBar-MaxWidth - 2;
+        border-bottom: unset;
+      }
+      .pro-sidebar-content {
+        width: 100%;
+        max-width: $SideBar-MaxWidth - 2;
+      }
+    }
+    .pro-sidebar-layout::-webkit-scrollbar {
+      width: 2px;
+    }
+    .pro-sidebar-layout:hover::-webkit-scrollbar {
+      width: 2px;
+    }
+    .pro-sidebar-layout:hover::-webkit-scrollbar-thumb {
+      background-color: $color-dark-grey;
+    }
+    .pro-sidebar-layout::-webkit-scrollbar-track {
+      background-color: $color-black-grey;
+    }
+    .pro-sidebar-layout::-webkit-scrollbar-thumb {
+      background-color: $color-black-grey;
+      border-radius: 16px;
+    }
+    .pro-sidebar-layout::-webkit-scrollbar-button {
+      display: none;
+    }
+  }
+  .pro-menu {
+    border-bottom: 1px solid $color-dark-grey;
+    ul {
+      .pro-menu-item.pro-sub-menu {
+        .pro-inner-list-item {
+          position: relative;
+          background-color: $color-light-black-50;
+          padding-left: unset;
+          &:after {
+            content: '';
+            opacity: 1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+            background-image: url(../public/img/sidebar.png);
+            background-repeat: no-repeat;
+            @include background-size(cover);
+          }
+          .pro-inner-item {
+            padding: 8px 30px 8px 35px;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            &:hover {
+              background: unset;
+              border-top: 1px solid $color-dark-grey;
+              border-bottom: 1px solid $color-dark-grey;
+            }
+          }
+        }
+      }
+    }
+    .pro-menu-item {
+      .pro-inner-item:hover {
+        color: $color-white;
+        background: linear-gradient(40deg, $color-dark-grey, hsla(0, 0%, 69%, .1));
+      }
+    }
+  }
+}
+.pro-sidebar.collapsed {
+  width: $SideBar-MinWidth;
+  min-width: $SideBar-MinWidth;
+
+  .pro-menu {
+    ul {
+      .pro-menu-item.pro-sub-menu {
+        &:hover {
+          background: linear-gradient(40deg, $color-dark-grey, hsla(0, 0%, 69%, .1));
+        }
+        .pro-inner-list-item {
+          padding-left: 15px;
+          top: 75px !important;
+          &:after {
+            display: none;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            display: block;
+            width: 9px;
+            height: 20px;
+            background-image: url(../public/img/sidebarCloudIcon.svg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: #211c22;
+            @include background-size(contain);
+          }
+          .popper-inner {
+            position: relative;
+            background-image: url(../public/img/sidebar.png);
+            background-repeat: no-repeat;
+            padding-left: unset;
+            @include background-size(cover);
+          }
+          .pro-inner-item {
+            padding: 8px 30px 8px 35px;
+          }
+        }
+      }
+    }
+  }
+}
+.badge {
+  padding: 3px 6px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  border-radius: 15px;
+  &.red {
+    color: $color-white;
+    background: $color-red;
+  }
+  &.green {
+    color: $color-white;
+    background: $color-green-60;
+  }
+  &.yellow {
+    color: $color-black;
+    background: $color-yellow;
+  }
+}
