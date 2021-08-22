@@ -2,20 +2,20 @@
 ========================================== */
 $color-white: #FAFAFA;
 $color-white-10: #FFFFFF19;
-$color-green: rgba(81, 253, 186, 1);
-$color-green-darkened: rgba(33, 208, 122, 1);
-$color-green-60: rgba(81, 253, 186, .60);
+$color-green: #51FDBA;
+$color-green-darkened: #21D07A;
+$color-green-60: #51FDBA99;
 $color-black: #000000;
 $color-black-grey: #141414;
-$color-black-grey-85: rgba(20, 20, 20, .85);
-$color-black-grey-lighter: rgba(27, 27, 27, 1);
-$color-light-black: rgba(36, 36, 36, 0.95);
-$color-light-black-45: rgba(36, 36, 36, .45);
-$color-light-black-50: rgba(16, 16, 16, .5);
-$color-grey: rgba(176, 176, 176, 1);
-$color-dark-grey: rgba(52, 52, 52, 1);
-$color-red: rgba(214, 48, 48, 1);
-$color-yellow: rgba(255, 211, 49, 1);
+$color-black-grey-90: #141414E6;
+$color-black-grey-lighter: #1B1B1B;
+$color-light-black: #242424F2;
+$color-light-black-45: #24242472;
+$color-light-black-50: #1010107F;
+$color-grey: #B0B0B0;
+$color-dark-grey: #343434;
+$color-red: #D63030;
+$color-yellow: #FFD331;
 
 /*  FONTS
 ========================================== */
@@ -37,3 +37,7 @@ $SideBar-MinWidth: 80px;
 $SideBar-Text-Color: #adadad;
 $SideBar-Icon-Color: #adadad;
 
+/*  CONTENT FILTER ROW
+========================================== */
+$Content-Filter-Buttons-Width: 56px;
+$Content-Filter-Buttons-Height: 56px;

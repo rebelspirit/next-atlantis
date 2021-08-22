@@ -1,5 +1,4 @@
 import '@scss/global.scss';
-import '@scss/sidebar.scss';
 import Head from 'next/head';
 import { Layout } from '@components/layout';
 import { wrapper } from 'store/initStore';

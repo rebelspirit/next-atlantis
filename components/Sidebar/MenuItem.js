@@ -1,4 +1,3 @@
-import { FaHome } from 'react-icons/fa';
 import styles from '@components/Sidebar/sidebar.module.scss';
 
 export const MenuItem = ({ icon, name, link, suffix }) => (

@@ -28,6 +28,9 @@ export const ContentFilterRow = () => {
                     </button>
                 )}
             </div>
+            <ContentFilterSlideButton className={styles.contentFilterSlideButtonRight}>
+                <IoIosArrowBack/>
+            </ContentFilterSlideButton>
         </section>
     )
 }

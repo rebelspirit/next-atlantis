@@ -17,7 +17,8 @@
     padding: 0;
     border: none;
     outline: none !important;
-    @include transition(.3s);
+    margin-bottom: auto;
+    @include transition(all .3s ease);
 
     &:before, &:after {
       content: '';
@@ -27,31 +28,28 @@
       height: inherit;
       background: $color-white;
       @include transform-origin(1.5px center);
-      @include transition(.3s);
+      @include transition(all .3s ease);
     }
+
     &:before {
-      top: -6px;
+      top: 6px;
     }
+
     &:after {
-      bottom: -6px;
+      bottom: -12px;
     }
   }
   &.open {
     span {
-      background: 0 0;
       &:before, &:after {
-        left: 0;
-        @include transform-origin(50% 50%)
+        width: 100%;
       }
       &:before {
-        top: 0;
-        background: $color-white;
-        @include transform(rotate3d(0,0,1,-45deg));
+        width: 75%;
+        //transform: translateX(40%);
       }
       &:after {
-        bottom: 0;
-        background: $color-white;
-        @include transform(rotate3d(0,0,1,45deg));
+        width: 50%;
       }
     }
   }
