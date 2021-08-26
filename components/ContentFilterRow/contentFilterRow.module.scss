@@ -20,8 +20,9 @@
   .contentFilterButtonsContainer {
     display: flex;
     align-items: center;
-    width: 100%;
-    max-width: fit-content;
+    justify-content: space-between;
+    //width: 100%;
+    //max-width: fit-content;
     transition-duration: 0.15s;
     transition-timing-function: cubic-bezier(.05, 0, 0, 1);
     will-change: transform;

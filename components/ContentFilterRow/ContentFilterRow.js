@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { map, filter, floor, sum } from 'lodash';
 import { useSelector } from 'react-redux';
 import styles from '@components/ContentFilterRow/contentFilterRow.module.scss';
@@ -6,7 +7,6 @@ import { useWindowSize } from 'hooks/useWindowSize';
 import classNames from 'classnames/bind';
 import { ContentFilterSlideButton } from '@components/ContentFilterRow/ContentFilterSlideButton';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useEffect, useRef, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +16,7 @@ export const ContentFilterRow = () => {
     const nodes = new Map();
 
     const container = useRef(null);
+
     const [nodesWidth, setNodesWidth] = useState(null);
 
     const size = useWindowSize();
@@ -26,10 +27,14 @@ export const ContentFilterRow = () => {
         return node.getBoundingClientRect().width + margin;
     }));
 
-    useEffect(() => setNodesWidth(floor(checkNodes(nodes))), [nodes.size]);
+    useEffect(() => setNodesWidth(floor(checkNodes(nodes))), [nodesWidth]);
 
     useEffect(() => console.log(nodes), [nodes]);
-    useEffect(() => console.log('nodesWidth', nodesWidth), [nodesWidth]);
+    useEffect(() => {
+        console.log('nodesWidth', nodesWidth);
+    }, [nodesWidth]);
+    useEffect(() => console.log('container', container.current.offsetWidth), [container]);
+    useEffect(() => console.log('size', size.width), [size]);
 
 
     return (
@@ -41,13 +46,13 @@ export const ContentFilterRow = () => {
             </ContentFilterSlideButton>
             <div className={styles.contentFilterButtonsContainer}>
                 {map(moviesFilterButtonsData, button =>
-                    <button
+                    <div
                         ref={elem => nodes.set(button.name, elem)}
                         className={styles.contentFilterButton}
                         key={button.name}
                     >
                         {button.name}
-                    </button>
+                    </div>
                 )}
             </div>
             <ContentFilterSlideButton className={styles.contentFilterSlideButtonRight}>
