@@ -18,6 +18,11 @@ export const ContentFilterRow = () => {
     const container = useRef(null);
 
     const [nodesWidth, setNodesWidth] = useState(null);
+    const [navigation, setNavigation] = useState({
+        startButtonDisplay: false,
+        endButtonDisplay: false,
+        offset: 0
+    });
 
     const size = useWindowSize();
 
@@ -27,24 +32,58 @@ export const ContentFilterRow = () => {
         return node.getBoundingClientRect().width + margin;
     }));
 
-    useEffect(() => setNodesWidth(floor(checkNodes(nodes))), [nodesWidth]);
+    const navigationHandlerRules = (size, containerWidth, nodesWidth) => {
+        const { width: screenWidth } = size;
+        console.log({ screenWidth, containerWidth, nodesWidth, offset: nodesWidth - containerWidth });
 
-    useEffect(() => console.log(nodes), [nodes]);
+        if (nodesWidth > containerWidth) {
+            setNavigation({
+                ...navigation,
+                endButtonDisplay: true,
+                offset: nodesWidth - containerWidth
+            })
+        }
+    }
+
+    const rightButtonHandler = step => {
+        console.log('step', step);
+        container.current.scrollLeft += step
+
+        setNavigation({
+            ...navigation,
+            endButtonDisplay: false,
+            startButtonDisplay: true
+        })
+    }
+    const leftButtonHandler = step => {
+        console.log('step', step);
+        container.current.scrollLeft = -container.current.offsetWidth
+
+        setNavigation({
+            ...navigation,
+            endButtonDisplay: true,
+            startButtonDisplay: false
+        })
+    }
+
+    useEffect(() => setNodesWidth(floor(checkNodes(nodes))), [isOpenSidebar]);
     useEffect(() => {
-        console.log('nodesWidth', nodesWidth);
-    }, [nodesWidth]);
-    useEffect(() => console.log('container', container.current.offsetWidth), [container]);
-    useEffect(() => console.log('size', size.width), [size]);
-
+        if (size.width) {
+            navigationHandlerRules(size, container.current.offsetWidth, nodesWidth)
+        }
+    }, [size, isOpenSidebar]);
 
     return (
         <section
-            ref={container}
+            //ref={container}
             className={cx(styles.contentFilterRow, { 'isOpenSidebar': isOpenSidebar })}>
-            <ContentFilterSlideButton className={styles.contentFilterSlideButtonLeft}>
-                <IoIosArrowForward/>
+            <ContentFilterSlideButton className={cx(styles.contentFilterSlideButtonLeft,  { 'visible': navigation.startButtonDisplay })} callback={() => leftButtonHandler(navigation.offset)}>
+                <IoIosArrowBack />
             </ContentFilterSlideButton>
-            <div className={styles.contentFilterButtonsContainer}>
+            <div className={cx(styles.contentFilterButtonsContainer, { 'rightOffset': navigation.endButtonDisplay, 'leftOffset': navigation.startButtonDisplay })}
+                 ref={container}
+                 // style={{ transform: `translateX(${navigation.offset}px)` }}
+                >
                 {map(moviesFilterButtonsData, button =>
                     <div
                         ref={elem => nodes.set(button.name, elem)}
@@ -55,8 +94,8 @@ export const ContentFilterRow = () => {
                     </div>
                 )}
             </div>
-            <ContentFilterSlideButton className={styles.contentFilterSlideButtonRight}>
-                <IoIosArrowBack/>
+            <ContentFilterSlideButton className={cx(styles.contentFilterSlideButtonRight, { 'visible': navigation.endButtonDisplay })} callback={() => rightButtonHandler(navigation.offset)}>
+                <IoIosArrowForward />
             </ContentFilterSlideButton>
         </section>
     )

@@ -12,7 +12,6 @@
   height: 58px;
   background: $color-black-grey-90;
   border-bottom: 1px solid $color-dark-grey;
-  //padding: 0 $SideBar-MinWidth;
   padding: 0 56px;
   z-index: 100;
   overflow-x: hidden;
@@ -21,13 +20,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    //width: 100%;
-    //max-width: fit-content;
     transition-duration: 0.15s;
     transition-timing-function: cubic-bezier(.05, 0, 0, 1);
     will-change: transform;
     white-space: nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
 
+    &.rightOffset {
+      padding-right: 55px;
+    }
+    &.leftOffset {
+      padding-left: 55px;
+    }
     .contentFilterButton {
       font-family: $SFUI-Display-Light;
       font-size: .875rem;
@@ -66,7 +71,7 @@
 
 .contentFilterSlideButton {
   position: relative;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: $Content-Filter-Buttons-Height;
@@ -109,5 +114,8 @@
       pointer-events: none;
       background: linear-gradient(to left, $color-black-grey 20%, rgba(33, 33, 33, 0) 80%);
     }
+  }
+  &.visible {
+    display: flex;
   }
 }

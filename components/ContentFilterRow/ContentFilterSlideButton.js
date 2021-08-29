@@ -3,10 +3,10 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-export const ContentFilterSlideButton = ({ children, className }) => {
+export const ContentFilterSlideButton = ({ children, className, callback }) => {
 
     return (
-        <button className={cx(styles.contentFilterSlideButton, className)}>
+        <button className={cx(styles.contentFilterSlideButton, className)} onClick={callback}>
             {children}
         </button>
     )
