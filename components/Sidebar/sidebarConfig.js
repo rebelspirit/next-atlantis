@@ -1,41 +1,25 @@
-import styles from './sidebar.module.scss';
-import {
-    FaHome,
-    FaFire,
-    FaFilm,
-    FaTv,
-    FaList,
-    FaFolder,
-    FaHistory,
-    FaClock,
-    FaThumbsUp,
-    FaCog,
-    FaFlag,
-    FaQuestionCircle,
-    FaCommentAlt,
-} from 'react-icons/fa';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
+import { BsCollectionPlayFill } from 'react-icons/bs';
+import { AiFillHeart } from 'react-icons/ai';
+import { ImFire } from 'react-icons/im';
+import { RiMovie2Fill, RiSettings4Fill, RiLogoutBoxRFill } from 'react-icons/ri';
+import { IoTvSharp } from 'react-icons/io5';
+import { FaFolder } from 'react-icons/fa';
+import { MdFeedback } from 'react-icons/md';
 
 export const sidebarConfig = {
-    header: [
-        { name: 'Главная', link: '/', icon: <FaHome/>, suffix: false },
-        { name: 'В тренде', link: '/trends', icon: <FaFire/>, suffix: <span className={cx(styles.badge, styles.green)}>New</span>},
+    menu: [
+        { name: 'Browse', link: '', icon: <BsCollectionPlayFill/> },
+        { name: 'Watchlist', link: '', icon: <AiFillHeart/> },
+        { name: 'Coming soon', link: '', icon: <ImFire/> },
     ],
-    main: [
-        { name: 'Фильмы', link: '/', icon: <FaFilm/>, suffix: false },
-        { name: 'Сериалы', link: '/trends', icon: <FaTv/>, suffix: <span className={cx(styles.badge, styles.green)}>New</span>},
-        { name: 'Коллекции', link: '/', icon: <FaList/>, suffix: false }
+    content: [
+        { name: 'Movies', link: '', icon: <RiMovie2Fill/> },
+        { name: 'Serials', link: '', icon: <IoTvSharp/> },
+        { name: 'Collections', link: '', icon: <FaFolder/> },
     ],
-    footer:         [
-        { name: 'Библиотека', link: '/', icon: <FaFolder/>, suffix: false },
-        { name: 'История', link: '/', icon: <FaHistory/>, suffix: false },
-        { name: 'Смотреть позже', link: '/', icon: <FaClock/>, suffix: false },
-        { name: 'Понравившиеся', link: '/', icon: <FaThumbsUp/>, suffix: false },
-        { name: 'Настройки', link: '/', icon: <FaCog/>, suffix: false },
-        { name: 'Жалобы', link: '/', icon: <FaFlag/>, suffix: false },
-        { name: 'Справка', link: '/', icon: <FaQuestionCircle/>, suffix: false },
-        { name: 'Отправить отзыв', link: '/', icon: <FaCommentAlt/>, suffix: false },
-    ],
+    general: [
+        { name: 'Settings', link: '', icon: <RiSettings4Fill/> },
+        { name: 'Feedback', link: '', icon: <MdFeedback/> },
+        { name: 'Log out', link: '', icon: <RiLogoutBoxRFill/> },
+    ]
 }

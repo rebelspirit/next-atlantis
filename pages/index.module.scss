@@ -1,14 +1,5 @@
 @import 'scss/variables';
 
 .contentContainer {
-  position: relative;
-  height: 100vh;
-  left: $SideBar-MaxWidth;
-  width: calc(100% - #{$SideBar-MaxWidth});
-  transition: all 0.5s ease;
 
-  &.isSidebarClose {
-    left: $SideBar-MinWidth;
-    width: calc(100% - #{$SideBar-MinWidth});
-  }
 }

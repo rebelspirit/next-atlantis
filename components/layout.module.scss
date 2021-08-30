@@ -1,7 +1,13 @@
 @import "scss/variables";
 
-.container {
+.app {
   display: flex;
-  height: 100vh;
-  padding-top: $Header-height;
+  height: 100%;
+  min-height: 1250px;
+  background: $App-Background;
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+}
+.container {
+  width: 100%;
 }
