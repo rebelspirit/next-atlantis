@@ -1,6 +1,7 @@
 import styles from './header.module.scss';
 import { RiSearch2Line } from 'react-icons/ri';
 import { IoMoon, IoNotifications } from 'react-icons/io5';
+import { NightMode } from '@components/UserInterfaces/NightMode/NightMode';
 export const Header = () => {
 
     return (
@@ -12,11 +13,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className={styles.userContainer}>
-                <button className={styles.userContainerButton}>
-                    <i>
-                        <IoMoon/>
-                    </i>
-                </button>
+                <NightMode callback={() => console.log('change')} isChecked={false} id='test'/>
                 <button className={styles.userContainerButton}>
                     <i>
                         <IoNotifications/>

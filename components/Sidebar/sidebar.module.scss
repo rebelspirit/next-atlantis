@@ -2,7 +2,8 @@
 @import 'scss/mixins';
 
 .sidebar {
-  width: $SideBar-Width;
+  width: 100%;
+  max-width: $SideBar-Width;
   border-right: 1px solid $color-grey;
   padding: 40px 0;
 }
