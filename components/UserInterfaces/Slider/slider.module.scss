@@ -1,0 +1,137 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  max-height: 525px;
+  min-height: 525px;
+  margin: 0 auto;
+  padding: 7px 50px 30px 50px;
+  border-radius: 30px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+
+  .sliderTitle {
+    font-family: $SFUI-Display-Semibold;
+    font-size: 3.5rem;
+    font-weight: normal;
+    font-style: normal;
+    color: $Slider-Title-Color;
+    text-shadow: 1px 1px 2px $color-black;
+    margin: 5px 0;
+  }
+  .sliderTagline {
+    font-family: $SFUI-Display-Light;
+    font-size: 1.15rem;
+    font-weight: normal;
+    font-style: normal;
+    color: $Slider-Title-Color;
+    text-shadow: 1px 1px 2px $color-black;
+    margin: 5px 0 7px 0;
+  }
+
+  .sliderRate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: normal;
+    color: $color-white;
+    margin: 5px 0;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0 5px;
+
+      &:first-child {
+        margin: 0 5px 0 0;
+      }
+      .icon {
+        color: $color-orange;
+      }
+      span {
+        margin: 0 7px;
+        text-shadow: 1px 1px 2px $color-black;
+      }
+    }
+  }
+  .sliderButtonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 0;
+
+    .sliderButton {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 15px;
+      font-family: $SFUI-Display-Semibold;
+      font-size: 1.2rem;
+      font-weight: normal;
+      font-style: normal;
+      color: $color-white;
+      cursor: pointer;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+      margin: 0 10px;
+      @include transition(.3s ease);
+
+      &:first-child {
+        margin: 0 10px 0 0;
+      }
+      &.sliderWatchButton {
+        width: 130px;
+        background-color: $color-red;
+
+        &:hover {
+          background-color: #f34336;
+        }
+      }
+      &.sliderWatchListButton {
+        width: 60px;
+        background-color: #6A6A6BD9;
+
+        &:hover {
+          background-color: #6A6A6BFF;
+        }
+      }
+    }
+  }
+  .sliderImgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 4px);
+      background: #0000003b;
+      border-radius: 30px;
+      content: '';
+      z-index: 1;
+    }
+
+    .sliderImg {
+      border-radius: 30px;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+}
