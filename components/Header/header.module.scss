@@ -24,17 +24,13 @@
     &:focus-within {
       border: 2px solid $Search-Border-hovered;
 
-      i {
+      .icon {
         color: $color-red;
       }
     }
-    i {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $Search-Icon-Width;
-      height: 100%;
+    .icon {
       color: $Search-Icon-Color;
+      margin: auto 10px;
     }
     input {
       width: 100%;
@@ -76,12 +72,10 @@
     margin: 0 5px;
     cursor: pointer;
 
-    i {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
+    .icon {
+      &:hover {
+        color: $color-red;
+      }
     }
   }
 }

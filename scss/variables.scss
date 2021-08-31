@@ -3,6 +3,8 @@
 $color-white: #FAFAFA;
 $color-grey: #e0e0e0;
 $color-red: #D71F26;
+$color-blue: #3781c8;
+$color-orange: #FFA500;
 
 /*  FONTS
 ========================================== */
@@ -39,9 +41,24 @@ $Search-Text-Color: #8FA4B8;
 ========================================== */
 $UserContainer-Color: #8FA4B8;
 
+/*  HEADER USER AVATAR
+========================================== */
+$Avatar-Width: 45px;
+$Avatar-Height: 45px;
+$FirstCircle-Color: #D71F26;
+$FirstCircle-DashOffset: 130px;
+$SecondCircle-Color: #e0e0e0;
+$SecondCircle-DashOffset: 150px;
+
 /*  NIGHT MODE
 ========================================== */
-$NightMode-Color: #8FA4B8;
+$Mode-Width: 50px;
+$Mode-Height: 26px;
+$Switcher-Color: #FAFAFA;
+$Switcher-WidthHeight: 22px;
+$Slider-Color: #E0E0E0;
+$NightMode-Icon-Color: #3781c8;
+$DayMode-Icon-Color: #FFA500;
 
 /*  SIDEBAR
 ========================================== */

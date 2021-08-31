@@ -1,0 +1,14 @@
+@import 'scss/mixins';
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include transition(.3s ease);
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}

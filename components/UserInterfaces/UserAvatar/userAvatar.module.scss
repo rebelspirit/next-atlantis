@@ -1,0 +1,64 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.userAvatarContainer {
+  position: relative;
+  width: $Avatar-Width;
+  height: $Avatar-Height;
+  margin: 0 20px;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover {
+    .circle {
+      &.redCircle {
+        svg {
+          stroke-dashoffset: $FirstCircle-DashOffset - 74px;
+        }
+      }
+    }
+  }
+
+  .avatar {
+    width: inherit;
+    height: inherit;
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+
+  .circle {
+    position: absolute;
+    width: $Avatar-Width + 12px;
+    height: $Avatar-Height + 12px;
+
+    svg {
+      stroke-dasharray: 260.752px, 260.752px;
+      stroke-linecap: round;
+      @include transition(.3s ease);
+    }
+
+    &.redCircle {
+
+      top: -6px;
+      left: -6px;
+      z-index: -1;
+      @include transform(rotate(-140deg));
+
+      svg {
+        stroke: $FirstCircle-Color;
+        stroke-dashoffset: $FirstCircle-DashOffset;
+      }
+    }
+    &.greyCircle {
+      top: -6px;
+      left: -6px;
+      z-index: -2;
+      @include transform(rotate(-10deg));
+
+      svg {
+        stroke: $SecondCircle-Color;
+        stroke-dashoffset: $SecondCircle-DashOffset;
+      }
+    }
+  }
+}

@@ -45,12 +45,8 @@
       margin-bottom: 30px;
       cursor: pointer;
 
-      i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .icon {
         font-size: 1.5rem;
-        @include transition(.3s ease);
       }
       p {
         font-size: 1rem;
@@ -72,7 +68,7 @@
         @include transition(.3s ease);
       }
       &:hover {
-        i {
+        .icon {
           color: $color-red;
         }
         p {
