@@ -1,7 +1,7 @@
 /*  COLORS
 ========================================== */
 $color-white: #FAFAFA;
-$color-grey: rgba(224, 224, 224, 0.58);
+$color-grey: #E0E0E093;
 $color-red: #D71F26;
 $color-blue: #3781c8;
 $color-orange: #FFA500;
@@ -64,7 +64,10 @@ $DayMode-Icon-Color: #FFA500;
 /*  SIDEBAR
 ========================================== */
 $SideBar-Width: 280px;
-$Sidebar-Padding: 0 5px 0 60px;
+$Sidebar-Container-Padding: 40px 0 60px 0;
+$Sidebar-Items-Padding: 0 5px 0 60px;
+$Sidebar-Items-HoveredLine-Color: #D71F26;
+$Sidebar-Border-Color: #E0E0E093;
 $SideBar-Logo-Color: #304354;
 $SideBar-Text-Color: #8FA4B8;
 $SideBar-Text-Color-hovered: #304354;

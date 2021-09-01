@@ -4,6 +4,7 @@ import { FaImdb } from 'react-icons/fa';
 import { FcLike } from 'react-icons/fc';
 import { RiPlayListAddFill } from 'react-icons/ri';
 import { IconWrapper } from '@components/UserInterfaces/IconWrapper/IconWrapper';
+import { Number } from '@components/UserInterfaces/Springs/Number';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
@@ -21,14 +22,14 @@ export const Slider = () => {
                     <IconWrapper width={32} height={32} className={cx(styles.icon, styles.iconBackground)}>
                         <FaImdb/>
                     </IconWrapper>
-                    <span>8.2</span>
+                    <Number numberProps={8.2} toFixed={1}/>
                 </p>
 
                 <p>
                     <IconWrapper width={32} height={32}>
                         <FcLike/>
                     </IconWrapper>
-                    <span>1041</span>
+                    <Number numberProps={10401} toFixed={0}/>
                 </p>
             </div>
 

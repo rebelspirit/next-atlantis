@@ -5,8 +5,8 @@
   position: relative;
   width: 100%;
   max-width: $SideBar-Width;
-  border-right: 1px solid $color-grey;
-  padding: 40px 0;
+  border-right: 1px solid $Sidebar-Border-Color;
+  padding: $Sidebar-Container-Padding;
 
   .stickySection {
     position: sticky;
@@ -21,7 +21,7 @@
       color: $SideBar-Logo-Color;
       cursor: pointer;
       margin-bottom: 35px;
-      padding: $Sidebar-Padding;
+      padding: $Sidebar-Items-Padding;
 
       span {
         color: $color-red;
@@ -38,14 +38,14 @@
 
         .sectionTitle {
           font-size: .85rem;
-          padding: $Sidebar-Padding;
+          padding: $Sidebar-Items-Padding;
           margin-bottom: 20px;
         }
         .sectionItem {
           position: relative;
           display: flex;
           align-items: center;
-          padding: $Sidebar-Padding;
+          padding: $Sidebar-Items-Padding;
           margin-bottom: 30px;
           cursor: pointer;
 
@@ -65,7 +65,7 @@
             display: block;
             width: 3px;
             height: 100%;
-            background: $color-red;
+            background: $Sidebar-Items-HoveredLine-Color;
             border-radius: 2px;
             content: '';
             opacity: 0;
@@ -73,7 +73,7 @@
           }
           &:hover {
             .icon {
-              color: $color-red;
+              color: $Sidebar-Items-HoveredLine-Color;
             }
             p {
               color: $SideBar-Text-Color-hovered;
