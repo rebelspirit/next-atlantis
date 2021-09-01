@@ -1,5 +1,5 @@
-@import 'scss/variables';
-@import 'scss/mixins';
+@import '../../scss/variables';
+@import '../../scss/mixins';
 
 .sliderContainer {
   display: flex;
@@ -59,6 +59,22 @@
       }
       .icon {
         color: $color-orange;
+        &.iconBackground {
+          position: relative;
+          z-index: 1;
+          &:after {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            display: block;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background: $color-black;
+            border-radius: 3px;
+            content: '';
+            z-index: -1;
+          }
+        }
       }
       span {
         margin: 0 7px;
@@ -66,49 +82,77 @@
       }
     }
   }
-  .sliderButtonsContainer {
+  .sliderFooterContainer {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 20px 0;
 
-    .sliderButton {
-      height: 60px;
+    .sliderButtonsContainer {
       display: flex;
       align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: 15px;
-      font-family: $SFUI-Display-Semibold;
-      font-size: 1.2rem;
-      font-weight: normal;
-      font-style: normal;
-      color: $color-white;
-      cursor: pointer;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-      margin: 0 10px;
-      @include transition(.3s ease);
+      justify-content: flex-start;
 
-      &:first-child {
-        margin: 0 10px 0 0;
-      }
-      &.sliderWatchButton {
-        width: 130px;
-        background-color: $color-red;
+      .sliderButton {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 15px;
+        font-family: $SFUI-Display-Semibold;
+        font-size: 1.2rem;
+        font-weight: normal;
+        font-style: normal;
+        color: $color-white;
+        cursor: pointer;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+        margin: 0 10px;
+        @include transition(.3s ease);
 
-        &:hover {
-          background-color: #f34336;
+        &:first-child {
+          margin: 0 10px 0 0;
         }
-      }
-      &.sliderWatchListButton {
-        width: 60px;
-        background-color: #6A6A6BD9;
+        &.sliderWatchButton {
+          width: 130px;
+          background-color: $color-red;
 
-        &:hover {
-          background-color: #6A6A6BFF;
+          &:hover {
+            background-color: #f34336;
+          }
+        }
+        &.sliderWatchListButton {
+          width: 60px;
+          background-color: #6A6A6BD9;
+
+          &:hover {
+            background-color: #6A6A6BFF;
+          }
         }
       }
     }
+
+    .sliderNavBarContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .sliderNavBarCard {
+        margin: 0 7px;
+        cursor: pointer;
+        @include transition(.3s ease);
+
+        &.selected {
+          transform: scale(1.05) translateY(-5px);
+        }
+        .sliderNavBarImg {
+          border: 4px solid #E0E0E095 !important;
+          border-radius: 7px;
+        }
+      }
+    }
+
   }
   .sliderImgContainer {
     position: absolute;

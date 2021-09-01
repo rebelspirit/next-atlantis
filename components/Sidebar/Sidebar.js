@@ -8,13 +8,15 @@ export const Sidebar = () => {
 
     return (
         <aside className={styles.sidebar}>
-            <SidebarLogo/>
+            <div className={styles.stickySection}>
+                <SidebarLogo/>
 
-            <nav className={styles.section}>
-                <SidebarItem itemsArray={menu} sectionName='Menu'/>
-                <SidebarItem itemsArray={content} sectionName='Content'/>
-                <SidebarItem itemsArray={general} sectionName='General'/>
-            </nav>
+                <nav className={styles.section}>
+                    <SidebarItem itemsArray={menu} sectionName='Menu'/>
+                    <SidebarItem itemsArray={content} sectionName='Content'/>
+                    <SidebarItem itemsArray={general} sectionName='General'/>
+                </nav>
+            </div>
         </aside>
     )
 }

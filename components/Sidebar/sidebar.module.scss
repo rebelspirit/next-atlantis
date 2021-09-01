@@ -2,83 +2,90 @@
 @import 'scss/mixins';
 
 .sidebar {
+  position: relative;
   width: 100%;
   max-width: $SideBar-Width;
   border-right: 1px solid $color-grey;
   padding: 40px 0;
-}
-.logo {
-  display: block;
-  font-family: $Lato-Black;
-  font-size: 1.35rem;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: none;
-  color: $SideBar-Logo-Color;
-  cursor: pointer;
-  margin-bottom: 35px;
-  padding: $Sidebar-Padding;
 
-  span {
-    color: $color-red;
-  }
-}
-.section {
-  color: $SideBar-Text-Color;
-  font-family: $SFUI-Display-Semibold;
-  font-weight: normal;
-  font-style: normal;
-
-  .sectionItemContainer {
-    margin-bottom: 10px;
-
-    .sectionTitle {
-      font-size: .85rem;
-      padding: $Sidebar-Padding;
-      margin-bottom: 20px;
-    }
-    .sectionItem {
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: $Sidebar-Padding;
-      margin-bottom: 30px;
+  .stickySection {
+    position: sticky;
+    top: 40px;
+    .logo {
+      display: block;
+      font-family: $Lato-Black;
+      font-size: 1.35rem;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      color: $SideBar-Logo-Color;
       cursor: pointer;
+      margin-bottom: 35px;
+      padding: $Sidebar-Padding;
 
-      .icon {
-        font-size: 1.5rem;
+      span {
+        color: $color-red;
       }
-      p {
-        font-size: 1rem;
-        margin: 0 15px;
-        @include transition(.3s ease);
-      }
+    }
+    .section {
+      color: $SideBar-Text-Color;
+      font-family: $SFUI-Display-Semibold;
+      font-weight: normal;
+      font-style: normal;
 
-      &:before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: block;
-        width: 3px;
-        height: 100%;
-        background: $color-red;
-        border-radius: 2px;
-        content: '';
-        opacity: 0;
-        @include transition(.3s ease);
-      }
-      &:hover {
-        .icon {
-          color: $color-red;
+      .sectionItemContainer {
+        margin-bottom: 10px;
+
+        .sectionTitle {
+          font-size: .85rem;
+          padding: $Sidebar-Padding;
+          margin-bottom: 20px;
         }
-        p {
-          color: $SideBar-Text-Color-hovered;
-        }
-        &:before {
-          opacity: 1;
+        .sectionItem {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: $Sidebar-Padding;
+          margin-bottom: 30px;
+          cursor: pointer;
+
+          .icon {
+            font-size: 1.5rem;
+          }
+          p {
+            font-size: 1rem;
+            margin: 0 15px;
+            @include transition(.3s ease);
+          }
+
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 3px;
+            height: 100%;
+            background: $color-red;
+            border-radius: 2px;
+            content: '';
+            opacity: 0;
+            @include transition(.3s ease);
+          }
+          &:hover {
+            .icon {
+              color: $color-red;
+            }
+            p {
+              color: $SideBar-Text-Color-hovered;
+            }
+            &:before {
+              opacity: 1;
+            }
+          }
         }
       }
     }
   }
 }
+
 

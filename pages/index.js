@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
-import { Slider } from '@components/UserInterfaces/Slider/Slider';
+import { Slider } from '@components/Slider/Slider';
 
 const cx = classNames.bind(styles);
 
