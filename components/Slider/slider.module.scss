@@ -144,16 +144,11 @@
         cursor: pointer;
         @include transition(.3s ease);
 
-        &:hover {
-          transform: scale(1.05) translateY(-5px);
-
-        }
-
         &.selected {
           transform: scale(1.05) translateY(-5px);
         }
         .sliderNavBarImg {
-          border: 4px solid #E0E0E095 !important;
+          border: 2px solid #E0E0E095 !important;
           border-radius: 7px;
         }
       }

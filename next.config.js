@@ -6,6 +6,5 @@ module.exports = {
     },
     images: {
         domain: ['tmdb.org', 'themoviedb.org', 'image.tmdb.org'],
-        // path: ['https://image.tmdb.org/t/p/w1280'],
     },
 }
