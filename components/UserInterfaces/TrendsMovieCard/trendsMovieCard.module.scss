@@ -1,0 +1,17 @@
+@import 'scss/variables';
+
+.trendsCardContainer {
+
+  .trendsImgContainer {
+    position: relative;
+    width: 300px;
+    height: 170px;
+    border-radius: .7rem;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+
+    .trendsCardImg {
+      border-radius: .7rem;
+    }
+  }
+
+}

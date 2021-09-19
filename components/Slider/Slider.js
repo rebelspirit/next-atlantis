@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from 'components/Slider/slider.module.scss';
 import { map, eq, find, findIndex, forEach } from 'lodash';
 import Image from 'next/image';
@@ -19,18 +19,25 @@ const _sliderCards = [
     { link: 'https://image.tmdb.org/t/p/original/eyG9srihv68ScRdEbJZj66WT4O0.jpg', title: 'Flash', desc: 'Быстрейший среди живых!', rank: 6.8, votes: 560 },
 ];
 
+// TODO: Fix problem on FadeOut effect. Title and description changed to new values when FadeOut started. Need save old value for FadeOut and after then start FadeIn with new values.
 export const Slider = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [cards, setCards] = useState(map(_sliderCards, (card, index) => {
-        if (eq(index, 0)) return { ...card, selected: true }
+        if (eq(index, currentIndex)) return { ...card, selected: true }
         return { ...card,  selected: false }
     }));
 
     const [animations, setAnimations] = useState([
         { type: 'fade', visible: true, timeOut: 100 },
         { type: 'trail', visible: true, timeOut: 700 }
-    ])
+    ]);
+    const timeoutRef = useRef(null);
 
     const selectedCard = find(cards, { selected: true });
+
+    const resetTimeout = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    }
 
     const changeSelectedCard = newSelectedCardIndex => {
         if (eq(newSelectedCardIndex, findIndex(cards,{ 'selected': true }))) return
@@ -50,31 +57,16 @@ export const Slider = () => {
         });
     };
 
-    // const sliderLoop = () => {
-    //     const selectedIndex = findIndex(cards, { 'selected': true });
-    //     console.log('selectedIndex', selectedIndex);
-    //
-    //     if (eq((selectedIndex + 1), cards.length)) {
-    //         console.log('Last item in array');
-    //         return setCards(prevState => map(prevState, (card, index) => {
-    //             if (eq(index, 0)) return { ...card, selected: true }
-    //             return { ...card,  selected: false }
-    //         }));
-    //     }
-    //     console.log('New selected item index', (selectedIndex + 1));
-    //     return setCards(prevState => map(prevState, (card, index) => {
-    //         if (eq(index, (selectedIndex + 1))) return { ...card, selected: true }
-    //         return { ...card,  selected: false }
-    //     }))
-    // }
-    //
-    // useEffect(() => {
-    //     setInterval(() => sliderLoop(), 5000);
-    //
-    //     return () => clearInterval();
-    // }, []);
-    //
-    // useEffect(() => console.log(cards), [cards])
+    useEffect(() => {
+        resetTimeout();
+        timeoutRef.current = setTimeout(() =>
+            setCurrentIndex(prevIndex => eq(prevIndex, (cards.length - 1)) ? 0 : prevIndex + 1), 10000
+        );
+
+        return () => resetTimeout();
+    }, [currentIndex]);
+
+    useEffect(() => changeSelectedCard(currentIndex), [currentIndex]);
 
     return (
         <div className={styles.sliderContainer}>
@@ -109,12 +101,13 @@ export const Slider = () => {
                             </IconWrapper>
                         </button>
                     </div>
+
                     <div className={styles.sliderNavBarContainer}>
                         {map(cards, (card, i) =>
                             <div
                                 className={cx(styles.sliderNavBarCard, { 'selected': eq(i, findIndex(cards,{ 'selected': true })) })}
                                 key={i}
-                                onClick={() => changeSelectedCard(i)}
+                                onClick={() => setCurrentIndex(i)}
                             >
                                 <Image
                                     src={card.link}
