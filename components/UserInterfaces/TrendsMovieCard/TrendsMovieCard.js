@@ -1,7 +1,10 @@
 import styles from './trendsMovieCard.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaPlay } from 'react-icons/fa';
+import classNames from 'classnames/bind';
 
+const cx = classNames.bind(styles);
 export const TrendsMovieCard = () => {
 
     return (
@@ -18,7 +21,12 @@ export const TrendsMovieCard = () => {
                         />
                     </a>
                 </Link>
+                <div className={styles.trendsCardPlayIcon}>
+                    <FaPlay/>
+                </div>
             </div>
+            <h3 className={cx(styles.trendsTitle, styles.trendsCardTitle)}>Полуночная месса</h3>
+            <h4 className={cx(styles.trendsTitle, styles.trendsCardOriginalTitle)}>Midnight Mass</h4>
         </div>
     )
 }

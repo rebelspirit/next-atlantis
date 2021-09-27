@@ -1,17 +1,67 @@
 @import 'scss/variables';
+@import 'scss/mixins';
 
 .trendsCardContainer {
+  width: 100%;
+  max-width: $TrendsCard-Width;
+  margin: 5px 7px;
+
+  &:first-child {
+    margin: 5px 7px 5px 3px;
+  }
+  &:last-child {
+    margin: 5px 3px 5px 7px;
+  }
 
   .trendsImgContainer {
     position: relative;
-    width: 300px;
-    height: 170px;
+    width: $TrendsCard-Width;
+    height: $TrendsCard-Height;
     border-radius: .7rem;
     box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
 
     .trendsCardImg {
       border-radius: .7rem;
     }
+
+    .trendsCardPlayIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: $TrendsCard-PlayButton-Color;
+      cursor: pointer;
+      @include transform(translate(-50%, -50%));
+
+      svg {
+        font-size: 3rem;
+        -webkit-filter: drop-shadow(1px 1px 1px $color-black);
+        filter: drop-shadow(1px 1px 1px $color-black);
+        @include transition(.2s)
+      }
+
+      &:hover {
+        svg {
+          font-size: 3.25rem;
+        }
+      }
+    }
   }
 
+  .trendsTitle {
+    width: fit-content;
+    font-weight: normal;
+    font-style: normal;
+    color: $Trends-Title-Color;
+
+    &.trendsCardTitle {
+      font-family: $SFUI-Display-Semibold;
+      font-size: 1rem;
+      margin: 7px auto;
+    }
+    &.trendsCardOriginalTitle {
+      font-family: $SFUI-Display-Light;
+      font-size: .8rem;
+      margin: 5px auto;
+    }
+  }
 }
