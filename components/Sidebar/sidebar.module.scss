@@ -29,7 +29,7 @@
     }
     .section {
       color: $SideBar-Text-Color;
-      font-family: $SFUI-Display-Semibold;
+      font-family: $SFUI-Display-Regular;
       font-weight: normal;
       font-style: normal;
 
@@ -37,6 +37,7 @@
         margin-bottom: 10px;
 
         .sectionTitle {
+          font-family: $SFUI-Display-Semibold;
           font-size: .85rem;
           padding: $Sidebar-Items-Padding;
           margin-bottom: 20px;
@@ -66,7 +67,8 @@
             width: 3px;
             height: 100%;
             background: $Sidebar-Items-HoveredLine-Color;
-            border-radius: 2px;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
             content: '';
             opacity: 0;
             @include transition(.3s ease);
@@ -80,6 +82,15 @@
             }
             &:before {
               opacity: 1;
+            }
+          }
+
+          &.selected {
+            .icon {
+              color: $Sidebar-Items-HoveredLine-Color;
+            }
+            p {
+              color: $SideBar-Text-Color-hovered;
             }
           }
         }

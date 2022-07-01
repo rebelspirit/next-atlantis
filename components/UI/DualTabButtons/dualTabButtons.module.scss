@@ -1,0 +1,27 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.dualTabButtonsContainer {
+  display: flex;
+  width: fit-content;
+  font-family: $SFUI-Display-Semibold;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.1rem;
+  color: $Trends-Row-TabButton-Color;
+  margin: 10px 0;
+  padding: 0 15px;
+
+  p {
+    cursor: pointer;
+    @include transition(.3s);
+
+    &.selected {
+      color: $Trends-Row-TabButtonSelected-Color;
+    }
+  }
+
+  span {
+    margin: 0 5px;
+  }
+}

@@ -8,7 +8,6 @@ export const Trail = ({ show, children }) => {
         config: { mass: 5, tension: 2000, friction: 200 },
         opacity: show ? 1 : 0,
         x: show ? 0 : 20,
-        // height: open ? 110 : 0,
         from: { opacity: 0, x: 20, height: 0 },
     })
 

@@ -1,0 +1,71 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.trendsRow {
+  display: flex;
+  gap: 35px;
+
+  .trendsRowContainer {
+    width: 100%;
+    max-width: 1315px;
+    display: flex;
+    gap: 30px;
+    overflow-x: scroll;
+    padding: 8px 0;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &:hover::-webkit-scrollbar {
+      display: none;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+  }
+  .test {
+    display: flex;
+    gap: 30px;
+  }
+  .trendsScrollButtonContainer {
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8px 0;
+
+    .trendsScrollButton {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+
+      &:hover {
+        .trendsScrollButtonIcon svg polyline {
+          stroke: $color-red;
+        }
+      }
+      .trendsScrollButtonIcon svg polyline {
+        stroke: $Trends-Row-Button-Color;
+        @include transition(.3s);
+      }
+    }
+    .trendsScrollButtonReverse {
+      @include transform(rotate(-180deg));
+    }
+    .disabled i svg polyline {
+      stroke: $color-grey !important;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import 'scss/variables';
+
+.sectionTitle {
+  position: relative;
+  width: fit-content;
+  font-family: $SFUI-Display-Semibold;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: $Trends-Row-Title-Color;
+  margin: 10px 0;
+  padding: 0 0 0 15px;
+
+  &:before {
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $color-red;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    content: ''
+  }
+}

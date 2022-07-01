@@ -1,0 +1,83 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.trendsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .trendsDescriptionContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin: 10px 0 5px 0;
+  }
+  .trendsTitle {
+    color: $Trends-Card-Text-Color;
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .trendsYear {
+    color: $Trends-Card-Text-Color;
+    font-family: $SFUI-Display-Light;
+    font-weight: 500;
+    font-size: .9rem;
+  }
+  .trendsDescription {
+    color: $Trends-Card-Text-Color;
+    font-family: $SFUI-Display-Light;
+    font-weight: 500;
+    font-size: 0.82rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.trendsCardContainer {
+  position: relative;
+  border-radius: .7rem;
+  @include transition(.3s);
+
+  &:hover {
+    background: $Trends-Card-Hover-BgColor;
+    @include transform(translateY(-5px));
+  }
+
+  .trendsImgContainer {
+    position: relative;
+    width: $Trends-Card-Width;
+    height: $Trends-Card-Height;
+    border-radius: .7rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
+
+    &:hover {
+      opacity: .5;
+      @include transition(.3s);
+    }
+
+    .trendsCardImg {
+      border-radius: .7rem;
+    }
+  }
+
+  .trendsCardPlayIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $color-white;
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 1px $color-black);
+    z-index: 10;
+    @include transform(translate(-50%, -50%));
+
+    &:hover {
+      opacity: .85;
+    }
+  }
+
+}

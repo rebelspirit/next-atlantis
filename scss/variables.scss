@@ -80,4 +80,30 @@ $Slider-Title-Color: #FAFAFA;
 
 /*  TRENDS CONTAINER
 ========================================== */
-$Trends-Title-Color: #304354;
+$Trends-Row-Title-Color: #304354;
+$Trends-Row-Button-Color: #304354;
+$Trends-Row-TabButton-Color: #304354;
+$Trends-Row-TabButtonSelected-Color: #D71F26;
+
+/*  TRENDS CARD
+========================================== */
+$Trends-Card-Width: 300px;
+$Trends-Card-Height: 170px;
+$Trends-Card-Text-Color: #304354;
+$Trends-Card-Hover-BgColor: linear-gradient(45deg, #DECBA4 0%, #304354 50%);
+
+/*  CONTENT CARD
+========================================== */
+$Content-Card-Hover-BgColor: linear-gradient(45deg, #DECBA4 0%, #304354 65%);
+$Content-Card-Width: 240px;
+$Content-Card-Height: 390px;
+$Content-Card-Text-Color: #304354;
+
+/*  PAGINATION
+========================================== */
+$Pagination-Text-Color: #304354;
+$Pagination-ItemHover-Color: #E0E0E093;
+$Pagination-ItemSelected-Color: linear-gradient(45deg, #D71F26 0%, rgba(215, 31, 38, 0.85) 80%);
+$Pagination-ItemSelected-Text-Color: #FAFAFA;
+$Pagination-InputBorder-Color: #304354;
+$Pagination-InputFocusBorder-Color: #D71F26;

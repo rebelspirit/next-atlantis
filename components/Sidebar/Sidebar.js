@@ -4,7 +4,7 @@ import { SidebarItem } from '@components/Sidebar/SidebarItem';
 import { SidebarLogo } from '@components/Sidebar/SidebarLogo';
 
 export const Sidebar = () => {
-    const { menu, content, general } = sidebarConfig;
+    const { general, content, useful } = sidebarConfig;
 
     return (
         <aside className={styles.sidebar}>
@@ -12,9 +12,9 @@ export const Sidebar = () => {
                 <SidebarLogo/>
 
                 <nav className={styles.section}>
-                    <SidebarItem itemsArray={menu} sectionName='Menu'/>
-                    <SidebarItem itemsArray={content} sectionName='Content'/>
-                    <SidebarItem itemsArray={general} sectionName='General'/>
+                    <SidebarItem itemsArray={general} sectionName='Главное'/>
+                    <SidebarItem itemsArray={content} sectionName='Материалы'/>
+                    <SidebarItem itemsArray={useful} sectionName='Полезное'/>
                 </nav>
             </div>
         </aside>

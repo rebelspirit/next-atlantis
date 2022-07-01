@@ -1,4 +1,9 @@
 @import 'variables';
+
+:root {
+    scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: 'Lato-Black';
     src: url('../public/fonts/Lato-Black.ttf') format('truetype');
@@ -225,5 +230,12 @@ body::-webkit-scrollbar-button {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#nprogress .spinner {
+    display: none !important;
+}
+#nprogress .peg {
+    box-shadow: unset !important;
 }
 

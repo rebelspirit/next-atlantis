@@ -20,19 +20,26 @@
 
   .sliderTitle {
     font-family: $SFUI-Display-Semibold;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: normal;
     font-style: normal;
     color: $Slider-Title-Color;
     text-shadow: 1px 1px 2px $color-black;
     margin: 5px 0;
   }
-  .sliderTagline {
+  .sliderOverview {
+    width: 100%;
+    max-width: 530px;
     font-family: $SFUI-Display-Regular;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: normal;
     font-style: normal;
     color: $Slider-Title-Color;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-shadow: 1px 1px 2px $color-black;
     margin: 5px 0 15px 0;
   }
@@ -139,17 +146,24 @@
       align-items: center;
       justify-content: center;
 
-      .sliderNavBarCard {
+      .sliderNavBarDot {
+        width: 15px;
+        height: 15px;
+        background: $color-white;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        filter: drop-shadow(0 0 3px rgba(0, 0, 0, .7));
+        box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
         margin: 0 7px;
         cursor: pointer;
         @include transition(.3s ease);
 
         &.selected {
-          transform: scale(1.05) translateY(-5px);
-        }
-        .sliderNavBarImg {
-          border: 2px solid #E0E0E095 !important;
-          border-radius: 7px;
+          border-radius: 50%;
+          background: $color-red;
+          border: 1px solid $color-red;
+          box-shadow: 0 0 0 $color-white;
+          animation: pulse 2s infinite;
         }
       }
     }
@@ -178,5 +192,30 @@
       object-fit: cover;
       object-position: top;
     }
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(144, 136, 223, .4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(144, 136, 223, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(144, 136, 223, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(144, 136, 223, .4);
+    box-shadow: 0 0 0 0 rgba(144, 136, 223, .4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(144, 136, 223, 0);
+    box-shadow: 0 0 0 10px rgba(144, 136, 223, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(144, 136, 223, 0);
+    box-shadow: 0 0 0 0 rgba(144, 136, 223, 0);
   }
 }

@@ -2,9 +2,9 @@ import styles from './header.module.scss';
 import { RiSearch2Line } from 'react-icons/ri';
 import { IoNotifications } from 'react-icons/io5';
 import { BsChatDotsFill } from 'react-icons/bs';
-import { NightMode } from '@components/UserInterfaces/NightMode/NightMode';
-import { IconWrapper } from '@components/UserInterfaces/IconWrapper/IconWrapper';
-import { UserAvatar } from '@components/UserInterfaces/UserAvatar/UserAvatar';
+import { NightMode } from '@components/UI/NightMode/NightMode';
+import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { UserAvatar } from '@components/UI/UserAvatar/UserAvatar';
 
 export const Header = () => {
 

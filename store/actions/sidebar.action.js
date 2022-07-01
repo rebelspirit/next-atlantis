@@ -1,5 +1,5 @@
+import { SIDEBAR_TOGGLE } from 'store/types';
 
-export const SIDEBAR_TOGGLE = 'SIDEBAR_TOGGLE';
 export const sidebarToggle = () => (dispatch, getStore) => {
     const { isOpenSidebar } = getStore().sidebar;
 

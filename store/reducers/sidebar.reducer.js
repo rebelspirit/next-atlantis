@@ -1,6 +1,6 @@
 import {
     SIDEBAR_TOGGLE
-} from '../actions/counter.action';
+} from '../types';
 
 const initialState = {
     isOpenSidebar: true
