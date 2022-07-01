@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
-import { Serials } from 'Api/Serials';
 import { map } from 'lodash';
+import { Serials } from 'Api/Serials';
 import { ContentCard } from '@components/UI/ContentCard/ContentCard';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Pagination } from '@components/UI/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
 
 export default function SerialsPage({ serials }) {
-    //console.log(serials);
     const isLoading = useLoading();
 
     if (isLoading) {
@@ -16,10 +15,10 @@ export default function SerialsPage({ serials }) {
     }
 
     return (
-        <div className={styles.moviesPageContainer}>
+        <div className={styles.contentPageContainer}>
             <SectionTitle title='Популярные сериалы'/>
 
-            <div className={styles.popularMoviesContainer}>
+            <div className={styles.contentMappedContainer}>
                 {map(serials.results, movie =>
                     <ContentCard
                         key={movie.name}

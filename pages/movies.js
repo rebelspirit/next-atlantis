@@ -8,7 +8,6 @@ import { Pagination } from '@components/UI/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
 
 export default function MoviesPage({ movies }) {
-    //console.log(movies);
     const isLoading = useLoading();
 
     if (isLoading) {
@@ -16,10 +15,10 @@ export default function MoviesPage({ movies }) {
     }
 
     return (
-        <div className={styles.moviesPageContainer}>
+        <div className={styles.contentPageContainer}>
             <SectionTitle title='Популярные фильмы'/>
 
-            <div className={styles.popularMoviesContainer}>
+            <div className={styles.contentMappedContainer}>
                 {map(movies.results, movie =>
                     <ContentCard
                         key={movie.title}

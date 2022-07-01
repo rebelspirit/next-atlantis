@@ -7,27 +7,27 @@ import { TrendsContentCard } from '@components/UI/TrendsContentCard/TrendsConten
 import { TrendsRowButtons } from '@components/TrendsRow/TrendsRowButtons';
 import { Trail } from 'animations/Trail';
 
+const getMovieProps = item => ({
+    title: item.title,
+    date: item.release_date
+});
+
+const getSerialProps = item => ({
+    title: item.name,
+    date: item.first_air_date
+});
+
+const getPropsFromContentType = {
+    movie: getMovieProps,
+    serial: getSerialProps,
+};
+
 export const TrendsRow = ({ mappedContent, type, showTrail }) => {
     const scrollContainerRef = useRef(null);
     const [disabledRowButtons, setDisableRowButtons] = useState({
         scrollRightButton: { disabled: true },
         scrollLeftButton: { disabled: false }
     });
-
-    const getMovieProps = item => ({
-        title: item.title,
-        date: item.release_date
-    });
-
-    const getSerialProps = item => ({
-        title: item.name,
-        date: item.first_air_date
-    });
-
-    const getPropsFromContentType = {
-        movie: getMovieProps,
-        serial: getSerialProps,
-    };
 
     const disableRowButtons = ref => {
         return () => {
