@@ -24,9 +24,8 @@ export const Header = () => {
     useEffect(() => {
         if (isReadyForStartSearch) {
             const { push, pathname } = router;
-            console.log(debouncedSearchTerm);
 
-            push(`/search/?query=${debouncedSearchTerm}`)
+            push(`/search/?search=${debouncedSearchTerm}`)
         }
     }, [debouncedSearchTerm]);
 

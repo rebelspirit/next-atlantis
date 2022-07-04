@@ -78,14 +78,14 @@ export const Slider = ({ slides }) => {
                         <IconWrapper width={32} height={32} className={cx(styles.icon, styles.iconBackground)}>
                             <FaImdb/>
                         </IconWrapper>
-                        <Number numberProps={selectedCard.vote_average} toFixed={1}/>
+                        <Number numberProps={selectedCard.voteAverage} toFixed={1}/>
                     </p>
 
                     <p>
                         <IconWrapper width={32} height={32}>
                             <FcLike/>
                         </IconWrapper>
-                        <Number numberProps={selectedCard.vote_count} toFixed={0}/>
+                        <Number numberProps={selectedCard.voteCount} toFixed={0}/>
                     </p>
                 </div>
             </Trail>
@@ -116,7 +116,7 @@ export const Slider = ({ slides }) => {
                 <div className={styles.sliderImgContainer}>
                     <Fade show={isShowFadeAnimation}>
                         <Image
-                            src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${selectedCard.backdrop_path}`}
+                            src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${selectedCard.backdropPath}`}
                             alt='slider_poster'
                             width={1600}
                             height={600}

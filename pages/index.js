@@ -21,14 +21,13 @@ const getSliderProps = (sliderCount, movies, serials) => {
 
     return flatMap(new Array(equalPartsCount), (_, index) => {
         return [
-            pick(slicedMoviesArray[index], ['title', 'vote_average', 'vote_count', 'backdrop_path', 'overview']),
-            { title: slicedSerialsArray[index].name, ...pick(slicedSerialsArray[index], ['vote_average', 'vote_count', 'backdrop_path', 'overview']) }
+            pick(slicedMoviesArray[index], ['title', 'voteAverage', 'voteCount', 'backdropPath', 'overview']),
+            { title: slicedSerialsArray[index].name, ...pick(slicedSerialsArray[index], ['voteAverage', 'voteCount', 'backdropPath', 'overview']) }
         ]
     });
 };
 
 export default function IndexPage(props) {
-
     const [movies, setMovies] = useState({
         ...props.movies, isWeekTypeSelected: false
     });
@@ -117,8 +116,8 @@ export const getServerSideProps = async () => {
 
         return {
             props: {
-                movies: { trendsOnDay: trendMoviesOnDay.data.results, trendsOnWeek: trendMoviesOnWeek.data.results },
-                serials: { trendsOnDay: trendSerialsOnDay.data.results, trendsOnWeek: trendSerialsOnWeek.data.results }
+                movies: { trendsOnDay: trendMoviesOnDay, trendsOnWeek: trendMoviesOnWeek },
+                serials: { trendsOnDay: trendSerialsOnDay, trendsOnWeek: trendSerialsOnWeek }
             }
         };
 

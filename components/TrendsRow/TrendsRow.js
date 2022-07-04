@@ -9,12 +9,12 @@ import { Trail } from 'animations/Trail';
 
 const getMovieProps = item => ({
     title: item.title,
-    date: item.release_date
+    date: item.releaseDate
 });
 
 const getSerialProps = item => ({
     title: item.name,
-    date: item.first_air_date
+    date: item.firstAirDate
 });
 
 const getPropsFromContentType = {
@@ -72,7 +72,7 @@ export const TrendsRow = ({ mappedContent, type, showTrail }) => {
                     {map(mappedContent, item =>
                         <TrendsContentCard
                             key={item.id}
-                            image={item.backdrop_path}
+                            image={item.backdropPath}
                             overview={item.overview}
                             {...getPropsFromContentType[type](item)}
                         />

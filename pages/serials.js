@@ -23,15 +23,15 @@ export default function SerialsPage({ serials }) {
                     <ContentCard
                         key={movie.name}
                         title={movie.name}
-                        poster={movie.poster_path}
-                        date={movie.first_air_date}
+                        poster={movie.posterPath}
+                        date={movie.firstAirDate}
                     />
                 )}
             </div>
 
             <Pagination
                 page={serials.page}
-                totalPages={serials.total_pages}
+                totalPages={serials.totalPages}
             />
         </div>
     )
@@ -42,7 +42,7 @@ export const getServerSideProps = async ({ query }) => {
 
     return {
         props: {
-            serials: serials.data,
+            serials,
         }
     };
 };

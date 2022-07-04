@@ -23,27 +23,26 @@ export default function MoviesPage({ movies }) {
                     <ContentCard
                         key={movie.title}
                         title={movie.title}
-                        poster={movie.poster_path}
-                        date={movie.release_date}
+                        poster={movie.posterPath}
+                        date={movie.releaseDate}
                     />
                 )}
             </div>
 
             <Pagination
                 page={movies.page}
-                totalPages={movies.total_pages}
+                totalPages={movies.totalPages}
             />
         </div>
     )
 }
 
 export const getServerSideProps = async ({ query }) => {
-    console.log(query);
     const movies = await Movies.getMovies(query.page);
 
     return {
         props: {
-            movies: movies.data,
+            movies,
         }
     };
 };
