@@ -3,8 +3,9 @@ import styles from './index.module.scss';
 import { useLoading } from 'hooks/useLoading';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Search } from 'Api/Search';
-import { map, reduce } from 'lodash';
+import { map } from 'lodash';
 import { ContentCard } from '@components/UI/ContentCard/ContentCard';
+import { PersonCard } from '@components/UI/PersonCard/PersonCard';
 
 export default function SearchPage({ searchedContent }) {
     const isLoading = useLoading();
@@ -20,14 +21,14 @@ export default function SearchPage({ searchedContent }) {
 
     return (
         <div className={styles.contentPageContainer}>
-            {searchedContent.movie.length &&
+            {!!searchedContent.movie.length &&
                 <SectionTitle title='Полнометражные фильмы'/>
             }
 
             <div className={styles.contentMappedContainer}>
                 {map(searchedContent.movie, movie =>
                     <ContentCard
-                        key={movie.title}
+                        key={movie.id}
                         title={movie.title}
                         poster={movie.posterPath}
                         date={movie.releaseDate}
@@ -35,17 +36,32 @@ export default function SearchPage({ searchedContent }) {
                 )}
             </div>
 
-            {searchedContent.tv.length &&
+            {!!searchedContent.tv.length &&
                 <SectionTitle title='Сериалы и ТВ-шоу'/>
             }
 
             <div className={styles.contentMappedContainer}>
                 {map(searchedContent.tv, movie =>
                     <ContentCard
-                        key={movie.name}
+                        key={movie.id}
                         title={movie.name}
                         poster={movie.posterPath}
                         date={movie.firstAirDate}
+                    />
+                )}
+            </div>
+
+            {!!searchedContent.person.length &&
+                <SectionTitle title='Знаменитости'/>
+            }
+
+            <div className={styles.contentMappedContainer}>
+                {map(searchedContent.person, person =>
+                    <PersonCard
+                        key={person.id}
+                        name={person.name}
+                        knownForDepartment={person.knownForDepartment}
+                        poster={person.profilePath}
                     />
                 )}
             </div>

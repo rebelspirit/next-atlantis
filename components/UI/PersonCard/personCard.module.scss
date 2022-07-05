@@ -1,0 +1,52 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.personContainer {
+  width: 160px;
+
+  .personCardContainer {
+    border-radius: .7rem;
+    @include transition(.3s);
+
+    &:hover {
+      background: $Content-Card-Hover-BgColor;
+      @include transform(translateY(-5px));
+    }
+
+    .personCardImgContainer {
+      height: 220px;
+      border-radius: .7rem;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
+
+      &:hover {
+        opacity: .5;
+        @include transition(.3s);
+      }
+
+      .personCardImg {
+        border-radius: .7rem;
+      }
+    }
+  }
+}
+.personCardFooter {
+  color: $Content-Card-Text-Color;
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 0 3px;
+
+  .personCardFooterTitle {
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1rem;
+    margin: 5px 0 3px 0;
+  }
+
+  .personCardFooterDate {
+    font-family: $SFUI-Display-Light;
+    font-weight: 500;
+    font-size: .9rem;
+    margin: 3px 0;
+  }
+}
+
+
