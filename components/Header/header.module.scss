@@ -3,7 +3,7 @@
 
 .header {
   width: 100%;
-  max-width: 1400px;
+  max-width: $Header-Width;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,8 +13,7 @@
 .searchContainer {
 
   .searchField {
-    width: 100%;
-    max-width: $Search-Width + $Search-Icon-Width;
+    width: $Search-Width + ($Search-Icon-Width * 2);
     display: flex;
     align-items: center;
     height: $Search-Height;
@@ -51,6 +50,23 @@
 
       &::placeholder {
         color: $Search-Text-Color;
+      }
+    }
+    .searchFieldClearButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      background: transparent;
+      margin: auto 10px;
+
+      &:hover {
+        .buttonIcon {
+          color: $color-red;
+        }
+      }
+      .buttonIcon {
+        color: $Search-Icon-Color;
       }
     }
   }

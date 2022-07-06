@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import styles from './header.module.scss';
-import { toLower } from 'lodash';
+import { toLower, eq } from 'lodash';
 import { RiSearch2Line } from 'react-icons/ri';
-import { IoNotifications } from 'react-icons/io5';
+import { IoNotifications, IoCloseCircleSharp } from 'react-icons/io5';
 import { BsChatDotsFill } from 'react-icons/bs';
 import { NightMode } from '@components/UI/NightMode/NightMode';
 import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
 import { UserAvatar } from '@components/UI/UserAvatar/UserAvatar';
 import { useDebounce } from 'hooks/useDebounce';
 import { useRouter } from 'next/router';
+
+const search = query => `/search/?search=${query}`;
 
 export const Header = () => {
     const router = useRouter();
@@ -21,11 +23,17 @@ export const Header = () => {
 
     const onChangeSearchInput = event => setSearchTerm(toLower(event.target.value));
 
+    const onPressEnterSearch = event => {
+        if (isReadyForStartSearch && eq(event.key, 'Enter')) {
+            router.push(search(debouncedSearchTerm));
+        }
+    };
+
+    const onClickClearSearchField = () => setSearchTerm('');
+
     useEffect(() => {
         if (isReadyForStartSearch) {
-            const { push, pathname } = router;
-
-            push(`/search/?search=${debouncedSearchTerm}`)
+            router.push(search(debouncedSearchTerm));
         }
     }, [debouncedSearchTerm]);
 
@@ -36,7 +44,20 @@ export const Header = () => {
                     <IconWrapper width={16} height={16} className={styles.icon}>
                         <RiSearch2Line/>
                     </IconWrapper>
-                    <input type="text" placeholder='Search..' onChange={onChangeSearchInput}/>
+                    <input
+                        type='text'
+                        placeholder='Поиск..'
+                        value={searchTerm}
+                        onChange={onChangeSearchInput}
+                        onKeyPress={onPressEnterSearch}
+                    />
+                    {!!searchTerm.length &&
+                        <button onClick={onClickClearSearchField} className={styles.searchFieldClearButton}>
+                            <IconWrapper width={16} height={16} className={styles.buttonIcon}>
+                                <IoCloseCircleSharp/>
+                            </IconWrapper>
+                        </button>
+                    }
                 </div>
             </div>
             <div className={styles.userContainer}>
