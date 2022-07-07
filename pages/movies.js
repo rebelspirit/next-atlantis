@@ -6,12 +6,21 @@ import { ContentCard } from '@components/UI/ContentCard/ContentCard';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Pagination } from '@components/UI/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
+import { CustomContentLoader } from '@components/UI/ContentLoaders/ContentCardLoader';
 
 export default function MoviesPage({ movies }) {
-    const isLoading = useLoading();
+    const isLoading = useLoading('/movies');
 
     if (isLoading) {
-        return <h2>Loading..</h2>
+        return (
+            <div className={styles.contentPageContainer}>
+                <SectionTitle title='Популярные фильмы'/>
+
+                <div className={styles.contentMappedContainer}>
+                    {map(new Array(20), _ => <CustomContentLoader/>)}
+                </div>
+            </div>
+        )
     }
 
     return (

@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-export const useLoading = () => {
+export const useLoading = page => {
     const { events } = useRouter();
     const [isLoading, setLoading] = useState(false);
 
-    const startLoading = () => setLoading(true);
-    const stopLoading = () => setLoading(false);
+    const startLoading = () => {
+        //console.log('routeChangeStart');
+        setLoading(true)
+    };
+    const stopLoading = () => {
+        //console.log('routeChangeComplete');
+        setLoading(false)
+    };
 
     useEffect(() => {
+        //console.log(page);
         events.on('routeChangeStart', startLoading);
         events.on('routeChangeComplete', stopLoading);
 

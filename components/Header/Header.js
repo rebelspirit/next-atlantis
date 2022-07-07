@@ -25,6 +25,11 @@ export const Header = () => {
 
     const onPressEnterSearch = event => {
         if (isReadyForStartSearch && eq(event.key, 'Enter')) {
+            // if (eq(router.pathname, '/search')) {
+            //     console.log('shallow');
+            //     return router.push(search(debouncedSearchTerm), null, { shallow: true });
+            // }
+            // console.log('NOT shallow');
             router.push(search(debouncedSearchTerm));
         }
     };
@@ -33,6 +38,11 @@ export const Header = () => {
 
     useEffect(() => {
         if (isReadyForStartSearch) {
+            // if (eq(router.pathname, '/search')) {
+            //     console.log('shallow');
+            //     return router.push(search(debouncedSearchTerm), null, { shallow: true });
+            // }
+            // console.log('NOT shallow');
             router.push(search(debouncedSearchTerm));
         }
     }, [debouncedSearchTerm]);

@@ -8,6 +8,7 @@ import { TrendsRow } from '@components/TrendsRow/TrendsRow';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Serials } from 'Api/Serials';
 import { DualTabButtons } from '@components/UI/DualTabButtons/DualTabButtons';
+import { useLoading } from 'hooks/useLoading';
 
 const dualTabButtonsSettings = {
     firstButtonName: 'День',
@@ -28,6 +29,8 @@ const getSliderProps = (sliderCount, movies, serials) => {
 };
 
 export default function IndexPage(props) {
+    //const isLoading = useLoading();
+
     const [movies, setMovies] = useState({
         ...props.movies, isWeekTypeSelected: false
     });
@@ -66,6 +69,10 @@ export default function IndexPage(props) {
             clearTimeout(delayedContentSelectedIntervalType)
         }
     }, [showTrail])
+
+    // if (isLoading) {
+    //     return <h1>Loading..</h1>
+    // }
 
     return (
         <main className={styles.contentContainer}>

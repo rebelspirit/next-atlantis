@@ -85,7 +85,7 @@ export const Pagination = ({ page, totalPages }) => {
                 renderOnZeroPageCount={null}
             />
             <div className={styles.selectPageContainer}>
-                <p>Перейти</p>
+                <p>Перейти на</p>
                 <input
                     type='number'
                     className={styles.selectPageInput}

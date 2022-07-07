@@ -6,12 +6,21 @@ import { ContentCard } from '@components/UI/ContentCard/ContentCard';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Pagination } from '@components/UI/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
+import { CustomContentLoader } from '@components/UI/ContentLoaders/ContentCardLoader';
 
 export default function SerialsPage({ serials }) {
-    const isLoading = useLoading();
+    const isLoading = useLoading('/serials');
 
     if (isLoading) {
-        return <h2>Loading..</h2>
+        return (
+            <div className={styles.contentPageContainer}>
+                <SectionTitle title='Популярные сериалы'/>
+
+                <div className={styles.contentMappedContainer}>
+                    {map(new Array(20), _ => <CustomContentLoader/>)}
+                </div>
+            </div>
+        )
     }
 
     return (
