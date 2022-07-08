@@ -7,6 +7,7 @@ import { map, compact } from 'lodash';
 import { ContentCard } from '@components/UI/ContentCard/ContentCard';
 import { PersonCard } from '@components/UI/PersonCard/PersonCard';
 import { NoDataPlug } from '@components/UI/NoDataPlug/NoDataPlug';
+import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
 
 export default function SearchPage({ searchedContent }) {
     const isLoading = useLoading();
@@ -19,7 +20,8 @@ export default function SearchPage({ searchedContent }) {
     }, [searchedContent])
 
     if (isLoading) {
-        return <h2>Loading..</h2>
+        // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
+        return <SapeLoader/>
     }
 
     return (
@@ -34,12 +36,13 @@ export default function SearchPage({ searchedContent }) {
 
             {!!searchedContent.movie.length &&
                 <div className={styles.contentMappedContainer}>
-                    {map(searchedContent.movie, movie =>
+                    {map(searchedContent.movie, content =>
                         <ContentCard
-                            key={movie.id}
-                            title={movie.title}
-                            poster={movie.posterPath}
-                            date={movie.releaseDate}
+                            key={content.id}
+                            id={content.id}
+                            title={content.title}
+                            poster={content.posterPath}
+                            date={content.releaseDate}
                         />
                     )}
                 </div>
@@ -51,12 +54,13 @@ export default function SearchPage({ searchedContent }) {
 
             {!!searchedContent.tv.length &&
                 <div className={styles.contentMappedContainer}>
-                    {map(searchedContent.tv, movie =>
+                    {map(searchedContent.tv, content =>
                         <ContentCard
-                            key={movie.id}
-                            title={movie.name}
-                            poster={movie.posterPath}
-                            date={movie.firstAirDate}
+                            key={content.id}
+                            id={content.id}
+                            title={content.name}
+                            poster={content.posterPath}
+                            date={content.firstAirDate}
                         />
                     )}
                 </div>
@@ -83,7 +87,7 @@ export default function SearchPage({ searchedContent }) {
 };
 
 export const getServerSideProps = async ({ query }) => {
-    const searchedContent = await Search.getSearchedContent(query.search);
+    const searchedContent = await Search.getSearchedContent(encodeURI(query.search));
 
     return {
         props: {

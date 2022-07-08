@@ -6,21 +6,25 @@ import { ContentCard } from '@components/UI/ContentCard/ContentCard';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
 import { Pagination } from '@components/UI/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
-import { CustomContentLoader } from '@components/UI/ContentLoaders/ContentCardLoader';
+import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
 
 export default function MoviesPage({ movies }) {
     const isLoading = useLoading('/movies');
 
     if (isLoading) {
-        return (
-            <div className={styles.contentPageContainer}>
-                <SectionTitle title='Популярные фильмы'/>
+        // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
 
-                <div className={styles.contentMappedContainer}>
-                    {map(new Array(20), _ => <CustomContentLoader/>)}
-                </div>
-            </div>
-        )
+        return <SapeLoader/>
+        // return (
+        //     <div className={styles.contentPageContainer}>
+        //
+        //         <SectionTitle title='Популярные фильмы'/>
+        //
+        //         <div className={styles.contentMappedContainer}>
+        //             {map(new Array(20), _ => <CustomContentLoader/>)}
+        //         </div>
+        //     </div>
+        // )
     }
 
     return (

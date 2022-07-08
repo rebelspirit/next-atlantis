@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { DateUse } from 'lib/DateUse';
 
-export const ContentCard = ({ title, poster, date }) => {
+export const ContentCard = ({ id, title, poster, date }) => {
 
     const formattedYear = DateUse.format(date, 'YYYY-MM-DD', 'YYYY');
 
@@ -11,7 +11,7 @@ export const ContentCard = ({ title, poster, date }) => {
         <div className={styles.contentContainer}>
             <div className={styles.contentCardContainer}>
                 <div className={styles.contentCardImgContainer}>
-                    <Link href="#">
+                    <Link href={`/details/?id=${id}`}>
                         <a>
                             <Image
                                 src={`https://image.tmdb.org/t/p/w780${poster}`}
@@ -19,7 +19,8 @@ export const ContentCard = ({ title, poster, date }) => {
                                 width={240}
                                 height={390}
                                 className={styles.contentCardImg}
-                                unoptimized={true}
+                                unoptimized
+                                loading='lazy'
                             />
                         </a>
                     </Link>
