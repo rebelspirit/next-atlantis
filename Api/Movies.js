@@ -22,8 +22,6 @@ export class Movies {
     static getContentDetails(id) {
         return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&${LANGUAGE}&${REGION}`)
             .then(response_db => {
-                console.log('response_db', response_db.data);
-
                 return axios.get(`https://videocdn.tv/api/movies?api_token=QDH5tZqrotr27szq3U9Yx2lEgunhKbuo&direction=desc&field=global&limit=10&ordering=last_media_accepted&imdb_id=${response_db.data.imdb_id}`)
                     .then(response_cdn => Object.assign(response_db.data, response_cdn.data.data.shift()))
                     .catch(error => console.log(error))

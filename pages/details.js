@@ -18,7 +18,15 @@ export default function DetailsPage({ details }) {
 
     return (
         <div className={styles.contentPageContainer}>
-            h1
+            <iframe
+                width={700}
+                height={400}
+                title='movie'
+                allowFullScreen
+                scrolling="no"
+                src={details.iframe_src}
+            />
+
         </div>
     )
 }
