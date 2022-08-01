@@ -9,7 +9,7 @@ import { useLoading } from 'hooks/useLoading';
 import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
 
 export default function SerialsPage({ serials }) {
-    const isLoading = useLoading('/serials');
+    const isLoading = useLoading();
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
@@ -31,12 +31,14 @@ export default function SerialsPage({ serials }) {
             <SectionTitle title='Популярные сериалы'/>
 
             <div className={styles.contentMappedContainer}>
-                {map(serials.results, movie =>
+                {map(serials.results, serial =>
                     <ContentCard
-                        key={movie.name}
-                        title={movie.name}
-                        poster={movie.posterPath}
-                        date={movie.firstAirDate}
+                        key={serial.id}
+                        id={serial.id}
+                        mediaType='tv'
+                        title={serial.name}
+                        poster={serial.posterPath}
+                        date={serial.firstAirDate}
                     />
                 )}
             </div>

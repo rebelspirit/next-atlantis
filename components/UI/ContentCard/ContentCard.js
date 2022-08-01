@@ -1,9 +1,10 @@
 import styles from './contentCard.module.scss';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DateUse } from 'lib/DateUse';
 
-export const ContentCard = ({ id, title, poster, date }) => {
+export const ContentCard = ({ id, mediaType, title, poster, date }) => {
 
     const formattedYear = DateUse.format(date, 'YYYY-MM-DD', 'YYYY');
 
@@ -11,7 +12,7 @@ export const ContentCard = ({ id, title, poster, date }) => {
         <div className={styles.contentContainer}>
             <div className={styles.contentCardContainer}>
                 <div className={styles.contentCardImgContainer}>
-                    <Link href={`/details/?id=${id}`}>
+                    <Link href={`/watch/?type=${mediaType}&id=${id}`}>
                         <a>
                             <Image
                                 src={`https://image.tmdb.org/t/p/w780${poster}`}
@@ -33,3 +34,11 @@ export const ContentCard = ({ id, title, poster, date }) => {
         </div>
     )
 };
+
+ContentCard.propTypes ={
+    id: PropTypes.number.isRequired,
+    mediaType: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+}

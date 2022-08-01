@@ -40,6 +40,7 @@ export default function SearchPage({ searchedContent }) {
                         <ContentCard
                             key={content.id}
                             id={content.id}
+                            mediaType={content.mediaType}
                             title={content.title}
                             poster={content.posterPath}
                             date={content.releaseDate}
@@ -58,6 +59,7 @@ export default function SearchPage({ searchedContent }) {
                         <ContentCard
                             key={content.id}
                             id={content.id}
+                            mediaType={content.mediaType}
                             title={content.name}
                             poster={content.posterPath}
                             date={content.firstAirDate}

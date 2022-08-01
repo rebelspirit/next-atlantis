@@ -19,7 +19,7 @@ const getSerialProps = item => ({
 
 const getPropsFromContentType = {
     movie: getMovieProps,
-    serial: getSerialProps,
+    tv: getSerialProps,
 };
 
 export const TrendsRow = ({ mappedContent, type, showTrail }) => {
@@ -69,12 +69,14 @@ export const TrendsRow = ({ mappedContent, type, showTrail }) => {
                     onEndScroll={disableRowButtons(scrollContainerRef)}
                     onStartScroll={activateRowButtons(scrollContainerRef)}
                 >
-                    {map(mappedContent, item =>
+                    {map(mappedContent, content =>
                         <TrendsContentCard
-                            key={item.id}
-                            image={item.backdropPath}
-                            overview={item.overview}
-                            {...getPropsFromContentType[type](item)}
+                            key={content.id}
+                            id={content.id}
+                            mediaType={type}
+                            image={content.backdropPath}
+                            overview={content.overview}
+                            {...getPropsFromContentType[type](content)}
                         />
                     )}
                 </ScrollContainer>

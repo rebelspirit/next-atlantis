@@ -32,3 +32,17 @@
   }
 }
 
+.backdropPathImg {
+  border-radius: 30px;
+  object-fit: cover;
+  object-position: top;
+  opacity: .8;
+}
+.detailsContainer {
+  width: 1000px;
+  margin: -200px auto 0 auto;
+}
+.contentCardImg {
+  border-radius: .7rem;
+}
+

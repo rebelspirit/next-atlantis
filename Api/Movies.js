@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { map, assign } from 'lodash';
 import axios from 'axios';
 import { TMDB_API_KEY, LANGUAGE, REGION } from 'Api/settings';
 import { ObjectUse } from 'lib/ObjectUse';
@@ -23,7 +23,7 @@ export class Movies {
         return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&${LANGUAGE}&${REGION}`)
             .then(response_db => {
                 return axios.get(`https://videocdn.tv/api/movies?api_token=QDH5tZqrotr27szq3U9Yx2lEgunhKbuo&direction=desc&field=global&limit=10&ordering=last_media_accepted&imdb_id=${response_db.data.imdb_id}`)
-                    .then(response_cdn => Object.assign(response_db.data, response_cdn.data.data.shift()))
+                    .then(response_cdn => ObjectUse.camelCaseObjectKeys(assign(response_db.data, response_cdn.data.data.shift())))
                     .catch(error => console.log(error))
             })
             .catch(error => console.log(error))

@@ -16,15 +16,15 @@ const dualTabButtonsSettings = {
     secondButtonName: 'Неделя'
 };
 
-const getSliderProps = (sliderCount, movies, serials) => {
+const getSliderProps = (sliderCount, movies, tv) => {
     const equalPartsCount = floor(sliderCount / 2);
     const slicedMoviesArray = slice(movies, 0, equalPartsCount);
-    const slicedSerialsArray = slice(serials, 0, equalPartsCount);
+    const slicedSerialsArray = slice(tv, 0, equalPartsCount);
 
     return flatMap(new Array(equalPartsCount), (_, index) => {
         return [
             pick(slicedMoviesArray[index], ['title', 'voteAverage', 'voteCount', 'backdropPath', 'overview']),
-            { title: slicedSerialsArray[index].name, ...pick(slicedSerialsArray[index], ['voteAverage', 'voteCount', 'backdropPath', 'overview']) }
+            { title: slicedSerialsArray[index]?.name, ...pick(slicedSerialsArray[index], ['voteAverage', 'voteCount', 'backdropPath', 'overview']) }
         ]
     });
 };
@@ -36,21 +36,21 @@ export default function IndexPage(props) {
         ...props.movies, isWeekTypeSelected: false
     });
 
-    const [serials, setSerials] = useState({
-        ...props.serials, isWeekTypeSelected: false
+    const [tv, setTv] = useState({
+        ...props.tv, isWeekTypeSelected: false
     });
 
     const [showTrail, setShowTrail] = useState({
         movies: false,
-        serials: false
+        tv: false
     });
 
-    const sliderProps = getSliderProps(6, movies.trendsOnWeek, serials.trendsOnWeek);
+    const sliderProps = getSliderProps(6, movies.trendsOnWeek, tv.trendsOnWeek);
 
 
     const delayedShowFadeAnimation = useMemo(() => setTimeout(() => {
-        setShowTrail({ movies: true, serials: true })
-    }, 300), [movies.isWeekTypeSelected, serials.isWeekTypeSelected]);
+        setShowTrail({ movies: true, tv: true })
+    }, 300), [movies.isWeekTypeSelected, tv.isWeekTypeSelected]);
 
     const delayedContentSelectedIntervalType = setState => setTimeout(() => {
         setState(prev => ({ ...prev, isWeekTypeSelected: !prev.isWeekTypeSelected }))
@@ -100,16 +100,16 @@ export default function IndexPage(props) {
                     <SectionTitle title='Популярные сериалы'/>
 
                     <DualTabButtons
-                        onClick={onClickChangeContentSelectedIntervalType(setSerials, 'serials')}
-                        selected={!serials.isWeekTypeSelected}
+                        onClick={onClickChangeContentSelectedIntervalType(setTv, 'tv')}
+                        selected={!tv.isWeekTypeSelected}
                         settings={dualTabButtonsSettings}
                     />
                 </div>
 
                 <TrendsRow
-                    type='serial'
-                    mappedContent={serials.isWeekTypeSelected ? serials.trendsOnWeek : serials.trendsOnDay}
-                    showTrail={showTrail.serials}
+                    type='tv'
+                    mappedContent={tv.isWeekTypeSelected ? tv.trendsOnWeek : tv.trendsOnDay}
+                    showTrail={showTrail.tv}
                 />
             </div>
         </main>
@@ -126,7 +126,7 @@ export const getServerSideProps = async () => {
         return {
             props: {
                 movies: { trendsOnDay: trendMoviesOnDay, trendsOnWeek: trendMoviesOnWeek },
-                serials: { trendsOnDay: trendSerialsOnDay, trendsOnWeek: trendSerialsOnWeek }
+                tv: { trendsOnDay: trendSerialsOnDay, trendsOnWeek: trendSerialsOnWeek }
             }
         };
 
@@ -137,5 +137,5 @@ export const getServerSideProps = async () => {
 
 IndexPage.propTypes = {
     movies: PropTypes.object.isRequired,
-    serials: PropTypes.object.isRequired
+    tv: PropTypes.object.isRequired
 };

@@ -7,7 +7,7 @@ import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
 import { DateUse } from 'lib/DateUse';
 import { TrendsContentCardFooter } from '@components/UI/TrendsContentCard/TrendsContentCardFooter';
 
-export const TrendsContentCard = ({ image, title, date, overview }) => {
+export const TrendsContentCard = ({ id, mediaType, image, title, date, overview }) => {
 
     const formattedYear = DateUse.format(date, 'YYYY-MM-DD', 'll');
 
@@ -18,7 +18,7 @@ export const TrendsContentCard = ({ image, title, date, overview }) => {
                     <FaPlay/>
                 </IconWrapper>
                 <div className={styles.trendsImgContainer}>
-                    <Link href="#">
+                    <Link href={`/watch/?type=${mediaType}&id=${id}`}>
                         <a>
                             <Image
                                 src={`https://image.tmdb.org/t/p/w780${image}`}
@@ -43,6 +43,8 @@ export const TrendsContentCard = ({ image, title, date, overview }) => {
 };
 
 TrendsContentCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    mediaType: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     date: PropTypes.string,

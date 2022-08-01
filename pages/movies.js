@@ -9,7 +9,7 @@ import { useLoading } from 'hooks/useLoading';
 import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
 
 export default function MoviesPage({ movies }) {
-    const isLoading = useLoading('/movies');
+    const isLoading = useLoading();
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
@@ -34,7 +34,9 @@ export default function MoviesPage({ movies }) {
             <div className={styles.contentMappedContainer}>
                 {map(movies.results, movie =>
                     <ContentCard
-                        key={movie.title}
+                        key={movie.id}
+                        id={movie.id}
+                        mediaType='movie'
                         title={movie.title}
                         poster={movie.posterPath}
                         date={movie.releaseDate}
