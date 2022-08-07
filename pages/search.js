@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styles from './index.module.scss';
 import { useLoading } from 'hooks/useLoading';
 import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
@@ -13,11 +12,6 @@ export default function SearchPage({ searchedContent }) {
     const isLoading = useLoading();
 
     const isSearchResultNoData = !compact([!!searchedContent.movie.length, !!searchedContent.tv.length, !!searchedContent.person.length]).length;
-
-    useEffect(() => {
-        console.log('searchedContent', searchedContent);
-
-    }, [searchedContent])
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook

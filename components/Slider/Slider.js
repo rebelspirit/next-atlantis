@@ -118,13 +118,13 @@ export const Slider = ({ slides }) => {
                         <Image
                             src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${selectedCard.backdropPath}`}
                             alt='slider_poster'
-                            width={1600}
-                            height={600}
+                            width={1400}
+                            height={525}
                             className={styles.sliderImg}
-                            unoptimized={true}
+                            unoptimized
                         />
                     </Fade>
                 </div>
         </div>
     )
-}
+};

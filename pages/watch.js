@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 
 export default function WatchPage({ details }) {
-    const isLoading = useLoading('/details');
+    const isLoading = useLoading();
 
     useEffect(() =>{
         console.log('details', details);
@@ -20,26 +20,37 @@ export default function WatchPage({ details }) {
 
     return (
         <div className={styles.contentPageContainer}>
+
             <div className={styles.contentDetailsContainer}>
-                <Image
-                    src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${details.backdropPath}`}
-                    alt='slider_poster'
-                    width={1600}
-                    height={500}
-                    className={styles.backdropPathImg}
-                    unoptimized
-                />
-                {/*<div className={styles.detailsContainer}>*/}
-                {/*    <Image*/}
-                {/*        src={`https://image.tmdb.org/t/p/w780${details.posterPath}`}*/}
-                {/*        alt='content_card'*/}
-                {/*        width={240}*/}
-                {/*        height={390}*/}
-                {/*        className={styles.contentCardImg}*/}
-                {/*        unoptimized*/}
-                {/*        loading='lazy'*/}
-                {/*    />*/}
-                {/*</div>*/}
+
+                <div className={styles.posterContainer}>
+                    <Image
+                        src={`https://image.tmdb.org/t/p/w780${details.posterPath}`}
+                        alt='content_card'
+                        width={280}
+                        height={430}
+                        className={styles.posterImg}
+                        unoptimized
+                        loading='lazy'
+                    />
+                </div>
+
+                <div className={styles.contentDescriptionContainer}>
+                    <h1 className={styles.title}>{details.title}</h1>
+                    <p className={styles.originalTitle}>{details.originalTitle}</p>
+                </div>
+
+                <div className={styles.backdropContainer}>
+                    <Image
+                        src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${details.backdropPath}`}
+                        alt='slider_poster'
+                        width={1400}
+                        height={525}
+                        className={styles.backdropImg}
+                        unoptimized
+                        loading='lazy'
+                    />
+                </div>
             </div>
 
             {/*<iframe*/}
