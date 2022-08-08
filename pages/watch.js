@@ -1,11 +1,21 @@
 import styles from 'pages/index.module.scss';
 import PropTypes from 'prop-types';
+import { floor, round } from 'lodash';
 import { Movies } from 'Api/Movies';
 import { Serials } from 'Api/Serials';
 import { useLoading } from 'hooks/useLoading';
 import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import { VotingPercentCircle } from '@components/UI/VotingPercentCircle/VotingPercentCircle';
+import { DateUse } from 'lib/DateUse';
+
+const contentRuntimeLength = number => {
+    const runtimeHours = floor((number / 60));
+    const runtimeMinutes = round(((number / 60) - runtimeHours) * 60);
+
+    return runtimeHours + ' ч. ' + runtimeMinutes + ' минут';
+};
 
 export default function WatchPage({ details }) {
     const isLoading = useLoading();
@@ -38,6 +48,27 @@ export default function WatchPage({ details }) {
                 <div className={styles.contentDescriptionContainer}>
                     <h1 className={styles.title}>{details.title}</h1>
                     <p className={styles.originalTitle}>{details.originalTitle}</p>
+
+                    <div className={styles.contentFeaturesContainer}>
+                        <span>{DateUse.format(details.releaseDate, 'YYYY-MM-DD', 'll')}</span>
+                        <span className={styles.circle}/>
+                        <span>боевик, приключения, фэнтези</span>
+                        <span className={styles.circle}/>
+                        <span>{contentRuntimeLength(details.runtime)}</span>
+                    </div>
+
+                    <div className={styles.controlsContainer}>
+                        <div className={styles.voteRatingContainer}>
+                            <VotingPercentCircle voteAverage={details.voteAverage}/>
+                            <p>Пользовательский <br/> рейтинг</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.overviewContainer}>
+                        <h6>Обзор</h6>
+                        <p>{details.overview}</p>
+                    </div>
+
                 </div>
 
                 <div className={styles.backdropContainer}>

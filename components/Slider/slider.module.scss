@@ -24,7 +24,7 @@
     font-weight: normal;
     font-style: normal;
     color: $Slider-Title-Color;
-    text-shadow: 1px 1px 2px $color-black;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     margin: 5px 0;
   }
   .sliderOverview {
@@ -40,7 +40,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-shadow: 1px 1px 2px $color-black;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     margin: 5px 0 15px 0;
   }
 
@@ -86,7 +86,7 @@
       span {
         min-width: 50px;
         margin: 0 7px;
-        text-shadow: 1px 1px 2px $color-black;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
       }
     }
   }
