@@ -87,6 +87,7 @@
   display: flex;
   padding: 10px 0;
   margin: 3px 0 10px 0;
+  gap: 25px;
 
   .voteRatingContainer {
     display: flex;
@@ -99,6 +100,22 @@
       color: $color-white;
       padding: 3px 0 10px 0;
       text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+    }
+  }
+
+  .voteCountContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    i {
+      filter: drop-shadow(1px 1px 2px rgb(0 0 0 / 50%));
+    }
+    span {
+      font-family: $SFUI-Display-Semibold;
+      font-size: 1rem;
+      text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+      color: $color-white;
     }
   }
 }

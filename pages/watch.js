@@ -9,6 +9,9 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import { VotingPercentCircle } from '@components/UI/VotingPercentCircle/VotingPercentCircle';
 import { DateUse } from 'lib/DateUse';
+import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { FcLike } from 'react-icons/fc';
+import { Number } from 'animations/Number';
 
 const contentRuntimeLength = number => {
     const runtimeHours = floor((number / 60));
@@ -61,6 +64,12 @@ export default function WatchPage({ details }) {
                         <div className={styles.voteRatingContainer}>
                             <VotingPercentCircle voteAverage={details.voteAverage}/>
                             <p>Пользовательский <br/> рейтинг</p>
+                        </div>
+                        <div className={styles.voteCountContainer}>
+                            <IconWrapper width={42} height={42}>
+                                <FcLike/>
+                            </IconWrapper>
+                            <Number numberProps={details.voteCount} toFixed={0}/>
                         </div>
                     </div>
 
