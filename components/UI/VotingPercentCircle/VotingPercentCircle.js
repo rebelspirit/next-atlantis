@@ -32,6 +32,7 @@ export const VotingPercentCircle = ({ voteAverage }) => {
                 styles={buildStyles({
                     backgroundColor: 'rgba(25,25,25, 1)',
                     textColor: '#dedede',
+                    textSize: '23px',
                     pathColor: switchColor(percent),
                     trailColor: 'transparent'
                 })}

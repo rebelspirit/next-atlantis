@@ -89,7 +89,7 @@ export const Slider = ({ slides }) => {
                     </p>
                 </div>
             </Trail>
-            <Trail show={true}>
+            <Trail show>
                 <div className={styles.sliderFooterContainer}>
                     <div className={styles.sliderButtonsContainer}>
                         <button className={cx(styles.sliderButton, styles.sliderWatchButton)}>

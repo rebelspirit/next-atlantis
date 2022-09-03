@@ -14,7 +14,7 @@ export const PersonCard = ({ name, knownForDepartment, poster }) => {
                                 src={`https://image.tmdb.org/t/p/w780${poster}`}
                                 alt='actor_card'
                                 width={160}
-                                height={220}
+                                height={235}
                                 className={styles.personCardImg}
                                 unoptimized={true}
                             />

@@ -39,10 +39,15 @@
   height: 525px;
   border-radius: 30px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  padding: 30px 20px 30px 350px;
+  padding: 30px 20px 40px 350px;
+  margin-bottom: 50px;
   z-index: 10;
 }
 .contentDescriptionContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 0 40px;
 
   .title {
@@ -82,6 +87,15 @@
     background: $color-white;
     margin: 0 3px;
   }
+  .genresContainer {
+    display: flex;
+    gap: 5px;
+    .genre {
+      &:not(:last-child):after {
+        content: ','
+      }
+    }
+  }
 }
 .controlsContainer {
   display: flex;
@@ -120,11 +134,25 @@
   }
 }
 .overviewContainer {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 7px;
+;
   h6 {
     font-family: $SFUI-Display-Semibold;
     font-size: 1.2rem;
     color: $color-white;
     margin: 5px 0;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+  }
+  .tagLine {
+    color: $color-white;
+    font-family: $SFUI-Display-Light;
+    font-size: 1rem;
+    font-style: italic;
+    margin: 5px 0 10px 0;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
   p {
@@ -177,4 +205,102 @@
     opacity: .8;
   }
 }
+.contentUsefulInformation {
+  display: flex;
 
+  .contentUsefulInformationMain {
+    .actorsStuffContainer, .relatedContentContainer {
+      .actorsStuffScrollLayout, .relatedContentScrollLayout {
+        width: 100%;
+        max-width: 1115px;
+        display: flex;
+        gap: 30px;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        margin: 20px 0;
+        padding: 10px 0;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        &:hover::-webkit-scrollbar {
+          display: none;
+        }
+        &:hover::-webkit-scrollbar-thumb {
+          display: none;
+        }
+        &::-webkit-scrollbar-track {
+          display: none;
+        }
+        &::-webkit-scrollbar-thumb {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .contentUsefulInformationSecondary {
+    width: 100%;
+    padding: 10px 25px;
+    margin-left: 30px;
+    border-left: 1px solid #E0E0E093;
+
+    .socialNetworksContainer {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      a {
+        text-decoration: none;
+        color: $color-black;
+        &:last-child {
+          padding-left: 10px;
+          border-left: 1px solid #E0E0E093;
+        }
+      }
+    }
+
+    h6 {
+      font-family: $SFUI-Display-Semibold;
+      font-size: 1rem;
+      color: #304354;
+      padding: 0 5px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-family: $SFUI-Display-Light;
+      font-size: .9rem;
+      color: $color-black;
+      padding: 0 5px;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  flex: 1 1 auto;
+
+  .watchOnlineButton {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border: 0;
+    border-radius: 15px;
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: normal;
+    color: $color-white;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+    background: transparent;
+    cursor: pointer;
+    @include transition(.3s ease);
+  }
+}

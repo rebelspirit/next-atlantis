@@ -32,4 +32,9 @@ export class Serials {
             })
             .catch(error => console.log(error))
     }
+    static getSerialExternalIds(id) {
+        return axios.get(`https://api.themoviedb.org/3/tv/${id}/external_ids?api_key=${TMDB_API_KEY}`)
+            .then(response => ObjectUse.camelCaseObjectKeys(response.data))
+            .catch(error => console.log(error))
+    }
 }
