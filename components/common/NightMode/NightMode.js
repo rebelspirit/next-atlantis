@@ -2,7 +2,7 @@ import styles from './nightMode.module.scss';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { IoMoon, IoSunny } from 'react-icons/io5';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 
 const cx = classNames.bind(styles);
 

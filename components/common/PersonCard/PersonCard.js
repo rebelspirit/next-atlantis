@@ -1,8 +1,9 @@
-import styles from 'components/UI/PersonCard/personCard.module.scss';
+import styles from 'components/common/PersonCard/personCard.module.scss';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const PersonCard = ({ name, knownForDepartment, poster }) => {
+export const PersonCard = ({ name, character, knownForDepartment, poster, isShowCharacterName }) => {
 
     return (
         <div className={styles.personContainer}>
@@ -16,7 +17,7 @@ export const PersonCard = ({ name, knownForDepartment, poster }) => {
                                 width={160}
                                 height={235}
                                 className={styles.personCardImg}
-                                unoptimized={true}
+                                unoptimized
                             />
                         </a>
                     </Link>
@@ -24,8 +25,20 @@ export const PersonCard = ({ name, knownForDepartment, poster }) => {
             </div>
             <div className={styles.personCardFooter}>
                 <h2 className={styles.personCardFooterTitle}>{name}</h2>
-                <p className={styles.personCardFooterDate}>{knownForDepartment}</p>
+                <p className={styles.personCardFooterDate}>{isShowCharacterName ? character : knownForDepartment}</p>
             </div>
         </div>
     )
-}
+};
+
+PersonCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    character: PropTypes.string.isRequired,
+    knownForDepartment: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    isShowCharacterName: PropTypes.bool
+};
+
+PersonCard.defaultProps = {
+    isShowCharacterName: false
+};

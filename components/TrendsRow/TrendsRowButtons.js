@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { ceil } from 'lodash';
 import styles from '@components/TrendsRow/trendsRow.module.scss';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { GrNext } from 'react-icons/gr';
 import classNames from 'classnames/bind';
 

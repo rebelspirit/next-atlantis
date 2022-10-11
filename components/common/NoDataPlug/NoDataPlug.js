@@ -1,4 +1,4 @@
-import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import styles from './noDataPlug.module.scss';
 
 export const NoDataPlug = () => {

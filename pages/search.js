@@ -1,12 +1,12 @@
 import styles from './index.module.scss';
 import { useLoading } from 'hooks/useLoading';
-import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Search } from 'Api/Search';
 import { map, compact } from 'lodash';
-import { ContentCard } from '@components/UI/ContentCard/ContentCard';
-import { PersonCard } from '@components/UI/PersonCard/PersonCard';
-import { NoDataPlug } from '@components/UI/NoDataPlug/NoDataPlug';
-import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
+import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { PersonCard } from '@components/common/PersonCard/PersonCard';
+import { NoDataPlug } from '@components/common/NoDataPlug/NoDataPlug';
+import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 export default function SearchPage({ searchedContent }) {
     const isLoading = useLoading();

@@ -4,9 +4,9 @@ import { toLower, eq } from 'lodash';
 import { RiSearch2Line } from 'react-icons/ri';
 import { IoNotifications, IoCloseCircleSharp } from 'react-icons/io5';
 import { BsChatDotsFill } from 'react-icons/bs';
-import { NightMode } from '@components/UI/NightMode/NightMode';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
-import { UserAvatar } from '@components/UI/UserAvatar/UserAvatar';
+import { NightMode } from '@components/common/NightMode/NightMode';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
+import { UserAvatar } from '@components/common/UserAvatar/UserAvatar';
 import { useDebounce } from 'hooks/useDebounce';
 import { useRouter } from 'next/router';
 

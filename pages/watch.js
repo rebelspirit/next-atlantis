@@ -1,26 +1,23 @@
 import styles from 'pages/index.module.scss';
 import PropTypes from 'prop-types';
-import { floor, round, map, omit, keys, reverse, compact } from 'lodash';
+import { map, omit, keys, reverse, compact, pick, some } from 'lodash';
 import { Movies } from 'Api/Movies';
 import { Serials } from 'Api/Serials';
 import { useLoading } from 'hooks/useLoading';
-import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import { VotingPercentCircle } from '@components/UI/VotingPercentCircle/VotingPercentCircle';
-import { DateUse } from 'lib/DateUse';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
-import { FcLike } from 'react-icons/fc';
-import { IoPlayCircle } from 'react-icons/io5';
+import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { useEffect, useRef, useState } from 'react';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { FaImdb } from 'react-icons/fa';
 import { AiFillInstagram, AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai';
-import { Number } from 'animations/Number';
 import { Common } from 'Api/Common';
-import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
-import { PersonCard } from '@components/UI/PersonCard/PersonCard';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
+import { PersonCard } from '@components/common/PersonCard/PersonCard';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { TrendsContentCard } from '@components/UI/TrendsContentCard/TrendsContentCard';
+import { TrendsContentCard } from '@components/common/TrendsContentCard/TrendsContentCard';
+import classNames from 'classnames/bind';
+import { ContentDetailsCard } from '@components/ContentDetailsCard/ContentDetailsCard';
 
+const cx = classNames.bind(styles);
 
 const getMovieProps = item => ({
     title: item.title,
@@ -56,33 +53,32 @@ const socialMediaTypes = {
     }
 };
 
-const contentRuntimeLength = number => {
-    const runtimeHours = floor((number / 60));
-    const runtimeMinutes = round(((number / 60) - runtimeHours) * 60);
-
-    return runtimeHours + ' ч. ' + runtimeMinutes + ' минут';
-};
-
 export default function WatchPage({ details, actorsStuff, relatedContent, externalIds }) {
     const isLoading = useLoading();
     const actorsScrollContainerRef = useRef(null);
     const relatedContentScrollContainerRef = useRef(null);
 
+    const [isShowPlayer, setShowPlayer] = useState(false);
 
-    const sortedExternalIds = compact(reverse(map(keys(omit(externalIds, 'id')), type => {
+    const sortedExternalIds = compact(reverse(map(keys(omit(pick(externalIds, ['imdbId', 'twitterId', 'instagramId', 'facebookId' ]), 'id')), type => {
         if (externalIds[type]) {
             return { type, id: externalIds[type] }
         }
         return null
     })));
 
+    const isExternalIdsSeparateLineExists = some(sortedExternalIds, { type: 'imdbId' }) && sortedExternalIds.length > 1;
+
+    const onClickShowPlayer = () => setShowPlayer(true);
+    const onClickClosePlayer = () => setShowPlayer(false);
+
     useEffect(() =>{
-        console.log('details', details);
+        // console.log('details', details);
         console.log('actorsStuff', actorsStuff);
-        console.log('relatedContent', relatedContent);
-        console.log('externalIds', externalIds);
-        console.log('sortedExternalIds', sortedExternalIds);
-    }, [details, actorsStuff, relatedContent, externalIds, sortedExternalIds])
+        //console.log('relatedContent', relatedContent);
+        // console.log('externalIds', externalIds);
+        // console.log('sortedExternalIds', sortedExternalIds);
+    }, [details, actorsStuff, relatedContent, externalIds, sortedExternalIds]);
 
     if (isLoading) {
         return <SapeLoader/>
@@ -90,97 +86,28 @@ export default function WatchPage({ details, actorsStuff, relatedContent, extern
 
     return (
         <div className={styles.contentPageContainer}>
-            <div className={styles.contentDetailsContainer}>
-
-                <div className={styles.posterContainer}>
-                    <Image
-                        src={`https://image.tmdb.org/t/p/w780${details.posterPath}`}
-                        alt='content_card'
-                        width={280}
-                        height={430}
-                        className={styles.posterImg}
-                        unoptimized
-                        loading='lazy'
-                    />
-                </div>
-
-                <div className={styles.contentDescriptionContainer}>
-                    <h1 className={styles.title}>{details.title}</h1>
-                    <p className={styles.originalTitle}>{details.originalTitle}</p>
-
-                    <div className={styles.contentFeaturesContainer}>
-                        <span>{DateUse.format(details.releaseDate, 'YYYY-MM-DD', 'll')}</span>
-                        <span className={styles.circle}/>
-                        <div className={styles.genresContainer}>
-                            {map(details.genres, genre =>
-                                <span key={genre.id} className={styles.genre}>
-                                    {genre.name}
-                                </span>
-                            )}
-                        </div>
-                        <span className={styles.circle}/>
-                        <span>{contentRuntimeLength(details.runtime)}</span>
-                    </div>
-
-                    <div className={styles.controlsContainer}>
-                        <div className={styles.voteRatingContainer}>
-                            <VotingPercentCircle voteAverage={details.voteAverage}/>
-                            <p>Пользовательский <br/> рейтинг</p>
-                        </div>
-                        <div className={styles.voteCountContainer}>
-                            <IconWrapper width={42} height={42}>
-                                <FcLike/>
-                            </IconWrapper>
-                            <Number numberProps={details.voteCount} toFixed={0}/>
-                        </div>
-                    </div>
-
-                    <div className={styles.overviewContainer}>
-                        <h6>Содержание</h6>
-                        {details.tagline &&
-                            <p className={styles.tagLine}>«{details.tagline}»</p>
-                        }
-                        <p>{details.overview}</p>
-                    </div>
-
-                    <div className={styles.buttonsContainer}>
-                        <button className={styles.watchOnlineButton}>
-                            Смотреть онлайн
-                            <IconWrapper width={32} height={32}>
-                                <IoPlayCircle/>
-                            </IconWrapper>
-                        </button>
-                    </div>
-
-                    {/*<Image*/}
-                    {/*    src={`https://image.tmdb.org/t/p/w780/gz66EfNoYPqHTYI4q9UEN4CbHRc.png`}*/}
-                    {/*    alt='content_card'*/}
-                    {/*    width={140}*/}
-                    {/*    height={140}*/}
-                    {/*    className={styles.posterImg}*/}
-                    {/*    unoptimized*/}
-                    {/*    loading='lazy'*/}
-                    {/*/>*/}
-
-                </div>
-
-                <div className={styles.backdropContainer}>
-                    <Image
-                        src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${details.backdropPath}`}
-                        alt='backdrop_poster'
-                        width={1400}
-                        height={525}
-                        className={styles.backdropImg}
-                        unoptimized
-                        loading='lazy'
-                    />
-                </div>
-            </div>
+            <ContentDetailsCard
+                isShowPlayer={isShowPlayer}
+                onClickShowPlayer={onClickShowPlayer}
+                onClickClosePlayer={onClickClosePlayer}
+                title={details.title}
+                originalTitle={details.originalTitle}
+                posterPath={details.posterPath}
+                backdropPath={details.backdropPath}
+                releaseDate={details.releaseDate}
+                genres={details.genres}
+                runtime={details.runtime}
+                voteAverage={details.voteAverage}
+                voteCount={details.voteCount}
+                tagline={details.tagline}
+                overview={details.overview}
+                iframeSrc={details.iframeSrc}
+            />
 
             <div className={styles.contentUsefulInformation}>
-
                 <div className={styles.contentUsefulInformationMain}>
                     <SectionTitle title='В главных ролях'/>
+
                     <div className={styles.actorsStuffContainer}>
                         <ScrollContainer
                             innerRef={actorsScrollContainerRef}
@@ -191,14 +118,17 @@ export default function WatchPage({ details, actorsStuff, relatedContent, extern
                                 <PersonCard
                                     key={actor.id}
                                     name={actor.name}
+                                    character={actor.character}
                                     knownForDepartment={actor.knownForDepartment}
                                     poster={actor.profilePath}
+                                    isShowCharacterName
                                 />
                             )}
                         </ScrollContainer>
                     </div>
 
                     <SectionTitle title='Рекомендации'/>
+
                     <div className={styles.relatedContentContainer}>
                         <ScrollContainer
                             innerRef={relatedContentScrollContainerRef}
@@ -222,7 +152,12 @@ export default function WatchPage({ details, actorsStuff, relatedContent, extern
                 <div className={styles.contentUsefulInformationSecondary}>
                     <div className={styles.socialNetworksContainer}>
                         {map(sortedExternalIds, socialNetwork =>
-                            <a key={socialNetwork.type} href={socialMediaTypes[socialNetwork.type] + socialNetwork.id}>
+                            <a
+                                className={cx({ 'separateLine': isExternalIdsSeparateLineExists })}
+                                key={socialNetwork.type}
+                                href={socialMediaTypes[socialNetwork.type]?.link + socialNetwork.id}
+                                target='_blank'
+                            >
                                 <IconWrapper width={32} height={32}>
                                     {socialMediaTypes[socialNetwork.type].icon}
                                 </IconWrapper>
@@ -244,16 +179,6 @@ export default function WatchPage({ details, actorsStuff, relatedContent, extern
                 </div>
 
             </div>
-
-            {/*<iframe*/}
-            {/*    width={700}*/}
-            {/*    height={400}*/}
-            {/*    title='movie'*/}
-            {/*    allowFullScreen*/}
-            {/*    scrolling="no"*/}
-            {/*    src={details.iframeSrc}*/}
-            {/*/>*/}
-
         </div>
     )
 }

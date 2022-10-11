@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { FaImdb } from 'react-icons/fa';
 import { FcLike } from 'react-icons/fc';
 import { RiPlayListAddFill } from 'react-icons/ri';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { Number } from 'animations/Number';
 import classNames from 'classnames/bind';
 import { Trail } from 'animations/Trail';

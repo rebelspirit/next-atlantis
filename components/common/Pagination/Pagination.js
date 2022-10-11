@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { eq } from 'lodash';
-import styles from 'components/UI/Pagination/pagination.module.scss';
+import styles from 'components/common/Pagination/pagination.module.scss';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from 'react-icons/io';
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/router';

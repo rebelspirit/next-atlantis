@@ -1,11 +1,11 @@
-import styles from '@components/UI/TrendsContentCard/trendsContentCard.module.scss';
+import styles from '@components/common/TrendsContentCard/trendsContentCard.module.scss';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { DateUse } from 'lib/DateUse';
-import { TrendsContentCardFooter } from '@components/UI/TrendsContentCard/TrendsContentCardFooter';
+import { TrendsContentCardFooter } from '@components/common/TrendsContentCard/TrendsContentCardFooter';
 
 export const TrendsContentCard = ({ id, mediaType, image, title, date, overview }) => {
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from '@components/Sidebar/sidebar.module.scss';
 import { map, eq } from 'lodash';
-import { IconWrapper } from '@components/UI/IconWrapper/IconWrapper';
+import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import classNames from 'classnames/bind';

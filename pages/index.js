@@ -5,11 +5,11 @@ import { slice, floor, flatMap, pick } from 'lodash';
 import { Slider } from '@components/Slider/Slider';
 import { Movies } from 'Api/Movies';
 import { TrendsRow } from '@components/TrendsRow/TrendsRow';
-import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Serials } from 'Api/Serials';
-import { DualTabButtons } from '@components/UI/DualTabButtons/DualTabButtons';
+import { DualTabButtons } from '@components/common/DualTabButtons/DualTabButtons';
 import { useLoading } from 'hooks/useLoading';
-import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
+import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 const dualTabButtonsSettings = {
     firstButtonName: 'День',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './trendsRow.module.scss';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { map, eq } from 'lodash';
-import { TrendsContentCard } from '@components/UI/TrendsContentCard/TrendsContentCard';
+import { TrendsContentCard } from '@components/common/TrendsContentCard/TrendsContentCard';
 import { TrendsRowButtons } from '@components/TrendsRow/TrendsRowButtons';
 import { Trail } from 'animations/Trail';
 

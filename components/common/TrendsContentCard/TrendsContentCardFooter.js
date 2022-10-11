@@ -1,4 +1,4 @@
-import styles from '@components/UI/TrendsContentCard/trendsContentCard.module.scss';
+import styles from '@components/common/TrendsContentCard/trendsContentCard.module.scss';
 import PropTypes from 'prop-types';
 
 export const TrendsContentCardFooter = ({ title, date, overview }) => {

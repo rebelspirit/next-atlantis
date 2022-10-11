@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import { map } from 'lodash';
 import { Serials } from 'Api/Serials';
-import { ContentCard } from '@components/UI/ContentCard/ContentCard';
-import { SectionTitle } from '@components/UI/SectionTitle/SectionTitle';
-import { Pagination } from '@components/UI/Pagination/Pagination';
+import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
+import { Pagination } from '@components/common/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
-import { SapeLoader } from '@components/UI/ShapeLoader/ShapeLoader';
+import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 export default function SerialsPage({ serials }) {
     const isLoading = useLoading();
