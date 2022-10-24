@@ -1,23 +1,23 @@
-import styles from '@components/common/TrendsContentCard/trendsContentCard.module.scss';
+import styles from '@components/common/ContentCardAlt/contentCardAlt.module.scss';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
 import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { DateUse } from 'lib/DateUse';
-import { TrendsContentCardFooter } from '@components/common/TrendsContentCard/TrendsContentCardFooter';
+import { ContentCardAltFooter } from '@components/common/ContentCardAlt/ContentCardAltFooter';
 
-export const TrendsContentCard = ({ id, mediaType, image, title, date, overview }) => {
+export const ContentCardAlt = ({ id, mediaType, image, title, date, overview }) => {
 
     const formattedYear = DateUse.format(date, 'YYYY-MM-DD', 'll');
 
     return (
-        <div className={styles.trendsContainer}>
-            <div className={styles.trendsCardContainer}>
-                <IconWrapper width={48} height={48} className={styles.trendsCardPlayIcon}>
+        <div className={styles.contentCardAltContainer}>
+            <div className={styles.contentCardAltCardWrapper}>
+                <IconWrapper width={48} height={48} className={styles.contentCardAltPlayIcon}>
                     <FaPlay/>
                 </IconWrapper>
-                <div className={styles.trendsImgContainer}>
+                <div className={styles.contentCardAltImgContainer}>
                     <Link href={`/watch/?type=${mediaType}&id=${id}`}>
                         <a>
                             <Image
@@ -25,7 +25,7 @@ export const TrendsContentCard = ({ id, mediaType, image, title, date, overview 
                                 alt='trends_card'
                                 width={300}
                                 height={170}
-                                className={styles.trendsCardImg}
+                                className={styles.contentCardAltImg}
                                 unoptimized={true}
                             />
                         </a>
@@ -33,7 +33,7 @@ export const TrendsContentCard = ({ id, mediaType, image, title, date, overview 
                 </div>
             </div>
 
-            <TrendsContentCardFooter
+            <ContentCardAltFooter
                 title={title}
                 date={formattedYear}
                 overview={overview}
@@ -42,7 +42,7 @@ export const TrendsContentCard = ({ id, mediaType, image, title, date, overview 
     )
 };
 
-TrendsContentCard.propTypes = {
+ContentCardAlt.propTypes = {
     id: PropTypes.number.isRequired,
     mediaType: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

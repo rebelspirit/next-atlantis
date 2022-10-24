@@ -1,27 +1,23 @@
 import styles from 'pages/index.module.scss';
 import PropTypes from 'prop-types';
-import { map, omit, keys, reverse, compact, eq, some, find, last } from 'lodash';
+import { map, eq, find, last } from 'lodash';
 import { Movies } from 'Api/Movies';
 import { Serials } from 'Api/Serials';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 import { useEffect, useRef, useState } from 'react';
-import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
-import { FaImdb } from 'react-icons/fa';
-import { AiFillInstagram, AiFillFacebook, AiOutlineTwitter } from 'react-icons/ai';
 import { Common } from 'Api/Common';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { PersonCard } from '@components/common/PersonCard/PersonCard';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { TrendsContentCard } from '@components/common/TrendsContentCard/TrendsContentCard';
-import classNames from 'classnames/bind';
+import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt';
 import { ContentDetailsCard } from '@components/common/ContentDetailsCard/ContentDetailsCard';
 import { CollectionCard } from '@components/common/CollectionCard/CollectionCard';
 import { ExtraInfoColumn } from '@components/common/ExtraInfoColumn/ExtraInfoColumn';
 import { SeasonCard } from '@components/common/SeasonCard/SeasonCard';
 import Link from 'next/link';
-
-const cx = classNames.bind(styles);
+import { SocialNetworks } from '@components/common/SocialNetworks/SocialNetworks';
+import { ArrayUse } from 'lib/ArrayUse';
 
 const getMovieProps = item => ({
     title: item.title,
@@ -42,25 +38,6 @@ const getPropsFromContentType = {
     tv: getSerialProps,
 };
 
-const socialMediaTypes = {
-    facebookId: {
-        link: 'https://www.facebook.com/',
-        icon: <AiFillFacebook/>
-    },
-    instagramId: {
-        link: 'https://www.instagram.com/',
-        icon: <AiFillInstagram/>
-    },
-    twitterId: {
-        link: 'https://twitter.com/',
-        icon: <AiOutlineTwitter/>
-    },
-    imdbId: {
-        link: 'https://www.imdb.com/title/',
-        icon: <FaImdb/>
-    }
-};
-
 const seasonsSectionTitleByStatus = {
     'Ended': 'Последний сезон',
     'Returning Series': 'Текущий сезон'
@@ -77,14 +54,8 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
         return find(countries, { iso31661: country.iso31661 });
     });
 
-    const sortedExternalIds = compact(reverse(map(keys(omit(externalIds, 'id')), type => {
-        if (externalIds[type]) {
-            return { type, id: externalIds[type] }
-        }
-        return null
-    })));
+    const sortedExternalIds = ArrayUse.convertExternalIdsObjToArray(externalIds);
 
-    const isExternalIdsSeparateLineExists = some(sortedExternalIds, { type: 'imdbId' }) && sortedExternalIds.length > 1;
     const isShowContentCardCollection = collection && eq(details.contentType, 'movie');
     const isShowContentCardSeason = details.seasons && eq(details.contentType, 'tv');
     const isShowRelatedContent = !!relatedContent.length;
@@ -99,7 +70,7 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
         // console.log('collection', collection);
         // console.log('relatedContent', relatedContent);
         // console.log('externalIds', externalIds);
-        // console.log('sortedExternalIds', sortedExternalIds);
+        console.log('sortedExternalIds', sortedExternalIds);
         // console.log('countries', countries);
     }, [details, actorsStuff, collection, relatedContent, externalIds, countries, sortedExternalIds]);
 
@@ -192,7 +163,7 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                                 className={styles.relatedContentScrollLayout}
                             >
                                 {map(relatedContent, content =>
-                                    <TrendsContentCard
+                                    <ContentCardAlt
                                         key={content.id}
                                         id={content.id}
                                         mediaType={content.mediaType}
@@ -207,20 +178,9 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                 </div>
 
                 <div className={styles.contentUsefulInformationSecondary}>
-                    <div className={styles.socialNetworksContainer}>
-                        {map(sortedExternalIds, socialNetwork =>
-                            <a
-                                className={cx({ 'separateLine': isExternalIdsSeparateLineExists })}
-                                key={socialNetwork.type}
-                                href={socialMediaTypes[socialNetwork.type]?.link + socialNetwork.id}
-                                target='_blank'
-                            >
-                                <IconWrapper width={32} height={32}>
-                                    {socialMediaTypes[socialNetwork.type]?.icon}
-                                </IconWrapper>
-                            </a>
-                        )}
-                    </div>
+                    <SocialNetworks
+                        externalIds={sortedExternalIds}
+                    />
 
                     <ExtraInfoColumn
                         content={{ ...details, productionCountries }}

@@ -86,7 +86,7 @@ export const EpisodeCard = ({ name, overview, episodeNumber, airDate, voteAverag
                             key={guest.id}
                             name={guest.originalName}
                             character={guest.character}
-                            knownForDepartment-={guest.knownForDepartment}
+                            knownForDepartment={guest.knownForDepartment}
                             poster={guest.profilePath}
                             isShowCharacterName
                         />

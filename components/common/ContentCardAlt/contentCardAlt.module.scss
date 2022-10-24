@@ -1,12 +1,12 @@
 @import 'scss/variables';
 @import 'scss/mixins';
 
-.trendsContainer {
+.contentCardAltContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .trendsDescriptionContainer {
+  .contentCardAltDescriptionContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,19 +14,19 @@
     gap: 5px;
     margin: 10px 0 5px 0;
   }
-  .trendsTitle {
+  .contentCardAltTitle {
     color: $Trends-Card-Text-Color;
     font-family: $SFUI-Display-Semibold;
     font-size: 1.1rem;
     cursor: pointer;
   }
-  .trendsYear {
+  .contentCardAltYear {
     color: $Trends-Card-Text-Color;
     font-family: $SFUI-Display-Light;
     font-weight: 500;
     font-size: .9rem;
   }
-  .trendsDescription {
+  .contentCardAltDescription {
     color: $Trends-Card-Text-Color;
     font-family: $SFUI-Display-Light;
     font-weight: 500;
@@ -38,7 +38,7 @@
     text-overflow: ellipsis;
   }
 }
-.trendsCardContainer {
+.contentCardAltCardWrapper {
   position: relative;
   border-radius: .7rem;
   @include transition(.3s);
@@ -48,7 +48,7 @@
     @include transform(translateY(-5px));
   }
 
-  .trendsImgContainer {
+  .contentCardAltImgContainer {
     position: relative;
     width: $Trends-Card-Width;
     height: $Trends-Card-Height;
@@ -60,12 +60,12 @@
       @include transition(.3s);
     }
 
-    .trendsCardImg {
+    .contentCardAltImg {
       border-radius: .7rem;
     }
   }
 
-  .trendsCardPlayIcon {
+  .contentCardAltPlayIcon {
     position: absolute;
     top: 50%;
     left: 50%;
