@@ -1,9 +1,9 @@
-import styles from './contentDetailsCard.module.scss';
+import styles from 'components/common/ContentDetailsCard/contentDetailsCard.module.scss';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 import { DateUse } from 'lib/DateUse';
-import { floor, map, round } from 'lodash';
+import { map, eq } from 'lodash';
 import { VotingPercentCircle } from '@components/common/VotingPercentCircle/VotingPercentCircle';
 import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { FcLike } from 'react-icons/fc';
@@ -14,14 +14,8 @@ import { StringUse } from 'lib/StringUse';
 
 const cx = classNames.bind(styles);
 
-const contentRuntimeLength = number => {
-    const runtimeHours = floor((number / 60));
-    const runtimeMinutes = round(((number / 60) - runtimeHours) * 60);
-
-    return runtimeHours + ' ч. ' + runtimeMinutes + ' минут';
-};
-
 export const ContentDetailsCard = ({
+    type,
     isShowPlayer,
     onClickShowPlayer,
     onClickClosePlayer,
@@ -29,17 +23,23 @@ export const ContentDetailsCard = ({
     originalTitle,
     posterPath,
     backdropPath,
-    releaseDate,
+    date,
     genres,
     runtime,
     voteAverage,
     voteCount,
     tagline,
     overview,
-    iframeSrc
+    iframeSrc,
+    numberOfSeasons,
+    numberOfEpisodes
 }) => {
 
     const taglineString = StringUse.fixTaglineString(tagline);
+
+    const isShowRunTime = runtime && eq(type, 'movie');
+
+    const isShowSeasonsAndEpisodes = numberOfSeasons && numberOfEpisodes && eq(type, 'tv');
 
     return (
         <div className={styles.contentDetailsContainer}>
@@ -62,7 +62,7 @@ export const ContentDetailsCard = ({
                         <p className={styles.originalTitle}>{originalTitle}</p>
 
                         <div className={styles.contentFeaturesContainer}>
-                            <span>{DateUse.format(releaseDate, 'YYYY-MM-DD', 'll')}</span>
+                            <span>{DateUse.format(date, 'YYYY-MM-DD', 'll')}</span>
                             <span className={styles.circle}/>
                             <div className={styles.genresContainer}>
                                 {map(genres, genre =>
@@ -72,7 +72,12 @@ export const ContentDetailsCard = ({
                                 )}
                             </div>
                             <span className={styles.circle}/>
-                            <span>{contentRuntimeLength(runtime)}</span>
+                            {isShowRunTime &&
+                                <span>{StringUse.runtimeLengthString(runtime)}</span>
+                            }
+                            {isShowSeasonsAndEpisodes &&
+                                <span>Сезонов: {numberOfSeasons}, Эпизодов: {numberOfEpisodes}</span>
+                            }
                         </div>
 
                         <div className={styles.controlsContainer}>
@@ -142,6 +147,7 @@ export const ContentDetailsCard = ({
 };
 
 ContentDetailsCard.propTypes = {
+    type: PropTypes.string.isRequired,
     isShowPlayer: PropTypes.bool.isRequired,
     onClickShowPlayer: PropTypes.func.isRequired,
     onClickClosePlayer: PropTypes.func.isRequired,
@@ -149,12 +155,20 @@ ContentDetailsCard.propTypes = {
     originalTitle: PropTypes.string.isRequired,
     posterPath: PropTypes.string.isRequired,
     backdropPath: PropTypes.string.isRequired,
-    releaseDate: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
     genres: PropTypes.array.isRequired,
-    runtime: PropTypes.number.isRequired,
+    runtime: PropTypes.number,
     voteAverage: PropTypes.number.isRequired,
     voteCount: PropTypes.number.isRequired,
     tagline: PropTypes.string,
     overview: PropTypes.string,
     iframeSrc: PropTypes.string,
+    numberOfSeasons: PropTypes.number,
+    numberOfEpisodes: PropTypes.number
+};
+
+ContentDetailsCard.defaultProps = {
+    runtime: null,
+    numberOfSeasons: null,
+    numberOfEpisodes: null
 };

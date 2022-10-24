@@ -6,7 +6,7 @@ import { map, compact } from 'lodash';
 import { ContentCard } from '@components/common/ContentCard/ContentCard';
 import { PersonCard } from '@components/common/PersonCard/PersonCard';
 import { NoDataPlug } from '@components/common/NoDataPlug/NoDataPlug';
-import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 export default function SearchPage({ searchedContent }) {
     const isLoading = useLoading();
@@ -15,7 +15,7 @@ export default function SearchPage({ searchedContent }) {
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
-        return <SapeLoader/>
+        return <ShapeLoader/>
     }
 
     return (

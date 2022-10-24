@@ -6,7 +6,7 @@ import { ContentCard } from '@components/common/ContentCard/ContentCard';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Pagination } from '@components/common/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
-import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 export default function SerialsPage({ serials }) {
     const isLoading = useLoading();
@@ -14,7 +14,7 @@ export default function SerialsPage({ serials }) {
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
 
-        return <SapeLoader/>
+        return <ShapeLoader/>
         // return (
         //     <div className={styles.contentPageContainer}>
         //         <SectionTitle title='Популярные сериалы'/>

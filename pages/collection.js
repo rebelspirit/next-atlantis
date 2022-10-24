@@ -1,15 +1,21 @@
-import PropTypes from 'prop-types';
 import styles from './index.module.scss';
-import { Movies } from 'Api/Movies';
-import { map } from 'lodash';
-import { ContentCard } from '@components/common/ContentCard/ContentCard';
-import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
-import { Pagination } from '@components/common/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
+import { map } from 'lodash';
+import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { Movies } from 'Api/Movies';
+import PropTypes from 'prop-types';
+import MoviesPage from 'pages/movies';
+import { Common } from 'Api/Common';
+import { useEffect } from 'react';
 
-export default function MoviesPage({ movies }) {
+export default function CollectionPage({ collection }) {
     const isLoading = useLoading();
+
+    useEffect(() => {
+        console.log('collection', collection);
+    }, [collection])
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
@@ -29,10 +35,10 @@ export default function MoviesPage({ movies }) {
 
     return (
         <div className={styles.contentPageContainer}>
-            <SectionTitle title='Популярные фильмы'/>
+            <SectionTitle title={collection.name}/>
 
             <div className={styles.contentMappedContainer}>
-                {map(movies.results, movie =>
+                {map(collection.parts, movie =>
                     <ContentCard
                         key={movie.id}
                         id={movie.id}
@@ -43,26 +49,20 @@ export default function MoviesPage({ movies }) {
                     />
                 )}
             </div>
-
-            <Pagination
-                page={movies.page}
-                totalPages={movies.totalPages}
-            />
         </div>
     )
-}
+};
 
 export const getServerSideProps = async ({ query }) => {
-    const movies = await Movies.getMovies(query.page);
+    const collection = await Common.getCollection(query.id);
 
     return {
         props: {
-            movies,
+            collection,
         }
     };
 };
 
 MoviesPage.propTypes = {
-    movies: PropTypes.object.isRequired
+    collection: PropTypes.object.isRequired
 };
-

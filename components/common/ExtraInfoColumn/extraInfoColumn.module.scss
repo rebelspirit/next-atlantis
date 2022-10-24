@@ -1,0 +1,46 @@
+@import 'scss/variables';
+
+.label {
+  font-family: $SFUI-Display-Semibold;
+  font-size: 1rem;
+  color: #304354;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+.text {
+  font-family: $SFUI-Display-Light;
+  font-size: .9rem;
+  color: $color-black;
+  padding: 0 5px;
+  margin-bottom: 15px;
+}
+.mappedContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: $SFUI-Display-Light;
+  font-size: .9rem;
+  color: $color-black;
+  padding: 0 5px;
+  margin-bottom: 15px;
+
+  &.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  span {
+    &:not(:last-child):after {
+      content: ','
+    }
+  }
+
+  .networkLogo {
+    position: relative;
+    height: 35px;
+    margin-bottom: 12px;
+  }
+}

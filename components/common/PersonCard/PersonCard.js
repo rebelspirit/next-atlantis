@@ -25,7 +25,12 @@ export const PersonCard = ({ name, character, knownForDepartment, poster, isShow
             </div>
             <div className={styles.personCardFooter}>
                 <h2 className={styles.personCardFooterTitle}>{name}</h2>
-                <p className={styles.personCardFooterDate}>{isShowCharacterName ? character : knownForDepartment}</p>
+                <p className={styles.personCardFooterDate}>{
+                    isShowCharacterName && character
+                        ? character
+                        : knownForDepartment
+                }
+                </p>
             </div>
         </div>
     )

@@ -1,0 +1,154 @@
+@import 'scss/variables';
+
+.episodeCardContainer {
+  height: 200px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 20%);
+  border-radius: .7rem;
+  margin: 40px 0;
+  overflow: hidden;
+  transition: height .3s;
+  cursor: pointer;
+
+  &.opened {
+    height: 800px;
+  }
+  .episodeCardTop {
+    min-height: 200px;
+    display: flex;
+    margin-bottom: 30px;
+  }
+  .episodeCardBottom {
+    padding: 10px 30px;
+    .episodeCardBottomLabel {
+      font-family: "SF UI Display Semibold", sans-serif;
+      font-size: 1.5rem;
+      font-style: normal;
+      color: #304354;
+      margin: 5px 0;
+      padding: 0 10px;
+    }
+    .episodeCardScrollLayout {
+      display: flex;
+      gap: 30px;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      margin: 10px 0;
+      padding: 10px 0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &:hover::-webkit-scrollbar {
+        display: none;
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        display: none;
+      }
+      &::-webkit-scrollbar-track {
+        display: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        display: none;
+      }
+
+      .episodeCardImgContainer {
+        position: relative;
+        width: 300px;
+        min-width: 300px;
+        height: 170px;
+        border-radius: .7rem;
+
+        .episodeCardImg {
+          height: 170px;
+          border-radius: .7rem;
+        }
+      }
+    }
+  }
+}
+.episodeCardPosterContainer {
+  position: relative;
+  min-width: 355px;
+
+  .episodeCardPoster {
+    border-top-left-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+    transition: border-radius .3s;
+
+    &.opened {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: .7rem;
+    }
+  }
+}
+.episodeCardDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+
+  .episodeCardTitleContainer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+
+    .episodeCardVotingPercentCircle {
+      width: 50px;
+      height: 50px;
+    }
+    .episodeCardVoteAverage {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-family: $SFUI-Display-Semibold;
+      font-size: .85rem;
+      color: $color-white;
+      background: $color-black;
+      padding: 3px 8px;
+      border-radius: .65rem;
+    }
+    h3 {
+      font-family: $SFUI-Display-Semibold;
+      font-size: 1.5rem;
+      font-style: normal;
+      color: #304354;
+      margin: 5px 0;
+      padding: 0 10px;
+    }
+  }
+
+  .episodeCardDateAndEpisodes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: $SFUI-Display-Semibold;
+    font-size: 0.95rem;
+    font-style: normal;
+    color: #304354;
+    margin: 5px 0;
+    padding: 0 10px;
+
+    .circle {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #304354;
+      margin: 0 3px;
+    }
+  }
+  .episodeCardOverview {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: $SFUI-Display-Regular;
+    font-size: .93rem;
+    font-style: normal;
+    color: $color-black;
+    margin: 10px 0;
+    padding: 0 10px;
+  }
+}

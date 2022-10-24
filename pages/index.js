@@ -9,7 +9,7 @@ import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Serials } from 'Api/Serials';
 import { DualTabButtons } from '@components/common/DualTabButtons/DualTabButtons';
 import { useLoading } from 'hooks/useLoading';
-import { SapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 
 const dualTabButtonsSettings = {
     firstButtonName: 'День',
@@ -73,7 +73,7 @@ export default function IndexPage(props) {
 
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
-        return <SapeLoader/>
+        return <ShapeLoader/>
     }
 
     return (

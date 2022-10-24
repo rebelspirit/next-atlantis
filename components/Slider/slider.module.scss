@@ -106,20 +106,7 @@
       justify-content: flex-start;
 
       .sliderButton {
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 15px;
-        font-family: $SFUI-Display-Semibold;
-        font-size: 1.2rem;
-        font-weight: normal;
-        font-style: normal;
-        color: $color-white;
-        cursor: pointer;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-        margin: 0 10px;
+        @include button();
         @include transition(.3s ease);
 
         &:first-child {
@@ -127,18 +114,13 @@
         }
         &.sliderWatchButton {
           width: 130px;
-          background-color: $color-red;
-
-          &:hover {
-            background-color: #f34336;
-          }
         }
         &.sliderWatchListButton {
           width: 60px;
-          background-color: #6A6A6BD9;
+          background-color: #6A6A6B;
 
           &:hover {
-            background-color: #6A6A6BFF;
+            background-color: #787878;
           }
         }
       }

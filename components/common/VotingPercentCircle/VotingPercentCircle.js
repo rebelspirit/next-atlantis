@@ -1,11 +1,14 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import 'react-circular-progressbar/dist/styles.css';
 import styles from './VotingPercentCircle.module.scss';
 import { round } from 'lodash';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import classNames from 'classnames/bind';
 
-export const VotingPercentCircle = ({ voteAverage }) => {
+const cx = classNames.bind(styles);
+
+export const VotingPercentCircle = ({ voteAverage, className }) => {
     const percent = round(voteAverage * 10);
     const text = percent ? `${percent}%` : 'NR';
 
@@ -22,7 +25,7 @@ export const VotingPercentCircle = ({ voteAverage }) => {
     }, []);
 
     return (
-        <div className={styles.circularProgressbarContainer}>
+        <div className={cx(styles.circularProgressbarContainer, className)}>
             <CircularProgressbar
                 value={percent}
                 text={text}
@@ -42,5 +45,10 @@ export const VotingPercentCircle = ({ voteAverage }) => {
 };
 
 VotingPercentCircle.propTypes = {
-    voteAverage: PropTypes.number
-}
+    voteAverage: PropTypes.number,
+    className: PropTypes.string
+};
+
+VotingPercentCircle.defaultProps = {
+    className: null
+};

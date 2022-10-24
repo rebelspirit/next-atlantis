@@ -1,0 +1,75 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.seasonCardContainer {
+  height: 200px;
+  display: flex;
+  box-shadow: 0 0 4px rgb(0 0 0 / 20%);
+  border-radius: .7rem;
+  text-decoration: none;
+  margin: 20px 0 10px 0;
+  cursor: pointer;
+  @include transition(.3s);
+
+  &:hover {
+    transform: scale(1.005);
+    box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
+  }
+}
+.seasonCardPosterContainer {
+  position: relative;
+  min-width: 135px;
+
+  .seasonCardPoster {
+    border-top-left-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+  }
+}
+.seasonCardDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+
+  h3 {
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1.5rem;
+    font-style: normal;
+    color: #304354;
+    margin: 5px 0;
+    padding: 0 10px;
+  }
+
+  .seasonCardDateAndEpisodes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: $SFUI-Display-Semibold;
+    font-size: 0.95rem;
+    font-style: normal;
+    color: #304354;
+    margin: 5px 0;
+    padding: 0 10px;
+
+    .circle {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #304354;
+      margin: 0 3px;
+    }
+  }
+  .seasonCardOverview {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: $SFUI-Display-Regular;
+    font-size: .93rem;
+    font-style: normal;
+    color: $color-black;
+    margin: 20px 0 10px 0;
+    padding: 0 10px;
+  }
+}

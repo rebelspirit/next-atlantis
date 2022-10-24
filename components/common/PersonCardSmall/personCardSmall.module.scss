@@ -1,0 +1,57 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.smallPersonContainer {
+  width: 132px;
+  min-width: 132px;
+
+  .smallPersonCardContainer {
+    border-radius: .7rem;
+    @include transition(.3s);
+
+    &:hover {
+      background: $Content-Card-Hover-BgColor;
+      @include transform(translateY(-5px));
+    }
+
+    .smallPersonCardImgContainer {
+      position: relative;
+      height: 162px;
+      border-radius: .7rem;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
+
+      &:hover {
+        opacity: .5;
+        @include transition(.3s);
+      }
+
+      .smallPersonCardImg {
+        position: absolute;
+        border-radius: .7rem;
+      }
+    }
+  }
+}
+.smallPersonCardFooter {
+  min-width: 145px;
+  max-width: 100%;
+  color: $Content-Card-Text-Color;
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 0 3px;
+
+  .smallPersonCardFooterTitle {
+    font-family: $SFUI-Display-Semibold;
+    font-size: 1rem;
+    margin: 5px 0 3px 0;
+  }
+
+  .smallPersonCardFooterDate {
+    font-family: $SFUI-Display-Light;
+    font-weight: 500;
+    font-size: .9rem;
+    margin: 3px 0;
+  }
+}
+
+

@@ -1,6 +1,6 @@
 import styles from './shapeLoader.module.scss';
 
-export const SapeLoader = () => {
+export const ShapeLoader = () => {
 
     return (
         <div className={styles.loadingMessageContainer}>
@@ -10,7 +10,7 @@ export const SapeLoader = () => {
                 <span/>
                 <span/>
             </div>
-            <h4>Loading..</h4>
+            <h4>Загрузка..</h4>
         </div>
     )
 }
