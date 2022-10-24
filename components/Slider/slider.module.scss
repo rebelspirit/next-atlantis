@@ -105,6 +105,10 @@
       align-items: center;
       justify-content: flex-start;
 
+      a {
+        text-decoration: none;
+      }
+
       .sliderButton {
         @include button();
         @include transition(.3s ease);

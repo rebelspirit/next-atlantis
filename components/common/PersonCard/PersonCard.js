@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const PersonCard = ({ name, character, knownForDepartment, poster, isShowCharacterName }) => {
+export const PersonCard = ({ id, name, character, knownForDepartment, poster, isShowCharacterName }) => {
 
     return (
         <div className={styles.personContainer}>
             <div className={styles.personCardContainer}>
                 <div className={styles.personCardImgContainer}>
-                    <Link href="#">
+                    <Link href={`/person/?id=${id}`}>
                         <a>
                             <Image
                                 src={`https://image.tmdb.org/t/p/w780${poster}`}
@@ -37,6 +37,7 @@ export const PersonCard = ({ name, character, knownForDepartment, poster, isShow
 };
 
 PersonCard.propTypes = {
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     character: PropTypes.string.isRequired,
     knownForDepartment: PropTypes.string.isRequired,

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import styles from 'components/Slider/slider.module.scss';
 import { map, eq, find, findIndex, forEach } from 'lodash';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaImdb } from 'react-icons/fa';
 import { FcLike } from 'react-icons/fc';
 import { RiPlayListAddFill } from 'react-icons/ri';
@@ -57,6 +58,10 @@ export const Slider = ({ slides }) => {
     const isShowTrailAnimation = find(animations, { type: 'trail' }).visible;
     const isShowFadeAnimation = find(animations, { type: 'fade' }).visible;
 
+    const onClickChangeSelectedCard = i => {
+        return () => setCurrentIndex(i)
+    };
+
     useEffect(() => {
         resetTimeout(timeoutRef);
         timeoutRef.current = setTimeout(() =>
@@ -92,9 +97,14 @@ export const Slider = ({ slides }) => {
             <Trail show>
                 <div className={styles.sliderFooterContainer}>
                     <div className={styles.sliderButtonsContainer}>
-                        <button className={cx(styles.sliderButton, styles.sliderWatchButton)}>
-                            Перейти
-                        </button>
+                        <Link href={`/watch?type=${selectedCard.mediaType}&id=${selectedCard.id}`}>
+                            <a>
+                                <button className={cx(styles.sliderButton, styles.sliderWatchButton)}>
+                                    Перейти
+                                </button>
+                            </a>
+                        </Link>
+
                         <button className={cx(styles.sliderButton, styles.sliderWatchListButton)}>
                             <IconWrapper width={36} height={36}>
                                 <RiPlayListAddFill/>
@@ -105,9 +115,9 @@ export const Slider = ({ slides }) => {
                     <div className={styles.sliderNavBarContainer}>
                         {map(cards, (card, i) =>
                             <div
-                                className={cx(styles.sliderNavBarDot, { 'selected': eq(i, findIndex(cards,{ 'selected': true })), 'pulse': eq(i, findIndex(cards,{ 'selected': true })) })}
                                 key={i}
-                                onClick={() => setCurrentIndex(i)}
+                                className={cx(styles.sliderNavBarDot, { 'selected': eq(i, findIndex(cards,{ 'selected': true })), 'pulse': eq(i, findIndex(cards,{ 'selected': true })) })}
+                                onClick={onClickChangeSelectedCard(i)}
                             />
                         )}
                     </div>

@@ -125,3 +125,28 @@
   }
 }
 
+.personDetailsContainer {
+  display: flex;
+
+  .personDetailsSub {
+    width: 100%;
+    padding: 10px 25px;
+    margin-left: 30px;
+    border-left: 1px solid #E0E0E093;
+    .personDetailsPosterContainer {
+      height: 430px;
+      width: 280px;
+      position: relative;
+      top: 0;
+      left: 0;
+      border-radius: .7rem;
+      box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+
+      .personDetailsPosterImg {
+        border-radius: .7rem;
+      }
+    }
+  }
+}
+
+

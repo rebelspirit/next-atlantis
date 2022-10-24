@@ -23,8 +23,8 @@ const getSliderProps = (sliderCount, movies, tv) => {
 
     return flatMap(new Array(equalPartsCount), (_, index) => {
         return [
-            pick(slicedMoviesArray[index], ['title', 'voteAverage', 'voteCount', 'backdropPath', 'overview']),
-            { title: slicedSerialsArray[index]?.name, ...pick(slicedSerialsArray[index], ['voteAverage', 'voteCount', 'backdropPath', 'overview']) }
+            pick(slicedMoviesArray[index], ['id', 'mediaType', 'title', 'voteAverage', 'voteCount', 'backdropPath', 'overview']),
+            { title: slicedSerialsArray[index]?.name, ...pick(slicedSerialsArray[index], ['id', 'mediaType', 'voteAverage', 'voteCount', 'backdropPath', 'overview']) }
         ]
     });
 };
@@ -48,13 +48,17 @@ export default function IndexPage(props) {
     const sliderProps = getSliderProps(6, movies.trendsOnWeek, tv.trendsOnWeek);
 
 
-    const delayedShowFadeAnimation = useMemo(() => setTimeout(() => {
-        setShowTrail({ movies: true, tv: true })
-    }, 300), [movies.isWeekTypeSelected, tv.isWeekTypeSelected]);
+    const delayedShowFadeAnimation = useMemo(() => {
+        return setTimeout(() => {
+            setShowTrail({ movies: true, tv: true })
+        }, 300)
+    }, [movies.isWeekTypeSelected, tv.isWeekTypeSelected]);
 
-    const delayedContentSelectedIntervalType = setState => setTimeout(() => {
-        setState(prev => ({ ...prev, isWeekTypeSelected: !prev.isWeekTypeSelected }))
-    }, 100);
+    const delayedContentSelectedIntervalType = setState => {
+        return setTimeout(() => {
+            setState(prev => ({ ...prev, isWeekTypeSelected: !prev.isWeekTypeSelected }))
+        }, 100)
+    };
 
     const onClickChangeContentSelectedIntervalType = (setState, type) => {
         return () => {

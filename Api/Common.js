@@ -42,4 +42,14 @@ export class Common {
             .catch(error => console.log(error))
     };
 
+    static getPersonDetails(id) {
+        return axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${TMDB_API_KEY}&${LANGUAGE}`)
+            .then(response => ObjectUse.camelCaseObjectKeys(response.data))
+            .catch(error => console.log(error))
+    }
+    static getPersonCombinedCredits(id) {
+        return axios.get(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${TMDB_API_KEY}&${LANGUAGE}`)
+            .then(response => ObjectUse.camelCaseObjectKeys(response.data))
+            .catch(error => console.log(error))
+    }
 }

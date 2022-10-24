@@ -87,6 +87,8 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
     const isExternalIdsSeparateLineExists = some(sortedExternalIds, { type: 'imdbId' }) && sortedExternalIds.length > 1;
     const isShowContentCardCollection = collection && eq(details.contentType, 'movie');
     const isShowContentCardSeason = details.seasons && eq(details.contentType, 'tv');
+    const isShowRelatedContent = !!relatedContent.length;
+    const isShowActorsStuff = !!actorsStuff.length;
 
     const onClickShowPlayer = () => setShowPlayer(true);
     const onClickClosePlayer = () => setShowPlayer(false);
@@ -126,26 +128,31 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
 
             <div className={styles.contentUsefulInformation}>
                 <div className={styles.contentUsefulInformationMain}>
-                    <SectionTitle title='В главных ролях'/>
+                    {isShowActorsStuff &&
+                        <SectionTitle title='В главных ролях'/>
+                    }
 
-                    <div className={styles.actorsStuffContainer}>
-                        <ScrollContainer
-                            innerRef={actorsScrollContainerRef}
-                            horizontal
-                            className={styles.actorsStuffScrollLayout}
-                        >
-                            {map(actorsStuff, actor =>
-                                <PersonCard
-                                    key={actor.id}
-                                    name={actor.name}
-                                    character={actor.character}
-                                    knownForDepartment={actor.knownForDepartment}
-                                    poster={actor.profilePath}
-                                    isShowCharacterName
-                                />
-                            )}
-                        </ScrollContainer>
-                    </div>
+                    {isShowActorsStuff &&
+                        <div className={styles.actorsStuffContainer}>
+                            <ScrollContainer
+                                innerRef={actorsScrollContainerRef}
+                                horizontal
+                                className={styles.actorsStuffScrollLayout}
+                            >
+                                {map(actorsStuff, actor =>
+                                    <PersonCard
+                                        key={actor.id}
+                                        id={actor.id}
+                                        name={actor.name}
+                                        character={actor.character}
+                                        knownForDepartment={actor.knownForDepartment}
+                                        poster={actor.profilePath}
+                                        isShowCharacterName
+                                    />,
+                                )}
+                            </ScrollContainer>
+                        </div>
+                    }
 
                     {isShowContentCardCollection &&
                         <>
@@ -173,26 +180,30 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                         </div>
                     }
 
-                    <SectionTitle title='Рекомендации'/>
+                    {isShowRelatedContent &&
+                        <SectionTitle title='Рекомендации'/>
+                    }
 
-                    <div className={styles.relatedContentContainer}>
-                        <ScrollContainer
-                            innerRef={relatedContentScrollContainerRef}
-                            horizontal
-                            className={styles.relatedContentScrollLayout}
-                        >
-                            {map(relatedContent, content =>
-                                <TrendsContentCard
-                                    key={content.id}
-                                    id={content.id}
-                                    mediaType={content.mediaType}
-                                    image={content.backdropPath}
-                                    overview={content.overview}
-                                    {...getPropsFromContentType[content.mediaType](content)}
-                                />
-                            )}
-                        </ScrollContainer>
-                    </div>
+                    {isShowRelatedContent &&
+                        <div className={styles.relatedContentContainer}>
+                            <ScrollContainer
+                                innerRef={relatedContentScrollContainerRef}
+                                horizontal
+                                className={styles.relatedContentScrollLayout}
+                            >
+                                {map(relatedContent, content =>
+                                    <TrendsContentCard
+                                        key={content.id}
+                                        id={content.id}
+                                        mediaType={content.mediaType}
+                                        image={content.backdropPath}
+                                        overview={content.overview}
+                                        {...getPropsFromContentType[content.mediaType](content)}
+                                    />,
+                                )}
+                            </ScrollContainer>
+                        </div>
+                    }
                 </div>
 
                 <div className={styles.contentUsefulInformationSecondary}>
