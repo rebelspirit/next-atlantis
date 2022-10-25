@@ -1,0 +1,54 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.personKnownForContainer {
+  border-radius: .7rem;
+  box-shadow: 0 0 4px rgb(0 0 0 / 20%);
+  margin: 30px 0;
+
+  .personKnownForRow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 15px;
+    font-size: 0.95rem;
+    font-style: normal;
+    color: #304354;
+    border-bottom: 1px solid #E0E0E093;
+    cursor: pointer;
+    @include transition(.3s);
+
+    &:hover {
+      background: #E0E0E03F;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .personKnownForDate {
+      max-width: 100%;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .personKnownFor {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: $SFUI-Display-Regular;
+      font-size: 0.95rem;
+      font-style: normal;
+      color: #304354;
+
+      .personKnownForContentName {
+        font-family: $SFUI-Display-Semibold;
+      }
+
+      span {
+        color: #0000007F;
+      }
+    }
+  }
+}

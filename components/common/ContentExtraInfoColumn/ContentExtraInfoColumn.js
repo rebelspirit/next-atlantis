@@ -1,4 +1,4 @@
-import styles from 'components/common/ExtraInfoColumn/extraInfoColumn.module.scss';
+import styles from '@components/common/ContentExtraInfoColumn/contentExtraInfoColumn.module.scss';
 import PropTypes from 'prop-types';
 import { NumberUse } from 'lib/NumberUse';
 import { map } from 'lodash';
@@ -18,49 +18,49 @@ const movieReleasedStatuses = {
 
 const cx = classNames.bind(styles);
 
-export const ExtraInfoColumn = ({ content }) => {
+export const ContentExtraInfoColumn = ({ data }) => {
     return (
         <>
-            {!!content.status && <h6 className={styles.label}>Статус</h6>}
-            {!!content.status && <p className={styles.text}>{movieReleasedStatuses[content.status]}</p>}
+            {!!data.status && <h6 className={styles.label}>Статус</h6>}
+            {!!data.status && <p className={styles.text}>{movieReleasedStatuses[data.status]}</p>}
 
-            {!!content.budget && <h6 className={styles.label}>Бюджет</h6>}
-            {!!content.budget && <p className={styles.text}>${NumberUse.numberWithCommas(content.budget)}</p>}
+            {!!data.budget && <h6 className={styles.label}>Бюджет</h6>}
+            {!!data.budget && <p className={styles.text}>${NumberUse.numberWithCommas(data.budget)}</p>}
 
-            {!!content.revenue && <h6 className={styles.label}>Сборы</h6>}
-            {!!content.revenue && <p className={styles.text}>${NumberUse.numberWithCommas(content.revenue)}</p>}
+            {!!data.revenue && <h6 className={styles.label}>Сборы</h6>}
+            {!!data.revenue && <p className={styles.text}>${NumberUse.numberWithCommas(data.revenue)}</p>}
 
-            {!!content.spokenLanguages.length && <h6 className={styles.label}>Разговорные языки</h6>}
-            {!!content.spokenLanguages.length &&
+            {!!data.spokenLanguages.length && <h6 className={styles.label}>Разговорные языки</h6>}
+            {!!data.spokenLanguages.length &&
                 <div className={cx(styles.mappedContent, styles.row)}>
-                    {map(content.spokenLanguages, lang =>
+                    {map(data.spokenLanguages, lang =>
                         <span key={lang.englishName}>{lang.englishName}</span>
                     )}
                 </div>
             }
 
-            {!!content.productionCountries.length && <h6 className={styles.label}>Страны производства</h6>}
-            {!!content.productionCountries.length &&
+            {!!data.productionCountries.length && <h6 className={styles.label}>Страны производства</h6>}
+            {!!data.productionCountries.length &&
                 <div className={styles.mappedContent}>
-                    {map(content.productionCountries, country =>
+                    {map(data.productionCountries, country =>
                         <span key={country.nativeName}>{country.nativeName}</span>
                     )}
                 </div>
             }
 
-            {!!content.productionCompanies.length && <h6 className={styles.label}>Производство</h6>}
-            {!!content.productionCompanies.length &&
+            {!!data.productionCompanies.length && <h6 className={styles.label}>Производство</h6>}
+            {!!data.productionCompanies.length &&
                 <div className={styles.mappedContent}>
-                    {map(content.productionCompanies, company =>
+                    {map(data.productionCompanies, company =>
                         <span key={company.name}>{company.name}</span>
                     )}
                 </div>
             }
 
-            {!!content.networks && <h6 className={styles.label}>Телесети</h6>}
-            {!!content.networks &&
+            {!!data.networks && <h6 className={styles.label}>Телесети</h6>}
+            {!!data.networks &&
                 <div className={styles.mappedContent}>
-                    {map(content.networks, network =>
+                    {map(data.networks, network =>
                         !!network.logoPath && <div className={styles.networkLogo} key={network.name}>
                             <Image
                                 src={`https://image.tmdb.org/t/p/original${network.logoPath}`}
@@ -79,8 +79,8 @@ export const ExtraInfoColumn = ({ content }) => {
     )
 };
 
-ExtraInfoColumn.propTypes = {
-    content: PropTypes.shape({
+ContentExtraInfoColumn.propTypes = {
+    data: PropTypes.shape({
         status: PropTypes.string,
         originalLanguage: PropTypes.string,
         budget: PropTypes.number,
@@ -91,8 +91,8 @@ ExtraInfoColumn.propTypes = {
     })
 };
 
-ExtraInfoColumn.defaultProps = {
-    content: {
+ContentExtraInfoColumn.defaultProps = {
+    data: {
         status: null,
         originalLanguage: null,
         budget: null,

@@ -12,6 +12,8 @@ import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt
 import { SocialNetworks } from '@components/common/SocialNetworks/SocialNetworks';
 import { ArrayUse } from 'lib/ArrayUse';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { PersonExtraInfoColumn } from '@components/common/PersonExtraInfoColumn/PersonExtraInfoColumn';
+import { PersonKnownFor } from '@components/common/PerosonKnownFor/PersonKnownFor';
 
 const getMovieProps = item => ({
     title: item.title,
@@ -88,6 +90,12 @@ export default function PersonPage({ personDetails, personFameFor, personExterna
                             )}
                         </ScrollContainer>
                     </div>
+
+                    <SectionTitle title='Актёрское искусство'/>
+
+                    <PersonKnownFor
+                        cast={personFameFor.cast}
+                    />
                 </div>
                 <div className={styles.personDetailsSub}>
                     <div className={styles.personDetailsPosterContainer}>
@@ -105,6 +113,10 @@ export default function PersonPage({ personDetails, personFameFor, personExterna
 
                     <SocialNetworks
                         externalIds={sortedExternalIds}
+                    />
+
+                    <PersonExtraInfoColumn
+                        data={personDetails}
                     />
                 </div>
             </div>

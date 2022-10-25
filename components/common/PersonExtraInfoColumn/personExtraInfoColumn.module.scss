@@ -1,0 +1,17 @@
+@import 'scss/variables';
+
+.label {
+  font-family: $SFUI-Display-Semibold;
+  font-size: 1rem;
+  color: #304354;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+.text {
+  font-family: $SFUI-Display-Light;
+  font-size: .9rem;
+  color: $color-black;
+  padding: 0 5px;
+  margin-bottom: 15px;
+}

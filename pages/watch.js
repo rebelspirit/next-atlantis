@@ -13,7 +13,7 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt';
 import { ContentDetailsCard } from '@components/common/ContentDetailsCard/ContentDetailsCard';
 import { CollectionCard } from '@components/common/CollectionCard/CollectionCard';
-import { ExtraInfoColumn } from '@components/common/ExtraInfoColumn/ExtraInfoColumn';
+import { ContentExtraInfoColumn } from '@components/common/ContentExtraInfoColumn/ContentExtraInfoColumn';
 import { SeasonCard } from '@components/common/SeasonCard/SeasonCard';
 import Link from 'next/link';
 import { SocialNetworks } from '@components/common/SocialNetworks/SocialNetworks';
@@ -182,8 +182,8 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                         externalIds={sortedExternalIds}
                     />
 
-                    <ExtraInfoColumn
-                        content={{ ...details, productionCountries }}
+                    <ContentExtraInfoColumn
+                        data={{ ...details, productionCountries }}
                     />
                 </div>
 
