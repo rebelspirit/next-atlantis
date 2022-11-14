@@ -44,7 +44,7 @@ export default function PersonPage({ personDetails, personFameFor, personExterna
 
     useEffect(() => {
         console.log('personDetails', personDetails);
-        console.log('personCombinedCredits', personFameFor);
+        console.log('personFameFor', personFameFor);
         console.log('personExternalIds', personExternalIds);
     }, [personDetails, personFameFor, personExternalIds])
 

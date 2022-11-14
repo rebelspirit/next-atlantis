@@ -3,7 +3,7 @@
 
 .header {
   width: 100%;
-  max-width: $Header-Width;
+  max-width: 1400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,43 +13,45 @@
 .searchContainer {
 
   .searchField {
-    width: $Search-Width + ($Search-Icon-Width * 2);
+    width: 260px + (40px * 2);
     display: flex;
     align-items: center;
-    height: $Search-Height;
-    border: 2px solid $Search-Border;
-    background: $Search-Background;
-    border-radius: $Search-BorderRadius;
+    height: 40px;
+    border: 2px solid $search-field-border-color;
+    background: $search-field-background-color;
+    border-radius: 12px;
     @include transition(.3s ease);
 
     &:focus-within {
-      border: 2px solid $Search-Border-hovered;
+      border: 2px solid $search-field-border-color;
 
       .icon {
-        color: $color-red;
+        color: $search-field-alt-color;
       }
     }
+
     .icon {
-      color: $Search-Icon-Color;
+      color: $search-field-color;
       margin: auto 10px;
     }
     input {
       width: 100%;
-      min-width: $Search-Width;
-      max-width: $Search-Width;
+      min-width: 260px;
+      max-width: 260px;
       height: 100%;
       border: none;
-      background: $Search-Background;
-      border-radius: $Search-BorderRadius;
+      background: $search-field-background-color;
+      border-radius: 12px;
       padding: 0 5px;
       font-family: $SFUI-Display-Semibold;
       font-size: .85rem;
       font-weight: normal;
       font-style: normal;
-      color: $Search-Text-Color;
+      color: $search-field-text-color;
+      @include transition(.3s ease);
 
       &::placeholder {
-        color: $Search-Text-Color;
+        color: $search-field-color;
       }
     }
     .searchFieldClearButton {
@@ -62,11 +64,11 @@
 
       &:hover {
         .buttonIcon {
-          color: $color-red;
+          color: $search-field-alt-color;
         }
       }
       .buttonIcon {
-        color: $Search-Icon-Color;
+        color: $search-field-color;
       }
     }
   }
@@ -85,13 +87,13 @@
     font-size: 1.5rem;
     background: none;
     border: none;
-    color: $UserContainer-Color;
+    color: $notification-icons-color;
     margin: 0 5px;
     cursor: pointer;
 
     .icon {
       &:hover {
-        color: $color-red;
+        color: $notification-icons-alt-color;
       }
     }
   }

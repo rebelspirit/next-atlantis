@@ -3,8 +3,8 @@
 
 .userAvatarContainer {
   position: relative;
-  width: $Avatar-Width;
-  height: $Avatar-Height;
+  width: 45px;
+  height: 45px;
   margin: 0 20px;
   cursor: pointer;
   z-index: 10;
@@ -13,7 +13,7 @@
     .circle {
       &.redCircle {
         svg {
-          stroke-dashoffset: $FirstCircle-DashOffset - 74px;
+          stroke-dashoffset: 130px - 74px;
         }
       }
     }
@@ -28,8 +28,8 @@
 
   .circle {
     position: absolute;
-    width: $Avatar-Width + 12px;
-    height: $Avatar-Height + 12px;
+    width: 45px + 12px;
+    height: 45px + 12px;
 
     svg {
       stroke-dasharray: 260.752px, 260.752px;
@@ -45,8 +45,8 @@
       @include transform(rotate(-140deg));
 
       svg {
-        stroke: $FirstCircle-Color;
-        stroke-dashoffset: $FirstCircle-DashOffset;
+        stroke: $color-red-primary;
+        stroke-dashoffset: 130px;
       }
     }
     &.greyCircle {
@@ -56,8 +56,8 @@
       @include transform(rotate(-10deg));
 
       svg {
-        stroke: $SecondCircle-Color;
-        stroke-dashoffset: $SecondCircle-DashOffset;
+        stroke: $color-grey-primary;
+        stroke-dashoffset: 150px;
       }
     }
   }

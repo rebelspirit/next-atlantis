@@ -4,9 +4,9 @@
 .sidebar {
   position: relative;
   width: 100%;
-  max-width: $SideBar-Width;
-  border-right: 1px solid $Sidebar-Border-Color;
-  padding: $Sidebar-Container-Padding;
+  max-width: 280px;
+  border-right: 1px solid $aside-border-color;
+  padding: 40px 0 60px 0;
 
   .stickySection {
     position: sticky;
@@ -18,17 +18,17 @@
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      color: $SideBar-Logo-Color;
+      color: $logo-text-color;
       cursor: pointer;
       margin-bottom: 35px;
-      padding: $Sidebar-Items-Padding;
+      padding: 0 5px 0 60px;
 
       span {
-        color: $color-red;
+        color: $logo-dot-color;
       }
     }
     .section {
-      color: $SideBar-Text-Color;
+      color: $aside-nav-color;
       font-family: $SFUI-Display-Regular;
       font-weight: normal;
       font-style: normal;
@@ -39,14 +39,14 @@
         .sectionTitle {
           font-family: $SFUI-Display-Semibold;
           font-size: .85rem;
-          padding: $Sidebar-Items-Padding;
+          padding: 0 5px 0 60px;
           margin-bottom: 20px;
         }
         .sectionItem {
           position: relative;
           display: flex;
           align-items: center;
-          padding: $Sidebar-Items-Padding;
+          padding: 0 5px 0 60px;
           margin-bottom: 30px;
           cursor: pointer;
 
@@ -66,7 +66,7 @@
             display: block;
             width: 3px;
             height: 100%;
-            background: $Sidebar-Items-HoveredLine-Color;
+            background: $aside-nav-alt-color;
             border-top-right-radius: 2px;
             border-bottom-right-radius: 2px;
             content: '';
@@ -75,10 +75,10 @@
           }
           &:hover {
             .icon {
-              color: $Sidebar-Items-HoveredLine-Color;
+              color: $aside-nav-alt-color;
             }
             p {
-              color: $SideBar-Text-Color-hovered;
+              color: $aside-nav-color;
             }
             &:before {
               opacity: 1;
@@ -87,10 +87,10 @@
 
           &.selected {
             .icon {
-              color: $Sidebar-Items-HoveredLine-Color;
+              color: $aside-nav-alt-color;
             }
             p {
-              color: $SideBar-Text-Color-hovered;
+              color: $aside-nav-color;
             }
           }
         }

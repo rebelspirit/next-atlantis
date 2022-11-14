@@ -10,7 +10,7 @@
     @include transition(.3s);
 
     &:hover {
-      background: $Content-Card-Hover-BgColor;
+      background: $orange-grey-gradient-secondary;
       @include transform(translateY(-5px));
     }
 
@@ -31,7 +31,7 @@
   }
 }
 .personCardFooter {
-  color: $Content-Card-Text-Color;
+  color: $color-grey-thirdly;
   cursor: pointer;
   margin: 5px 0;
   padding: 0 3px;

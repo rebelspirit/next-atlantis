@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import { slice, floor, flatMap, pick } from 'lodash';

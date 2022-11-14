@@ -11,6 +11,7 @@ import classNames from 'classnames/bind';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { PersonCardSmall } from '@components/common/PersonCardSmall/PersonCardSmall';
 import { ArrayUse } from 'lib/ArrayUse';
+import { v4 as uuid } from 'uuid';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,11 @@ export const EpisodeCard = ({ name, overview, episodeNumber, airDate, voteAverag
     const calculatedRuntime = StringUse.runtimeLengthString(runtime);
 
     const checkedGuestsArray = ArrayUse.collectionHasRequiredFields(guests, guestsRequiredFields);
+
+    const episodeImages = map(images.stills, image => ({ ...image, id: uuid() }));
+
+    const isShowGuests = !!checkedGuestsArray.length;
+    const isShowEpisodeImages = !!episodeImages.length;
 
     const onClickToggleCard = () => setOpened(prev => !prev);
 
@@ -74,46 +80,54 @@ export const EpisodeCard = ({ name, overview, episodeNumber, airDate, voteAverag
             </div>
 
             <div className={styles.episodeCardBottom}>
-                <h4 className={styles.episodeCardBottomLabel}>Актерский состав</h4>
+                {isShowGuests &&
+                    <h4 className={styles.episodeCardBottomLabel}>Актерский состав</h4>
+                }
 
-                <ScrollContainer
-                    innerRef={actorsScrollContainerRef}
-                    horizontal
-                    className={styles.episodeCardScrollLayout}
-                >
-                    {map(checkedGuestsArray, guest =>
-                        <PersonCardSmall
-                            key={guest.id}
-                            name={guest.originalName}
-                            character={guest.character}
-                            knownForDepartment={guest.knownForDepartment}
-                            poster={guest.profilePath}
-                            isShowCharacterName
-                        />
-                    )}
-                </ScrollContainer>
-
-                <h4 className={styles.episodeCardBottomLabel}>Изображения эпизода</h4>
-
-                <ScrollContainer
-                    innerRef={imagesScrollContainerRef}
-                    horizontal
-                    className={styles.episodeCardScrollLayout}
-                >
-                    {map(images.stills, image =>
-                        <div className={styles.episodeCardImgContainer}>
-                            <Image
-                                src={`https://image.tmdb.org/t/p/w780${image.filePath}`}
-                                alt='episode_image'
-                                layout='fill'
-                                objectFit='cover'
-                                objectPosition='top center'
-                                className={styles.episodeCardImg}
-                                unoptimized
+                {isShowGuests &&
+                    <ScrollContainer
+                        innerRef={actorsScrollContainerRef}
+                        horizontal
+                        className={styles.episodeCardScrollLayout}
+                    >
+                        {map(checkedGuestsArray, guest =>
+                            <PersonCardSmall
+                                key={guest.id}
+                                name={guest.originalName}
+                                character={guest.character}
+                                knownForDepartment={guest.knownForDepartment}
+                                poster={guest.profilePath}
+                                isShowCharacterName
                             />
-                        </div>
-                    )}
-                </ScrollContainer>
+                        )}
+                    </ScrollContainer>
+                }
+
+                {isShowEpisodeImages &&
+                    <h4 className={styles.episodeCardBottomLabel}>Изображения эпизода</h4>
+                }
+
+                {isShowEpisodeImages &&
+                    <ScrollContainer
+                        innerRef={imagesScrollContainerRef}
+                        horizontal
+                        className={styles.episodeCardScrollLayout}
+                    >
+                        {map(episodeImages, image =>
+                            <div className={styles.episodeCardImgContainer} key={image.id}>
+                                <Image
+                                    src={`https://image.tmdb.org/t/p/w780${image.filePath}`}
+                                    alt='episode_image'
+                                    layout='fill'
+                                    objectFit='cover'
+                                    objectPosition='top center'
+                                    className={styles.episodeCardImg}
+                                    unoptimized
+                                />
+                            </div>
+                        )}
+                    </ScrollContainer>
+                }
             </div>
         </div>
     )

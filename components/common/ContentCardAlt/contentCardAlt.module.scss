@@ -15,19 +15,19 @@
     margin: 10px 0 5px 0;
   }
   .contentCardAltTitle {
-    color: $Trends-Card-Text-Color;
+    color: $color-grey-thirdly;
     font-family: $SFUI-Display-Semibold;
     font-size: 1.1rem;
     cursor: pointer;
   }
   .contentCardAltYear {
-    color: $Trends-Card-Text-Color;
+    color: $color-grey-thirdly;
     font-family: $SFUI-Display-Light;
     font-weight: 500;
     font-size: .9rem;
   }
   .contentCardAltDescription {
-    color: $Trends-Card-Text-Color;
+    color: $color-grey-thirdly;
     font-family: $SFUI-Display-Light;
     font-weight: 500;
     font-size: 0.82rem;
@@ -44,14 +44,14 @@
   @include transition(.3s);
 
   &:hover {
-    background: $Trends-Card-Hover-BgColor;
+    background: $orange-grey-gradient-primary;
     @include transform(translateY(-5px));
   }
 
   .contentCardAltImgContainer {
     position: relative;
-    width: $Trends-Card-Width;
-    height: $Trends-Card-Height;
+    width: 300px;
+    height: 170px;
     border-radius: .7rem;
     box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
 
@@ -69,9 +69,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    color: $color-white;
+    color: $color-white-primary;
     cursor: pointer;
-    filter: drop-shadow(1px 1px 1px $color-black);
+    filter: drop-shadow(1px 1px 1px $color-black-primary);
     z-index: 10;
     @include transform(translate(-50%, -50%));
 

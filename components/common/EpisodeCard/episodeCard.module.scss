@@ -1,16 +1,17 @@
 @import 'scss/variables';
 
 .episodeCardContainer {
-  height: 200px;
+  height: 100%;
+  max-height: 200px;
   box-shadow: 0 0 4px rgb(0 0 0 / 20%);
   border-radius: .7rem;
   margin: 40px 0;
   overflow: hidden;
-  transition: height .3s;
+  transition: max-height .3s;
   cursor: pointer;
 
   &.opened {
-    height: 800px;
+    max-height: 800px;
   }
   .episodeCardTop {
     min-height: 200px;
@@ -104,8 +105,8 @@
       gap: 3px;
       font-family: $SFUI-Display-Semibold;
       font-size: .85rem;
-      color: $color-white;
-      background: $color-black;
+      color: $color-white-primary;
+      background: $color-black-primary;
       padding: 3px 8px;
       border-radius: .65rem;
     }
@@ -147,7 +148,7 @@
     font-family: $SFUI-Display-Regular;
     font-size: .93rem;
     font-style: normal;
-    color: $color-black;
+    color: $color-black-primary;
     margin: 10px 0;
     padding: 0 10px;
   }

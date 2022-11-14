@@ -6,11 +6,12 @@ import { DateUse } from 'lib/DateUse';
 import { map, eq } from 'lodash';
 import { VotingPercentCircle } from '@components/common/VotingPercentCircle/VotingPercentCircle';
 import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
-import { FcLike } from 'react-icons/fc';
+import { FcLike, FcDislike, FcLikePlaceholder } from 'react-icons/fc';
 import { Number } from 'animations/Number';
 import { IoPlayCircle } from 'react-icons/io5';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import { StringUse } from 'lib/StringUse';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -35,11 +36,30 @@ export const ContentDetailsCard = ({
     numberOfEpisodes
 }) => {
 
+    const [vote, setVote] = useState({
+        count: voteCount,
+        isUserMakeAction: false,
+        isUserLiked: false
+    });
+
     const taglineString = StringUse.fixTaglineString(tagline);
 
     const isShowRunTime = runtime && eq(type, 'movie');
 
     const isShowSeasonsAndEpisodes = numberOfSeasons && numberOfEpisodes && eq(type, 'tv');
+
+    const isShowWatchOnlineButton = !!iframeSrc;
+
+    const onClickSetLike = () => setVote(prev => ({
+        count: prev.count + 1,
+        isUserMakeAction: true,
+        isUserLiked: true
+    }));
+    const onClickSetDislike = () => setVote(prev => ({
+        count: prev.count - 1,
+        isUserMakeAction: true,
+        isUserLiked: false
+    }));
 
     return (
         <div className={styles.contentDetailsContainer}>
@@ -85,11 +105,19 @@ export const ContentDetailsCard = ({
                                 <VotingPercentCircle voteAverage={voteAverage}/>
                                 <p>Пользовательский <br/> рейтинг</p>
                             </div>
-                            <div className={styles.voteCountContainer}>
+                            <div className={cx(styles.voteCountContainer, { 'liked': vote.isUserMakeAction && vote.isUserLiked })}>
+                                <div onClick={onClickSetLike}>
+                                    <IconWrapper width={42} height={42}>
+                                        <FcLike/>
+                                    </IconWrapper>
+                                </div>
+                                <Number numberProps={vote.count} toFixed={0}/>
+                            </div>
+
+                            <div className={cx(styles.voteCountContainer, { 'disliked': vote.isUserMakeAction && !vote.isUserLiked })} onClick={onClickSetDislike}>
                                 <IconWrapper width={42} height={42}>
-                                    <FcLike/>
+                                    <FcDislike/>
                                 </IconWrapper>
-                                <Number numberProps={voteCount} toFixed={0}/>
                             </div>
                         </div>
 
@@ -102,15 +130,17 @@ export const ContentDetailsCard = ({
                         </div>
 
                         <div className={styles.buttonsContainer}>
-                            <button
-                                className={styles.watchOnlineButton}
-                                onClick={onClickShowPlayer}
-                            >
-                                Смотреть онлайн
-                                <IconWrapper width={32} height={32}>
-                                    <IoPlayCircle/>
-                                </IconWrapper>
-                            </button>
+                            {isShowWatchOnlineButton &&
+                                <button
+                                    className={styles.watchOnlineButton}
+                                    onClick={onClickShowPlayer}
+                                >
+                                    Смотреть онлайн
+                                    <IconWrapper width={32} height={32}>
+                                        <IoPlayCircle/>
+                                    </IconWrapper>
+                                </button>
+                            }
                         </div>
                     </div>
 

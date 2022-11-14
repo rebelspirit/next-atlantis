@@ -4,8 +4,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: $Mode-Width;
-  height: $Mode-Height;
+  width: 50px;
+  height: 26px;
   margin: 0 15px;
 
   input {
@@ -15,8 +15,8 @@
 
     &:checked {
       +.slider {
-        background: $Slider-Color;
-        border: 1px solid $Slider-Color;
+        background: $color-grey-primary;
+        border: 1px solid $color-grey-primary;
 
         &:before {
           @include transform(translateX(24px));
@@ -31,18 +31,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: $Slider-Color;
-    border: 1px solid $Slider-Color;
+    background: $color-grey-primary;
+    border: 1px solid $color-grey-primary;
     @include transition(.4s ease);
 
     &:before {
       position: absolute;
       content: "";
-      height: $Switcher-WidthHeight;
-      width: $Switcher-WidthHeight;
+      height: 22px;
+      width: 22px;
       left: 1px;
       bottom: 1px;
-      background-color: $Switcher-Color;
+      background-color: $color-white-primary;
       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
       @include transition(.3s ease);
     }
@@ -62,11 +62,11 @@
 
       &.dayMode {
         right: 6px;
-        color: $DayMode-Icon-Color;
+        color: $color-orange-primary;
       }
       &.nightMode {
         left: 6px;
-        color: $NightMode-Icon-Color;
+        color: $color-blue-primary;
       }
     }
   }

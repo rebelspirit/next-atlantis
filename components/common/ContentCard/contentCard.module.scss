@@ -2,19 +2,19 @@
 @import 'scss/mixins';
 
 .contentContainer {
-  width: $Content-Card-Width;
+  width: 240px;
 
   .contentCardContainer {
     border-radius: .7rem;
     @include transition(.3s);
 
     &:hover {
-      background: $Content-Card-Hover-BgColor;
+      background: $orange-grey-gradient-secondary;
       @include transform(translateY(-5px));
     }
 
     .contentCardImgContainer {
-      height: $Content-Card-Height;
+      height: 390px;
       border-radius: .7rem;
       box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
 
@@ -29,7 +29,7 @@
     }
   }
   .contentCardFooter {
-    color: $Content-Card-Text-Color;
+    color: $color-grey-thirdly;
     cursor: pointer;
     margin: 5px 0;
     padding: 0 3px;

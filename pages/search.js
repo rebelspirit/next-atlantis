@@ -13,6 +13,8 @@ export default function SearchPage({ searchedContent }) {
 
     const isSearchResultNoData = !compact([!!searchedContent.movie.length, !!searchedContent.tv.length, !!searchedContent.person.length]).length;
 
+    console.log('searchedContent', searchedContent);
+
     if (isLoading) {
         // TODO: Change loader to CustomContentLoader (like skeleton) for this page. Problem with useLoading hook
         return <ShapeLoader/>

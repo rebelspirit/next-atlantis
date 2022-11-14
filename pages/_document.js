@@ -10,17 +10,11 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    {/*<link*/}
-                    {/*    rel='preload'*/}
-                    {/*    href='../scss/global.scss'*/}
-                    {/*    as='style'*/}
-                    {/*    type='text/css'*/}
-                    {/*    crossOrigin*/}
-                    {/*/>*/}
+                    {/*<link></link>*/}
                 </Head>
                 <body>
-                    <Main />
-                    <NextScript />
+                    <Main/>
+                    <NextScript/>
                 </body>
             </Html>
         );

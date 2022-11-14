@@ -1,11 +1,36 @@
 /*  COLORS
 ========================================== */
-$color-white: #FAFAFA;
-$color-grey: #E0E0E093;
-$color-red: rgb(215, 31, 38);
-$color-blue: #3781c8;
-$color-orange: #FFA500;
-$color-black: #000000;
+$color-white-primary: var(--color-white-primary);
+$color-white-secondary: var(--color-white-secondary);
+$color-grey-primary: var(--color-grey-primary);
+$color-grey-secondary: var(--color-grey-secondary);
+$color-grey-thirdly: var(--color-grey-thirdly);
+$color-grey-fours: var(--color-grey-fours);
+$color-red-primary: var(--color-red-primary);
+$color-orange-primary: var(--color-orange-primary);
+$color-yellow-primary: var(--color-yellow-primary);
+$color-blue-primary: var(--color-blue-primary);
+$color-black-primary: var(--color-black-primary);
+
+$logo-text-color: var(--logo-text-color);
+$logo-dot-color: var(--logo-dot-color);
+$app-container-color: var(--app-container-color);
+$aside-nav-color: var(--aside-nav-color);
+$aside-nav-alt-color: var(--aside-nav-alt-color);
+$aside-border-color: var(--aside-border-color);
+$search-field-background-color: var(--search-field-background-color);
+$search-field-border-color: var(--search-field-border-color);
+$search-field-color: var(--search-field-color);
+$search-field-alt-color: var(--search-field-alt-color);
+$search-field-text-color: var(--search-field-text-color);
+$notification-icons-color: var(--notification-icons-color);
+$notification-icons-alt-color: var(--notification-icons-alt-color);
+
+/*  GRADIENTS
+========================================== */
+$orange-grey-gradient-primary: linear-gradient(45deg, $color-yellow-primary 0%, $color-grey-thirdly 50%);
+$orange-grey-gradient-secondary: linear-gradient(45deg, $color-yellow-primary 0%, $color-grey-thirdly 65%);
+$red-transparentRed-gradient-primary: linear-gradient(45deg, $color-red-primary 0%, rgba(215, 31, 38, 0.85) 80%);
 
 /*  FONTS
 ========================================== */
@@ -13,98 +38,3 @@ $Lato-Black: 'Lato-Black', sans-serif;
 $SFUI-Display-Semibold: "SF UI Display Semibold", sans-serif;
 $SFUI-Display-Light: "SF UI Display Light", sans-serif;
 $SFUI-Display-Regular: "SF UI Display Regular", sans-serif;
-
-/*  APP
-========================================== */
-$App-Background: #F8FAFF;
-
-/*  BODY
-========================================== */
-$Body-Padding: 30px;
-$Body-Background: radial-gradient(circle, #EEAECA 0%, #94BBE9 100%);;
-
-/*  HEADER
-========================================== */
-$Header-height: 60px;
-$Header-Width: 1400px;
-
-/*  SEARCH FIELD
-========================================== */
-$Search-Width: 260px;
-$Search-Height: 40px;
-$Search-Icon-Width: 40px;
-$Search-Border: #8FA4B8;
-$Search-Border-hovered: #304354;
-$Search-BorderRadius: 12px;
-$Search-Background: #F8FAFF;
-$Search-Icon-Color: #8FA4B8;
-$Search-Text-Color: #8FA4B8;
-
-/*  HEADER USER CONTAINER
-========================================== */
-$UserContainer-Color: #8FA4B8;
-
-/*  HEADER USER AVATAR
-========================================== */
-$Avatar-Width: 45px;
-$Avatar-Height: 45px;
-$FirstCircle-Color: #D71F26;
-$FirstCircle-DashOffset: 130px;
-$SecondCircle-Color: #e0e0e0;
-$SecondCircle-DashOffset: 150px;
-
-/*  NIGHT MODE
-========================================== */
-$Mode-Width: 50px;
-$Mode-Height: 26px;
-$Switcher-Color: #FAFAFA;
-$Switcher-WidthHeight: 22px;
-$Slider-Color: #E0E0E0;
-$NightMode-Icon-Color: #3781c8;
-$DayMode-Icon-Color: #FFA500;
-
-/*  SIDEBAR
-========================================== */
-$SideBar-Width: 280px;
-$Sidebar-Container-Padding: 40px 0 60px 0;
-$Sidebar-Items-Padding: 0 5px 0 60px;
-$Sidebar-Items-HoveredLine-Color: #D71F26;
-$Sidebar-Border-Color: #E0E0E093;
-$SideBar-Logo-Color: #304354;
-$SideBar-Text-Color: #8FA4B8;
-$SideBar-Text-Color-hovered: #304354;
-$SideBar-Icon-Color: #adadad;
-
-/*  SLIDER
-========================================== */
-$Slider-Title-Color: #FAFAFA;
-
-/*  TRENDS CONTAINER
-========================================== */
-$Trends-Row-Title-Color: #304354;
-$Trends-Row-Button-Color: #304354;
-$Trends-Row-TabButton-Color: #304354;
-$Trends-Row-TabButtonSelected-Color: #D71F26;
-
-/*  TRENDS CARD
-========================================== */
-$Trends-Card-Width: 300px;
-$Trends-Card-Height: 170px;
-$Trends-Card-Text-Color: #304354;
-$Trends-Card-Hover-BgColor: linear-gradient(45deg, #DECBA4 0%, #304354 50%);
-
-/*  CONTENT CARD
-========================================== */
-$Content-Card-Hover-BgColor: linear-gradient(45deg, #DECBA4 0%, #304354 65%);
-$Content-Card-Width: 240px;
-$Content-Card-Height: 390px;
-$Content-Card-Text-Color: #304354;
-
-/*  PAGINATION
-========================================== */
-$Pagination-Text-Color: #304354;
-$Pagination-ItemHover-Color: #E0E0E093;
-$Pagination-ItemSelected-Color: linear-gradient(45deg, #D71F26 0%, rgba(215, 31, 38, 0.85) 80%);
-$Pagination-ItemSelected-Text-Color: #FAFAFA;
-$Pagination-InputBorder-Color: #304354;
-$Pagination-InputFocusBorder-Color: #D71F26;

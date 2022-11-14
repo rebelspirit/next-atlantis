@@ -6,33 +6,35 @@ import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 
 const cx = classNames.bind(styles);
 
-export const NightMode = ({ callback, isChecked }) => {
-
+export const NightMode = ({ onClickSetDarkMode, isChecked }) => {
     return (
         <label className={styles.switch}>
             <input
                 type="checkbox"
                 checked={isChecked}
-                onChange={callback}
+                onChange={onClickSetDarkMode}
             />
             <span className={cx(styles.slider, styles.round)}>
                 {!isChecked &&
-                <IconWrapper height={12} width={12} className={cx(styles.icon, { 'dayMode': !isChecked })}>
-                    <IoSunny/>
-                </IconWrapper>}
+                    <IconWrapper height={12} width={12} className={cx(styles.icon, { 'dayMode': !isChecked })}>
+                        <IoSunny/>
+                    </IconWrapper>
+                }
+
                 {isChecked &&
-                <IconWrapper height={12} width={12} className={cx(styles.icon, { 'nightMode': isChecked })}>
-                    <IoMoon/>
-                </IconWrapper>
+                    <IconWrapper height={12} width={12} className={cx(styles.icon, { 'nightMode': isChecked })}>
+                        <IoMoon/>
+                    </IconWrapper>
                 }
             </span>
         </label>
     )
-}
+};
+
 NightMode.propTypes = {
-    callback: PropTypes.func.isRequired,
+    onClickSetDarkMode: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-}
+};
 NightMode.defaultProps = {
     isChecked: false,
-}
+};

@@ -1,8 +1,87 @@
 @import 'variables';
 
 :root {
+    --color-white-primary: #FAFAFA;
+    --color-white-secondary: #F8FAFF;
+    --color-grey-primary: #E0E0E0;
+    --color-grey-secondary: #8FA4B8;
+    --color-grey-thirdly: #304354;
+    --color-grey-fours: #ADADAD;
+    --color-red-primary: #D71F26;
+    --color-orange-primary: #FFA500;
+    --color-yellow-primary: #FFA500;
+    --color-blue-primary: #3781C8;
+    --color-black-primary: #000000;
     scroll-behavior: smooth;
+
+    // COLORS
+    --color-blue-1: #94BBE9;
+    --color-pink-1: #EEAECA;
+    --color-white-1: #FAFAFA;
+    --color-white-2: #F8FAFF;
+    --color-grey-1: #E0E0E0;
+    --color-grey-2: #ADADAD;
+    --color-grey-3: #8FA4B8;
+    --color-grey-4: #304354;
+    --color-red-1: #D71F26;
+    // VARIABLES
+    --background-main-color: radial-gradient(circle, var(--color-pink-1) 0%, var(--color-blue-1) 100%);
+    --logo-text-color: var(--color-grey-4);
+    --logo-dot-color: var(--color-red-1);
+    --app-container-color: var(--color-white-2);
+    --aside-nav-color: var(--color-grey-3);
+    --aside-nav-alt-color: var(--color-red-1);
+    --aside-border-color: var(--color-grey-1);
+    --search-field-background-color: var(--color-white-2);
+    --search-field-border-color: var(--color-grey-3);
+    --search-field-color: var(--color-grey-3);
+    --search-field-alt-color: var(--color-red-1);
+    --search-field-text-color: var(--color-grey-3);
+    --notification-icons-color: var(--color-grey-3);
+    --notification-icons-alt-color: var(--color-red-1);
 }
+:root[data-theme='dark'] {
+    --color-white-primary: #FAFAFA;
+    --color-white-secondary: #F8FAFF;
+    --color-grey-primary: #E0E0E0;
+    --color-grey-secondary: #8FA4B8;
+    --color-grey-thirdly: #304354;
+    --color-grey-fours: #ADADAD;
+    --color-red-primary: #D71F26;
+    --color-orange-primary: #FFA500;
+    --color-yellow-primary: #FFA500;
+    --color-blue-primary: #3781C8;
+    --color-blue-secondary: #94BBE9;
+    --color-pink-primary: #EEAECA;
+    --color-black-primary: #000000;
+    --color-black-primary: #000000;
+    scroll-behavior: smooth;
+
+    // COLORS
+    --color-white-1: #FAFAFA;
+    --color-white-2: #C9D1D9;
+    --color-grey-1: #0E1117;
+    --color-grey-2: #21262d;
+    --color-grey-3: #8B949E;
+    --color-black-1: #02040a;
+    --color-blue-1: #58A6FF;
+    // VARIABLES
+    --background-main-color: var(--color-black-1);
+    --logo-text-color: var(--color-white-2);
+    --logo-dot-color: var(--color-blue-1);
+    --app-container-color: var(--color-grey-1);
+    --aside-nav-color: var(--color-white-2);
+    --aside-nav-alt-color: var(--color-blue-1);
+    --aside-border-color: var(--color-grey-2);
+    --search-field-background-color: var(--color-black-1);
+    --search-field-border-color: var(--color-grey-2);
+    --search-field-color: var(--color-grey-3);
+    --search-field-alt-color: var(--color-blue-1);
+    --search-field-text-color: var(--color-white-2);
+    --notification-icons-color: var(--color-white-2);
+    --notification-icons-alt-color: var(--color-blue-1);
+}
+
 
 @font-face {
     font-family: 'Lato-Black';
@@ -194,11 +273,12 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    padding: $Body-Padding;
+    background: var(--background-main-color);
+    padding: 30px;
     font-family: 'SF UI Display Regular', sans-serif;
     user-select: none;
     overflow-x: hidden;
+    transition: background .3s;
 }
 
 /* width */

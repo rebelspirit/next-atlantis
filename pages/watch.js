@@ -56,10 +56,15 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
 
     const sortedExternalIds = ArrayUse.convertExternalIdsObjToArray(externalIds);
 
-    const isShowContentCardCollection = collection && eq(details.contentType, 'movie');
-    const isShowContentCardSeason = details.seasons && eq(details.contentType, 'tv');
+    const isMovie = eq(details.contentType, 'movie');
+    const isSerial = eq(details.contentType, 'tv');
+
+    const isShowContentCardCollection = collection && isMovie;
+    const isShowContentCardSeason = details.seasons && isSerial;
     const isShowRelatedContent = !!relatedContent.length;
     const isShowActorsStuff = !!actorsStuff.length;
+
+    const seasonCount = !!details.seasonCount && isSerial ? details.seasonCount : details.numberOfSeasons;
 
     const onClickShowPlayer = () => setShowPlayer(true);
     const onClickClosePlayer = () => setShowPlayer(false);
@@ -70,12 +75,20 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
         // console.log('collection', collection);
         // console.log('relatedContent', relatedContent);
         // console.log('externalIds', externalIds);
-        console.log('sortedExternalIds', sortedExternalIds);
+        // console.log('sortedExternalIds', sortedExternalIds);
         // console.log('countries', countries);
     }, [details, actorsStuff, collection, relatedContent, externalIds, countries, sortedExternalIds]);
 
     if (isLoading) {
         return <ShapeLoader/>
+    }
+
+    if (!details.contentType) {
+        return (
+            <div className={styles.contentPageContainer}>
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum eius eligendi excepturi explicabo incidunt iusto mollitia rem sequi vero voluptatibus? Amet hic ipsum neque possimus quis quisquam, quos voluptate voluptatem.</h1>
+            </div>
+        )
     }
 
     return (
@@ -94,7 +107,7 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                 tagline={details.tagline}
                 overview={details.overview}
                 iframeSrc={details.iframeSrc}
-                {...getPropsFromContentType[details.contentType](details)}
+                {...getPropsFromContentType[details?.contentType](details)}
             />
 
             <div className={styles.contentUsefulInformation}>
@@ -145,7 +158,7 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                                 serialName={details.name}
                             />
 
-                            <Link href={`/seasons/?id=${details.id}&seasonsLength=${details.seasonCount}`}>
+                            <Link href={`/seasons/?id=${details.id}&seasonsLength=${seasonCount}`}>
                                 <button className={styles.transparentButton}>Смотреть все сезоны</button>
                             </Link>
                         </div>
@@ -169,8 +182,8 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                                         mediaType={content.mediaType}
                                         image={content.backdropPath}
                                         overview={content.overview}
-                                        {...getPropsFromContentType[content.mediaType](content)}
-                                    />,
+                                        {...getPropsFromContentType[content?.mediaType](content)}
+                                    />
                                 )}
                             </ScrollContainer>
                         </div>
@@ -215,6 +228,12 @@ export const getServerSideProps = async ({ query }) => {
         return null;
     };
 
+    const contentDetailsContentTypeDefinition = (details, type) => {
+        return details.contentType
+            ? details
+            : { ...details, contentType: type }
+    };
+
     const details = await detailsMediaTypeRequest[query.type](query.id);
     const actorsStuff = await Common.getActorsStuff(query.type, query.id);
     const collection = await getCollectionRequest(query.type, details);
@@ -225,7 +244,7 @@ export const getServerSideProps = async ({ query }) => {
 
     return {
         props: {
-            details,
+            details: contentDetailsContentTypeDefinition(details, query.type),
             actorsStuff,
             collection,
             relatedContent,

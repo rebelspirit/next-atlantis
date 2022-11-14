@@ -9,17 +9,23 @@ import { IconWrapper } from '@components/common/IconWrapper/IconWrapper';
 import { UserAvatar } from '@components/common/UserAvatar/UserAvatar';
 import { useDebounce } from 'hooks/useDebounce';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
 
 const search = query => `/search/?search=${query}`;
 
 export const Header = () => {
     const router = useRouter();
 
+    const { resolvedTheme, setTheme } = useTheme();
+
     const [searchTerm, setSearchTerm] = useState('');
+    const [mounted, setMounted] = useState(false);
 
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
     const isReadyForStartSearch = debouncedSearchTerm && debouncedSearchTerm.length > 3;
+
+    const isCheckedDarkTheme = eq(resolvedTheme, 'dark');
 
     const onChangeSearchInput = event => setSearchTerm(toLower(event.target.value));
 
@@ -31,11 +37,15 @@ export const Header = () => {
 
     const onClickClearSearchField = () => setSearchTerm('');
 
+    const onToggleThemeMode = () => setTheme(isCheckedDarkTheme ? 'light' : 'dark');
+
     useEffect(() => {
         if (isReadyForStartSearch) {
             router.push(search(debouncedSearchTerm));
         }
     }, [debouncedSearchTerm]);
+
+    useEffect(() => setMounted(true), []);
 
     return (
         <header className={styles.header}>
@@ -61,12 +71,19 @@ export const Header = () => {
                 </div>
             </div>
             <div className={styles.userContainer}>
-                <NightMode callback={() => console.log('change')} isChecked={false}/>
+                {mounted &&
+                    <NightMode
+                        onClickSetDarkMode={onToggleThemeMode}
+                        isChecked={isCheckedDarkTheme}
+                    />
+                }
+
                 <button className={styles.userContainerButton}>
                     <IconWrapper width={24} height={24} className={styles.icon}>
                         <IoNotifications/>
                     </IconWrapper>
                 </button>
+
                 <button className={styles.userContainerButton}>
                     <IconWrapper width={24} height={24} className={styles.icon}>
                         <BsChatDotsFill/>

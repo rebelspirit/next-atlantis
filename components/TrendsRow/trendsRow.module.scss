@@ -49,11 +49,11 @@
 
       &:hover {
         .trendsScrollButtonIcon svg polyline {
-          stroke: $color-red;
+          stroke: $color-red-primary;
         }
       }
       .trendsScrollButtonIcon svg polyline {
-        stroke: $Trends-Row-Button-Color;
+        stroke: $color-grey-thirdly;
         @include transition(.3s);
       }
     }
@@ -61,7 +61,7 @@
       @include transform(rotate(-180deg));
     }
     .disabled i svg polyline {
-      stroke: $color-grey !important;
+      stroke: $color-grey-primary !important;
     }
   }
 }

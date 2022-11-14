@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 export const Number = ({ numberProps, toFixed }) => {
-    const [flip, set] = useState(false)
+    const [flip, set] = useState(false);
+
     const { number } = useSpring({
         reset: false,
         reverse: false,

@@ -23,7 +23,7 @@
     font-size: 2.5rem;
     font-weight: normal;
     font-style: normal;
-    color: $Slider-Title-Color;
+    color: $color-white-primary;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     margin: 5px 0;
   }
@@ -34,7 +34,7 @@
     font-size: 1.05rem;
     font-weight: normal;
     font-style: normal;
-    color: $Slider-Title-Color;
+    color: $color-white-primary;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -52,7 +52,7 @@
     font-size: 1.2rem;
     font-weight: normal;
     font-style: normal;
-    color: $color-white;
+    color: $color-white-primary;
     margin: 5px 0;
 
     p {
@@ -68,7 +68,7 @@
         margin: 0 5px 0 0;
       }
       .icon {
-        color: $color-orange;
+        color: $color-orange-primary;
         &.iconBackground {
           position: relative;
           z-index: 1;
@@ -79,7 +79,7 @@
             display: block;
             width: calc(100% - 4px);
             height: calc(100% - 4px);
-            background: $color-black;
+            background: $color-black-primary;
             border-radius: 3px;
             content: '';
             z-index: -1;
@@ -138,20 +138,19 @@
       .sliderNavBarDot {
         width: 15px;
         height: 15px;
-        background: $color-white;
-        border: 1px solid $color-white;
+        background: $color-white-primary;
+        border: 1px solid $color-white-primary;
         border-radius: 50%;
-        filter: drop-shadow(0 0 3px rgba(0, 0, 0, .7));
-        box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5));
         margin: 0 7px;
         cursor: pointer;
         @include transition(.3s ease);
 
         &.selected {
           border-radius: 50%;
-          background: $color-red;
-          border: 1px solid $color-red;
-          box-shadow: 0 0 0 $color-white;
+          background: $color-red-primary;
+          border: 1px solid $color-red-primary;
+          filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5));
           animation: pulse 2s infinite;
         }
       }
