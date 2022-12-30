@@ -10,16 +10,14 @@ export const PersonCard = ({ id, name, character, knownForDepartment, poster, is
             <div className={styles.personCardContainer}>
                 <div className={styles.personCardImgContainer}>
                     <Link href={`/person/?id=${id}`}>
-                        <a>
-                            <Image
-                                src={`https://image.tmdb.org/t/p/w780${poster}`}
-                                alt='actor_card'
-                                width={160}
-                                height={235}
-                                className={styles.personCardImg}
-                                unoptimized
-                            />
-                        </a>
+                        <Image
+                            src={`https://image.tmdb.org/t/p/w780${poster}`}
+                            alt='actor_card'
+                            width={160}
+                            height={235}
+                            className={styles.personCardImg}
+                            unoptimized
+                        />
                     </Link>
                 </div>
             </div>

@@ -8,7 +8,7 @@
   align-items: center;
   gap: 60px;
   font-family: $SFUI-Display-Regular;
-  color: $color-grey-secondary;
+  color: $pagination-color;
   margin: 15px auto;
 
   .pagination {
@@ -27,7 +27,7 @@
       @include transition(.3s);
 
       &:hover {
-        background: $color-grey-primary;
+        background: $pagination-item-background-color-active;
       }
 
       &.pageButton {
@@ -35,8 +35,8 @@
         box-sizing: content-box;
 
         &.selected {
-          background: $red-transparentRed-gradient-primary;
-          color: $color-white-primary;
+          background: $pagination-item-selected-background-color;
+          color: $pagination-item-selected-color;
         }
 
         .link {
@@ -85,8 +85,8 @@
       padding: 2px 2px 2px 4px;
       font-family: inherit;
       font-size: 1rem;
-      border: 1px solid $color-grey-secondary;
-      background: transparent;
+      border: 1px solid $pagination-input-border-color;
+      background: $pagination-input-background-color;
       border-radius: 4px;
       box-sizing: content-box;
       @include transition(.3s);
@@ -100,7 +100,7 @@
         -moz-appearance: textfield;
       }
       &:focus {
-        border: 1px solid $color-red-primary;
+        border: 1px solid $pagination-input-border-color-active;
       }
     }
 
@@ -110,7 +110,7 @@
       @include transition(.3s);
 
       &:hover {
-        background: $color-grey-primary;
+        background: $pagination-item-background-color-active;
       }
 
       .selectPageButtonIcon {

@@ -1,16 +1,16 @@
 import styles from 'pages/index.module.scss';
 import PropTypes from 'prop-types';
 import { map, eq, find, last } from 'lodash';
-import { Movies } from 'Api/Movies';
-import { Serials } from 'Api/Serials';
+import { Movies } from 'api/Movies';
+import { Serials } from 'api/Serials';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 import { useEffect, useRef, useState } from 'react';
-import { Common } from 'Api/Common';
+import { Common } from 'api/Common';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { PersonCard } from '@components/common/PersonCard/PersonCard';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt';
+import { ContentCardHorizontal } from '@components/common/ContentCardHorizontal/ContentCardHorizontal';
 import { ContentDetailsCard } from '@components/common/ContentDetailsCard/ContentDetailsCard';
 import { CollectionCard } from '@components/common/CollectionCard/CollectionCard';
 import { ContentExtraInfoColumn } from '@components/common/ContentExtraInfoColumn/ContentExtraInfoColumn';
@@ -176,7 +176,7 @@ export default function WatchPage({ details, actorsStuff, collection, relatedCon
                                 className={styles.relatedContentScrollLayout}
                             >
                                 {map(relatedContent, content =>
-                                    <ContentCardAlt
+                                    <ContentCardHorizontal
                                         key={content.id}
                                         id={content.id}
                                         mediaType={content.mediaType}

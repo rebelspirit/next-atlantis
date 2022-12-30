@@ -71,7 +71,7 @@
         font-family: $SFUI-Display-Semibold;
         font-size: 1.1rem;
         font-style: normal;
-        color: #304354;
+        color: $transparent-button-text-color;
         background: transparent;
         border: 0;
         margin: 5px 0;
@@ -79,7 +79,7 @@
         @include transition(.3s);
 
         &:hover {
-          color: #304354CC;
+          color: $transparent-button-text-color-active;
         }
       }
     }
@@ -89,7 +89,8 @@
     width: 100%;
     padding: 10px 25px;
     margin-left: 30px;
-    border-left: 1px solid #E0E0E093;
+    border-left: 1px solid $content-useful-info-border-color;
+    transition: border-left-color .3s;
   }
 }
 
@@ -158,7 +159,8 @@
   .personDetailsSub {
     padding: 10px 25px;
     margin-left: 30px;
-    border-left: 1px solid #E0E0E093;
+    border-left: 1px solid $person-details-container-border-color;
+    transition: border-left-color .3s;
 
     .personDetailsPosterContainer {
       height: 430px;

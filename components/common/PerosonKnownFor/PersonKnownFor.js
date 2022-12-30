@@ -26,7 +26,7 @@ export const PersonKnownFor = ({ cast }) => {
         <div className={styles.personKnownForContainer}>
             {map(transformCastCollectionArray(cast), content =>
                 <Link href={`/watch?type=${content.mediaType}&id=${content.id}`}>
-                    <a className={styles.personKnownForRow}>
+                    <div className={styles.personKnownForRow}>
                         <p className={styles.personKnownForDate}>{content.releaseYear}</p>
 
                         <div className={styles.personKnownFor}>
@@ -34,7 +34,7 @@ export const PersonKnownFor = ({ cast }) => {
                             {!!content.character && <span>как</span>}
                             {!!content.character && <p>{content.character}</p>}
                         </div>
-                    </a>
+                    </div>
                 </Link>
             )}
         </div>

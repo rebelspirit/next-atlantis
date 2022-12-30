@@ -19,7 +19,7 @@ const App = ({ Component, pageProps }) => {
 
               <NextNProgress
                   height={3}
-                  color='#D71F26'
+                  color='var(--loading-progress-bar-color)'
                   stopDelayMs={200}
               />
               <Component {...pageProps}/>

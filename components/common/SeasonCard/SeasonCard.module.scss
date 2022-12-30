@@ -7,6 +7,7 @@
   box-shadow: 0 0 4px rgb(0 0 0 / 20%);
   border-radius: .7rem;
   text-decoration: none;
+  background: $season-card-background-color;
   margin: 20px 0 10px 0;
   cursor: pointer;
   @include transition(.3s);
@@ -35,7 +36,7 @@
     font-family: $SFUI-Display-Semibold;
     font-size: 1.5rem;
     font-style: normal;
-    color: #304354;
+    color: $season-card-title-color;
     margin: 5px 0;
     padding: 0 10px;
   }
@@ -47,7 +48,7 @@
     font-family: $SFUI-Display-Semibold;
     font-size: 0.95rem;
     font-style: normal;
-    color: #304354;
+    color: $season-card-description-color;
     margin: 5px 0;
     padding: 0 10px;
 
@@ -55,7 +56,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: #304354;
+      background: $season-card-description-color;
       margin: 0 3px;
     }
   }
@@ -68,7 +69,7 @@
     font-family: $SFUI-Display-Regular;
     font-size: .93rem;
     font-style: normal;
-    color: $color-black-primary;
+    color: $season-card-overview-color;
     margin: 20px 0 10px 0;
     padding: 0 10px;
   }

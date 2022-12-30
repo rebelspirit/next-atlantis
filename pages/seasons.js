@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import PropTypes from 'prop-types';
 import { SeasonCard } from '@components/common/SeasonCard/SeasonCard';
 import { map, toNumber } from 'lodash';
-import { Serials } from 'Api/Serials';
+import { Serials } from 'api/Serials';
 import { useEffect } from 'react';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { useLoading } from 'hooks/useLoading';

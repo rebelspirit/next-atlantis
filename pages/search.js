@@ -1,9 +1,9 @@
 import styles from './index.module.scss';
 import { useLoading } from 'hooks/useLoading';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
-import { Search } from 'Api/Search';
+import { Search } from 'api/Search';
 import { map, compact } from 'lodash';
-import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { ContentCardVertival } from '@components/common/ContentCardVertical/ContentCardVertival';
 import { PersonCard } from '@components/common/PersonCard/PersonCard';
 import { NoDataPlug } from '@components/common/NoDataPlug/NoDataPlug';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
@@ -33,7 +33,7 @@ export default function SearchPage({ searchedContent }) {
             {!!searchedContent.movie.length &&
                 <div className={styles.contentMappedContainer}>
                     {map(searchedContent.movie, content =>
-                        <ContentCard
+                        <ContentCardVertival
                             key={content.id}
                             id={content.id}
                             mediaType={content.mediaType}
@@ -52,7 +52,7 @@ export default function SearchPage({ searchedContent }) {
             {!!searchedContent.tv.length &&
                 <div className={styles.contentMappedContainer}>
                     {map(searchedContent.tv, content =>
-                        <ContentCard
+                        <ContentCardVertival
                             key={content.id}
                             id={content.id}
                             mediaType={content.mediaType}

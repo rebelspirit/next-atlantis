@@ -7,6 +7,7 @@
   max-width: 280px;
   border-right: 1px solid $aside-border-color;
   padding: 40px 0 60px 0;
+  transition: border-right-color .3s;
 
   .stickySection {
     position: sticky;
@@ -78,7 +79,7 @@
               color: $aside-nav-alt-color;
             }
             p {
-              color: $aside-nav-color;
+              color: $aside-nav-color-active;
             }
             &:before {
               opacity: 1;
@@ -90,7 +91,7 @@
               color: $aside-nav-alt-color;
             }
             p {
-              color: $aside-nav-color;
+              color: $aside-nav-color-active;
             }
           }
         }

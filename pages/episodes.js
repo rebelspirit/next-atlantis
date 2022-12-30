@@ -4,7 +4,7 @@ import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 import { useEffect } from 'react';
 import { map, toNumber } from 'lodash';
-import { Serials } from 'Api/Serials';
+import { Serials } from 'api/Serials';
 import SeasonsPage from 'pages/seasons';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { EpisodeCard } from '@components/common/EpisodeCard/EpisodeCard';

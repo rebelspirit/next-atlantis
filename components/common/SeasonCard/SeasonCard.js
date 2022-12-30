@@ -13,7 +13,7 @@ export const SeasonCard = ({ season, episodesCount, serialId, serialName }) => {
 
     return (
         <Link href={`/episodes/?id=${serialId}&season=${season.seasonNumber}&episodesLength=${episodesCount}`}>
-            <a className={styles.seasonCardContainer}>
+            <div className={styles.seasonCardContainer}>
                 <div className={styles.seasonCardPosterContainer}>
                     <Image
                         src={`https://image.tmdb.org/t/p/w780${season.posterPath}`}
@@ -39,7 +39,7 @@ export const SeasonCard = ({ season, episodesCount, serialId, serialName }) => {
                         {!!season.overview ? season.overview : overviewPlug}
                     </p>
                 </div>
-            </a>
+            </div>
         </Link>
     )
 };

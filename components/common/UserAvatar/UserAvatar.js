@@ -16,7 +16,12 @@ export const UserAvatar = () => {
             </div>
 
             <div className={styles.avatar}>
-                <Image src={avatar} alt="user_avatar"/>
+                <Image
+                    src={avatar}
+                    alt='user_avatar'
+                    layout='fill'
+                    objectFit='center'
+                />
             </div>
 
             <div className={cx(styles.circle, styles.greyCircle)}>

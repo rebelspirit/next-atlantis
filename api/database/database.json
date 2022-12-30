@@ -1,0 +1,26 @@
+{
+  "movies": {
+      "results": [
+        { "id": 1, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 2, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 3, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 4, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 5, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 6, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 7, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+        { "id": 8, "title": "Default movie title", "releaseDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 }
+      ]
+  },
+  "serials": {
+    "results": [
+      { "id": 1, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 2, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 3, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 4, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 5, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 6, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 7, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 },
+      { "id": 8, "name": "Default serial title", "firstAirDate": "2022/11/14", "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda dolor, dolorum ea eius eligendi esse facilis ipsam nisi.", "backdropPath": "/testsrc.png", "voteCount": 1321, "voteAverage": 7.4 }
+    ]
+  }
+}

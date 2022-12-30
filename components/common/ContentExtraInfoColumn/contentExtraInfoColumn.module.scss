@@ -3,7 +3,7 @@
 .label {
   font-family: $SFUI-Display-Semibold;
   font-size: 1rem;
-  color: #304354;
+  color: $content-extra-info-column-label-color;
   padding: 0 5px;
   margin-bottom: 5px;
 }
@@ -11,7 +11,7 @@
 .text {
   font-family: $SFUI-Display-Light;
   font-size: .9rem;
-  color: $color-black-primary;
+  color: $content-extra-info-column-text-color;
   padding: 0 5px;
   margin-bottom: 15px;
 }
@@ -21,7 +21,7 @@
   gap: 3px;
   font-family: $SFUI-Display-Light;
   font-size: .9rem;
-  color: $color-black-primary;
+  color: $content-extra-info-column-text-color;
   padding: 0 5px;
   margin-bottom: 15px;
 

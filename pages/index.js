@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import { slice, floor, flatMap, pick } from 'lodash';
 import { Slider } from '@components/Slider/Slider';
-import { Movies } from 'Api/Movies';
+import { Movies } from 'api/Movies';
 import { TrendsRow } from '@components/TrendsRow/TrendsRow';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
-import { Serials } from 'Api/Serials';
+import { Serials } from 'api/Serials';
 import { DualTabButtons } from '@components/common/DualTabButtons/DualTabButtons';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { DatabaseRoutes } from "../api/database/DatabaseRoutes";
 
 const dualTabButtonsSettings = {
     firstButtonName: 'День',
@@ -46,7 +47,6 @@ export default function IndexPage(props) {
     });
 
     const sliderProps = getSliderProps(6, movies.trendsOnWeek, tv.trendsOnWeek);
-
 
     const delayedShowFadeAnimation = useMemo(() => {
         return setTimeout(() => {
@@ -122,15 +122,21 @@ export default function IndexPage(props) {
 
 export const getServerSideProps = async () => {
     try {
-        const trendMoviesOnDay = await Movies.getTrendsMoviesOnDay();
-        const trendMoviesOnWeek = await Movies.getTrendsMoviesOnWeek();
-        const trendSerialsOnDay = await Serials.getTrendsSerialsOnDay();
-        const trendSerialsOnWeek = await Serials.getTrendsSerialsOnWeek();
+        const trendMoviesOnDay = await Movies.getTrendsMoviesOnDay() || await DatabaseRoutes.trendsMovies();
+        const trendMoviesOnWeek = await Movies.getTrendsMoviesOnWeek() || await DatabaseRoutes.trendsMovies();
+        const trendSerialsOnDay = await Serials.getTrendsSerialsOnDay() || await DatabaseRoutes.trendsSerials();
+        const trendSerialsOnWeek = await Serials.getTrendsSerialsOnWeek() || await DatabaseRoutes.trendsSerials();
 
         return {
             props: {
-                movies: { trendsOnDay: trendMoviesOnDay, trendsOnWeek: trendMoviesOnWeek },
-                tv: { trendsOnDay: trendSerialsOnDay, trendsOnWeek: trendSerialsOnWeek }
+                movies: {
+                    trendsOnDay: trendMoviesOnDay,
+                    trendsOnWeek: trendMoviesOnWeek
+                },
+                tv: {
+                    trendsOnDay: trendSerialsOnDay,
+                    trendsOnWeek: trendSerialsOnWeek
+                }
             }
         };
 

@@ -1,5 +1,5 @@
-@import '../../scss/variables';
-@import '../../scss/mixins';
+@import 'scss/variables';
+@import 'scss/mixins';
 
 .sliderContainer {
   display: flex;
@@ -23,7 +23,7 @@
     font-size: 2.5rem;
     font-weight: normal;
     font-style: normal;
-    color: $color-white-primary;
+    color: $slider-title-color;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     margin: 5px 0;
   }
@@ -34,7 +34,7 @@
     font-size: 1.05rem;
     font-weight: normal;
     font-style: normal;
-    color: $color-white-primary;
+    color: $slider-overview-color;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -52,7 +52,7 @@
     font-size: 1.2rem;
     font-weight: normal;
     font-style: normal;
-    color: $color-white-primary;
+    color: $slider-rate-color;
     margin: 5px 0;
 
     p {
@@ -68,7 +68,7 @@
         margin: 0 5px 0 0;
       }
       .icon {
-        color: $color-orange-primary;
+        color: $slider-imdb-icon-color;
         &.iconBackground {
           position: relative;
           z-index: 1;
@@ -79,7 +79,7 @@
             display: block;
             width: calc(100% - 4px);
             height: calc(100% - 4px);
-            background: $color-black-primary;
+            background: $slider-imdb-icon-background-color;
             border-radius: 3px;
             content: '';
             z-index: -1;
@@ -111,7 +111,6 @@
 
       .sliderButton {
         @include button();
-        @include transition(.3s ease);
 
         &:first-child {
           margin: 0 10px 0 0;
@@ -121,10 +120,10 @@
         }
         &.sliderWatchListButton {
           width: 60px;
-          background-color: #6A6A6B;
+          background-color: $slider-watch-list-button-background-color;
 
           &:hover {
-            background-color: #787878;
+            background-color: $slider-watch-list-button-background-color-active;
           }
         }
       }
@@ -138,8 +137,8 @@
       .sliderNavBarDot {
         width: 15px;
         height: 15px;
-        background: $color-white-primary;
-        border: 1px solid $color-white-primary;
+        background: $slider-dot-color;
+        border: 1px solid $slider-dot-border-color;
         border-radius: 50%;
         filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5));
         margin: 0 7px;
@@ -148,8 +147,8 @@
 
         &.selected {
           border-radius: 50%;
-          background: $color-red-primary;
-          border: 1px solid $color-red-primary;
+          background: $slider-dot-selected-color;
+          border: 1px solid $slider-dot-border-selected-color;
           filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5));
           animation: pulse 2s infinite;
         }

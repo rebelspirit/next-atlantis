@@ -1,5 +1,5 @@
-@import '/scss/variables';
-@import '/scss/mixins';
+@import 'scss/variables';
+@import 'scss/mixins';
 
 .contentDetailsContainer {
   position: relative;
@@ -65,7 +65,7 @@
         @include transition(.3s);
 
         &:hover {
-          color: $color-white-primary;
+          color: $content-details-card-close-player-button-color;
           @include transform(scale(1.15));
         }
       }
@@ -83,15 +83,15 @@
     font-family: $SFUI-Display-Semibold;
     font-size: 2.5rem;
     font-style: normal;
-    color: $color-white-primary;
+    color: $content-details-card-title-color;
     margin: 8px 0;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
   .originalTitle {
-    color: $color-grey-primary;
     font-family: $SFUI-Display-Light;
     font-size: 1rem;
     font-style: italic;
+    color: $content-details-card-original-title-color;
     margin: 5px 0;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
@@ -101,7 +101,7 @@
   align-items: center;
   gap: 5px;
   font-family: $SFUI-Display-Regular;
-  color: $color-white-primary;
+  color: $content-details-card-features-color;
   padding: 5px 0;
   margin: 15px 0 5px 0;
 
@@ -113,7 +113,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: $color-white-primary;
+    background: $content-details-card-features-color;
     margin: 0 3px;
   }
   .genresContainer {
@@ -140,7 +140,7 @@
     p {
       font-family: $SFUI-Display-Semibold;
       font-size: .9rem;
-      color: $color-white-primary;
+      color: $content-details-card-rating-text-color;
       padding: 3px 0 10px 0;
       text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     }
@@ -161,7 +161,7 @@
 
       svg {
         path {
-          fill: #E0E0E093;
+          fill: $content-details-card-vote-button-background-color;
           @include transition(.3s);
         }
       }
@@ -172,7 +172,7 @@
       i {
         svg {
           path {
-            fill: #F44336;
+            fill: $content-details-card-vote-button-background-color-selected;
           }
         }
       }
@@ -182,7 +182,7 @@
       font-family: $SFUI-Display-Semibold;
       font-size: 1rem;
       text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
-      color: $color-white-primary;
+      color: $content-details-card-rating-text-color;
     }
   }
 }
@@ -196,15 +196,15 @@
   h6 {
     font-family: $SFUI-Display-Semibold;
     font-size: 1.2rem;
-    color: $color-white-primary;
+    color: $content-details-card-overview-title-color;
     margin: 5px 0 10px 0;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
   .tagLine {
-    color: $color-white-primary;
     font-family: $SFUI-Display-Light;
     font-size: 1rem;
     font-style: italic;
+    color: $content-details-card-overview-tagline-color;
     margin: 5px 0 10px 0;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
@@ -212,7 +212,7 @@
     font-family: $SFUI-Display-Light;
     font-size: 1rem;
     line-height: 20px;
-    color: $color-white-primary;
+    color: $content-details-card-overview-color;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
   }
 }
@@ -278,29 +278,10 @@
     font-size: 1.2rem;
     font-weight: normal;
     font-style: normal;
-    color: $color-white-primary;
+    color: $content-details-card-watch-button-color;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
     background: transparent;
     cursor: pointer;
     @include transition(.3s ease);
   }
-}
-.watchOnlineButton {
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: none;
-  border: 0;
-  border-radius: 15px;
-  font-family: $SFUI-Display-Semibold;
-  font-size: 1.2rem;
-  font-weight: normal;
-  font-style: normal;
-  color: $color-white-primary;
-  text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
-  background: transparent;
-  cursor: pointer;
-  @include transition(.3s ease);
 }

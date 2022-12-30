@@ -7,8 +7,8 @@ import { useEffect, useRef } from 'react';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
-import { Common } from 'Api/Common';
-import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt';
+import { Common } from 'api/Common';
+import { ContentCardHorizontal } from '@components/common/ContentCardHorizontal/ContentCardHorizontal';
 import { SocialNetworks } from '@components/common/SocialNetworks/SocialNetworks';
 import { ArrayUse } from 'lib/ArrayUse';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -79,7 +79,7 @@ export default function PersonPage({ personDetails, personFameFor, personExterna
                             className={styles.personDetailsScrollLayout}
                         >
                             {map(personFameFor.cast, content =>
-                                <ContentCardAlt
+                                <ContentCardHorizontal
                                     key={content.id}
                                     id={content.id}
                                     mediaType={content.mediaType}

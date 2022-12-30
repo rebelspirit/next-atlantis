@@ -6,7 +6,6 @@
   display: inline-block;
   width: 50px;
   height: 26px;
-  margin: 0 15px;
 
   input {
     opacity: 0;
@@ -15,8 +14,8 @@
 
     &:checked {
       +.slider {
-        background: $color-grey-primary;
-        border: 1px solid $color-grey-primary;
+        background: $theme-switcher-background;
+        border: 1px solid $theme-switcher-border;
 
         &:before {
           @include transform(translateX(24px));
@@ -31,8 +30,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: $color-grey-primary;
-    border: 1px solid $color-grey-primary;
+    background: $theme-switcher-background;
+    border: 1px solid $theme-switcher-border;
     @include transition(.4s ease);
 
     &:before {
@@ -42,7 +41,7 @@
       width: 22px;
       left: 1px;
       bottom: 1px;
-      background-color: $color-white-primary;
+      background-color: $theme-switcher-checker;
       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
       @include transition(.3s ease);
     }
@@ -62,11 +61,11 @@
 
       &.dayMode {
         right: 6px;
-        color: $color-orange-primary;
+        color: $theme-switcher-sun;
       }
       &.nightMode {
         left: 6px;
-        color: $color-blue-primary;
+        color: $theme-switcher-moon;
       }
     }
   }

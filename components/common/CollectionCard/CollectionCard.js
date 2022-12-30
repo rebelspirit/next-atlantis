@@ -10,7 +10,9 @@ export const CollectionCard = ({ collection }) => {
 
             <p>Фильмов в коллекции: {collection.parts.length}</p>
 
-            <p className={styles.overview}>{collection.overview}</p>
+            {collection.overview &&
+                <p className={styles.overview}>{collection.overview}</p>
+            }
 
             <Link href={`/collection/?id=${collection.id}`}>
                 <button className={styles.collectionCardButton}>Смотреть коллекцию</button>
@@ -23,6 +25,7 @@ export const CollectionCard = ({ collection }) => {
                     layout='fill'
                     className={styles.collectionCardImg}
                     objectFit='cover'
+                    objectPosition='center'
                     loading='lazy'
                     unoptimized
                 />

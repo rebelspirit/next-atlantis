@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './trendsRow.module.scss';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { map, eq } from 'lodash';
-import { ContentCardAlt } from '@components/common/ContentCardAlt/ContentCardAlt';
+import { ContentCardHorizontal } from '@components/common/ContentCardHorizontal/ContentCardHorizontal';
 import { TrendsRowButtons } from '@components/TrendsRow/TrendsRowButtons';
 import { Trail } from 'animations/Trail';
 
@@ -70,7 +70,7 @@ export const TrendsRow = ({ mappedContent, type, showTrail }) => {
                     onStartScroll={activateRowButtons(scrollContainerRef)}
                 >
                     {map(mappedContent, content =>
-                        <ContentCardAlt
+                        <ContentCardHorizontal
                             key={content.id}
                             id={content.id}
                             mediaType={type}

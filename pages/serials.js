@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import { map } from 'lodash';
-import { Serials } from 'Api/Serials';
-import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { Serials } from 'api/Serials';
+import { ContentCardVertival } from '@components/common/ContentCardVertical/ContentCardVertival';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Pagination } from '@components/common/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { DatabaseRoutes } from "../api/database/DatabaseRoutes";
 
 export default function SerialsPage({ serials }) {
     const isLoading = useLoading();
@@ -32,7 +33,7 @@ export default function SerialsPage({ serials }) {
 
             <div className={styles.contentMappedContainer}>
                 {map(serials.results, serial =>
-                    <ContentCard
+                    <ContentCardVertival
                         key={serial.id}
                         id={serial.id}
                         mediaType='tv'
@@ -52,7 +53,7 @@ export default function SerialsPage({ serials }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-    const serials = await Serials.getSerials(query.page);
+    const serials = await Serials.getSerials(query.page) || await DatabaseRoutes.serials();
 
     return {
         props: {

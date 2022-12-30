@@ -7,11 +7,13 @@
 
   a {
     text-decoration: none;
-    color: $color-black-primary;
+    color: $social-networks-icons-color;
+
     &.separateLine {
       &:last-child {
         padding-left: 10px;
-        border-left: 1px solid #E0E0E093;
+        border-left: 1px solid $social-networks-border-color;
+        transition: border-left-color .3s;
       }
     }
   }

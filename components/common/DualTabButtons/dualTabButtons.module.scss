@@ -8,7 +8,7 @@
   font-weight: normal;
   font-style: normal;
   font-size: 1.1rem;
-  color: $color-grey-thirdly;
+  color: $dual-tab-buttons-color;
   margin: 10px 0;
   padding: 0 15px;
 
@@ -17,7 +17,7 @@
     @include transition(.3s);
 
     &.selected {
-      color: $color-red-primary;
+      color: $dual-tab-buttons-color-selected;
     }
   }
 

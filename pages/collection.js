@@ -3,11 +3,11 @@ import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { map } from 'lodash';
-import { ContentCard } from '@components/common/ContentCard/ContentCard';
-import { Movies } from 'Api/Movies';
+import { ContentCardVertival } from '@components/common/ContentCardVertical/ContentCardVertival';
+import { Movies } from 'api/Movies';
 import PropTypes from 'prop-types';
 import MoviesPage from 'pages/movies';
-import { Common } from 'Api/Common';
+import { Common } from 'api/Common';
 import { useEffect } from 'react';
 
 export default function CollectionPage({ collection }) {
@@ -39,7 +39,7 @@ export default function CollectionPage({ collection }) {
 
             <div className={styles.contentMappedContainer}>
                 {map(collection.parts, movie =>
-                    <ContentCard
+                    <ContentCardVertival
                         key={movie.id}
                         id={movie.id}
                         mediaType='movie'

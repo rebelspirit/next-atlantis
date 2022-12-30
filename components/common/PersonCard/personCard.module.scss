@@ -31,14 +31,14 @@
   }
 }
 .personCardFooter {
-  color: $color-grey-thirdly;
-  cursor: pointer;
   margin: 5px 0;
   padding: 0 3px;
+  cursor: pointer;
 
   .personCardFooterTitle {
     font-family: $SFUI-Display-Semibold;
     font-size: 1rem;
+    color: $person-card-name-color;
     margin: 5px 0 3px 0;
   }
 
@@ -46,6 +46,7 @@
     font-family: $SFUI-Display-Light;
     font-weight: 500;
     font-size: .9rem;
+    color: $person-card-role-color;
     margin: 3px 0;
   }
 }

@@ -11,6 +11,7 @@ import { Number } from 'animations/Number';
 import classNames from 'classnames/bind';
 import { Trail } from 'animations/Trail';
 import { Fade } from 'animations/Fade';
+import img from "@public/img/testsrc2.png";
 
 const cx = classNames.bind(styles);
 
@@ -59,7 +60,7 @@ export const Slider = ({ slides }) => {
     const isShowFadeAnimation = find(animations, { type: 'fade' }).visible;
 
     const onClickChangeSelectedCard = i => {
-        return () => setCurrentIndex(i)
+        return () => setCurrentIndex(i);
     };
 
     useEffect(() => {
@@ -98,11 +99,9 @@ export const Slider = ({ slides }) => {
                 <div className={styles.sliderFooterContainer}>
                     <div className={styles.sliderButtonsContainer}>
                         <Link href={`/watch?type=${selectedCard.mediaType}&id=${selectedCard.id}`}>
-                            <a>
-                                <button className={cx(styles.sliderButton, styles.sliderWatchButton)}>
-                                    Перейти
-                                </button>
-                            </a>
+                            <button className={cx(styles.sliderButton, styles.sliderWatchButton)}>
+                                Перейти
+                            </button>
                         </Link>
 
                         <button className={cx(styles.sliderButton, styles.sliderWatchListButton)}>
@@ -126,7 +125,8 @@ export const Slider = ({ slides }) => {
                 <div className={styles.sliderImgContainer}>
                     <Fade show={isShowFadeAnimation}>
                         <Image
-                            src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${selectedCard.backdropPath}`}
+                            //src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${selectedCard.backdropPath}`}
+                            src={img}
                             alt='slider_poster'
                             width={1400}
                             height={525}

@@ -9,19 +9,17 @@ const cx = classNames.bind(styles);
 
 export const TrendsRowButtons = ({ containerRef, disabledRowButtons: { scrollLeftButton, scrollRightButton } }) => {
 
+    const remainder = ref => ceil((ref.current.scrollWidth % ref.current.clientWidth) / 4);
+
     const onScrollRightButton = ref => {
         return () => {
-            const remainder = ceil((ref.current.scrollWidth % ref.current.clientWidth) / 4);
-
-            return ref.current.scrollLeft -= (ref.current.clientWidth + remainder);
+            return ref.current.scrollLeft -= (ref.current.clientWidth + remainder(ref));
         }
     };
 
     const onScrollLeftButton = ref => {
         return () => {
-            const remainder = ceil((ref.current.scrollWidth % ref.current.clientWidth) / 4);
-
-            return ref.current.scrollLeft += (ref.current.clientWidth + remainder);
+            return ref.current.scrollLeft += (ref.current.clientWidth + remainder(ref));
         }
     };
 

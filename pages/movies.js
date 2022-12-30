@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
-import { Movies } from 'Api/Movies';
+import { Movies } from 'api/Movies';
 import { map } from 'lodash';
-import { ContentCard } from '@components/common/ContentCard/ContentCard';
+import { ContentCardVertival } from '@components/common/ContentCardVertical/ContentCardVertival';
 import { SectionTitle } from '@components/common/SectionTitle/SectionTitle';
 import { Pagination } from '@components/common/Pagination/Pagination';
 import { useLoading } from 'hooks/useLoading';
 import { ShapeLoader } from '@components/common/ShapeLoader/ShapeLoader';
+import { DatabaseRoutes } from "../api/database/DatabaseRoutes";
 
 export default function MoviesPage({ movies }) {
     const isLoading = useLoading();
@@ -33,7 +34,7 @@ export default function MoviesPage({ movies }) {
 
             <div className={styles.contentMappedContainer}>
                 {map(movies.results, movie =>
-                    <ContentCard
+                    <ContentCardVertival
                         key={movie.id}
                         id={movie.id}
                         mediaType='movie'
@@ -53,7 +54,7 @@ export default function MoviesPage({ movies }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-    const movies = await Movies.getMovies(query.page);
+    const movies = await Movies.getMovies(query.page) || await DatabaseRoutes.movies();
 
     return {
         props: {
@@ -65,4 +66,5 @@ export const getServerSideProps = async ({ query }) => {
 MoviesPage.propTypes = {
     movies: PropTypes.object.isRequired
 };
+
 

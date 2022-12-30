@@ -1,3 +1,5 @@
+@import 'scss/variables';
+
 .loadingMessageContainer {
   width: 100%;
   position: relative;
@@ -29,7 +31,7 @@
     display: block;
     width: 40px;
     height: 40px;
-    background-color: #FAFAFA;
+    background-color: $shape-loader-base-color;
     animation: loaderBlock 1.2s infinite ease-in-out both;
     opacity: .7;
 
@@ -69,7 +71,7 @@
     transform: rotate(0);
   }
   55% {
-    background-color: #d71f1f;
+    background-color: $shape-loader-color;
   }
   100% {
     transform: rotate(90deg);
@@ -80,7 +82,7 @@
     transform: rotate(0);
   }
   55% {
-    background-color: #D71F26;
+    background-color: $shape-loader-color;
   }
   100% {
     transform: rotate(-90deg);
